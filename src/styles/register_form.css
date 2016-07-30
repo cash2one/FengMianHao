@@ -351,12 +351,15 @@ em.flag-required {
 }
 .close-btn-of-label {
     position: absolute;
-    right: -5px;
-    top: -5px;
-    width: 10px;
-    height: 10px;
+    right: -9px;
+    top: -9px;
+    width: 18px;
+    height: 18px;
     border-radius: 50%;
-    background-color: red;
+    background-image: url("http://wapcdn.thecover.cn/fengmianhao/1.0.0/img/icon_rm_tag.png");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 .close-btn-of-label:hover {
     cursor: pointer;

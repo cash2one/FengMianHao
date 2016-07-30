@@ -169,7 +169,7 @@ var form = new Vue({
       }
 
       if (!helpers.validatePasswd(obj.passwd)) {
-        console.log('L171');
+        console.log('密码复杂度不够');
         if(obj.passwd_inited === true) {
           $('#input_passwd').siblings('.tip').addClass('show');
         }

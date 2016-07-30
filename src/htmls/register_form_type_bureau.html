@@ -41,7 +41,10 @@
                     </div>
                     <!--机构名称-->
                     <div class="form-group">
-                        <label for="inputOrgName" class="col-md-4 control-label"><em class="flag-required">*</em> 机构名称:</label>
+                        <label for="inputOrgName" class="col-md-4 control-label">
+                            <em class="flag-required">*</em>
+                            机构名称:
+                        </label>
                         <div class="col-md-7">
                             <input type="text" class="form-control" id="inputOrgName" required maxlength="30" v-model="data_of_form.OrgName">
                             <span class="help-block">请与组织机构代码证名称一致</span>
@@ -50,12 +53,13 @@
                     <!--机构级别-->
                     <div class="form-group">
                         <label for="inputStateLevel" class="col-md-4 control-label">
-                            <em class="flag-required">*</em>机构级别:
+                            <em class="flag-required">*</em>
+                            机构级别:
                         </label>
                         <div class="col-md-7">
                             <select id="inputStateLevel" class="form-control" v-model="data_of_form.StateLevel">
                                 <option v-for="option in list_of_statelevels" v-bind:value="option">
-                                    {{ option }}
+                                    {{option}}
                                 </option>
                             </select>
                         </div>
@@ -63,7 +67,8 @@
                     <!--机构电话-->
                     <div class="form-group">
                         <label for="inputStateTel" class="col-md-4 control-label">
-                            <em class="flag-required">*</em> 机构电话:
+                            <em class="flag-required">*</em>
+                            机构电话:
                         </label>
                         <div class="col-md-7">
                             <input type="text" class="form-control" id="inputStateTel" required maxlength="20" v-model="data_of_form.StateTel">
@@ -73,7 +78,8 @@
                     <!--封面号公众平台授权书-->
                     <div class="form-group" id="inputPictureAuth">
                         <label class="col-md-4 control-label required">
-                            <em class="flag-required">*</em> 封面号公众平台授权书:
+                            <em class="flag-required">*</em>
+                            封面号公众平台授权书:
                         </label>
                         <div class="col-md-7">
                             <div class="container-upload-img">
@@ -90,7 +96,9 @@
                     </div>
                     <!--其他材料-->
                     <div class="form-group">
-                        <label for="inputOtherDoc" class="col-md-4 control-label">其他材料:</label>
+                        <label for="inputOtherDoc" class="col-md-4 control-label">
+                            其他材料:
+                        </label>
                         <div class="col-md-7">
                             <textarea class="form-control" id="inputOtherDoc" rows="5" maxlength="300" v-model="data_of_form.OtherDoc">
                             </textarea>
@@ -103,7 +111,10 @@
                     <legend>封面号主体信息</legend>
                     <!--封面号名称-->
                     <div class="form-group">
-                        <label for="inputAccountName" class="col-md-4 control-label"><em class="flag-required">*</em>封面号名称:</label>
+                        <label for="inputAccountName" class="col-md-4 control-label">
+                            <em class="flag-required">*</em>
+                            封面号名称:
+                        </label>
                         <div class="col-md-7">
                             <input type="text" class="form-control" id="inputAccountName" placeholder="2-10个字,勿使用包含特殊字符或营销意图的名称" required maxlength="10" v-model="data_of_form.AccountName">
                             <span class="help-block">2-10个字,勿使用包含特殊字符或营销意图的名称</span>
@@ -111,7 +122,10 @@
                     </div>
                     <!--封面号介绍-->
                     <div class="form-group">
-                        <label for="inputAccountIntro" class="col-md-4 control-label"><em class="flag-required">*</em>封面号介绍:</label>
+                        <label for="inputAccountIntro" class="col-md-4 control-label">
+                            <em class="flag-required">*</em>
+                            封面号介绍:
+                        </label>
                         <div class="col-md-7">
                             <textarea type="text" class="form-control" id="inputAccountIntro" rows="3" maxlength="30" placeholder="10-30个字,要求内容完整通顺,无特殊字符,请勿添加任何联系方式如微博、手机号、QQ" required v-model="data_of_form.AccountIntro">
                             </textarea>
@@ -119,11 +133,20 @@
                         </div>
                     </div>
                     <!--封面号头像-->
-                    <div class="form-group" id="inputAvatarPicture" v-model="data_of_form.AvatarPicture"><label class="col-md-4 control-label required"><em class="flag-required">*</em> 封面号头像:</label>
+                    <div class="form-group" id="inputAvatarPicture">
+                        <label class="col-md-4 control-label required">
+                            <em class="flag-required">*</em>
+                            封面号头像:
+                        </label>
                         <div class="col-md-7">
                             <div class="container-upload-img">
                                 <img id="upImg-icon" class="avatar" v-bind:src="data_of_form.AvatarPicture">
-                                <a href="javascript:void(0)" data-dom="#upImg-icon" data-ratio="1/1" data-minwidth="200" data-minheight="200" class="upload-img btn btn-raised btn-default">
+                                <a href="javascript:void(0)"
+                                   data-dom="#upImg-icon"
+                                   data-ratio="1/1"
+                                   data-minwidth="200"
+                                   data-minheight="200"
+                                   class="upload-img btn btn-raised btn-default">
                                     上传
                                 </a>
                                 <p class="tips-of-uploading avatar">要求清晰、健康、代表自媒体形象<br>请勿使用二维码,最大5M,200x200像素</p>
@@ -131,15 +154,27 @@
                         </div>
                     </div>
                     <!--封面号背景图-->
-                    <div class="form-group" id="inputBackgroundImageOfAccount" v-model="data_of_form.BackgroundImageOfAccount">
-                        <label class="col-md-4 control-label"><em class="flag-required">*</em> 封面号背景图:</label>
+                    <div class="form-group" id="inputBackgroundImageOfAccount">
+                        <label class="col-md-4 control-label">
+                            <em class="flag-required">*</em>
+                            封面号背景图:
+                        </label>
                         <div class="col-md-7">
                             <div class="container-upload-img">
                                 <img id="upImg-bg" v-bind:src="data_of_form.BackgroundImageOfAccount">
-                                <a href="javascript:void(0)" data-dom="#upImg-bg" data-ratio="1/1" data-minwidth="200" data-minheight="200" class="upload-img btn btn-raised btn-default">
+                                <a href="javascript:void(0)"
+                                   data-dom="#upImg-bg"
+                                   data-ratio="1/1"
+                                   data-minwidth="200"
+                                   data-minheight="200"
+                                   class="upload-img btn btn-raised btn-default">
                                     上传
                                 </a>
-                                <p class="tips-of-uploading">要求符合封面号风格<br>请勿使用二维码,最大5M,200x200像素</p>
+                                <p class="tips-of-uploading">
+                                    要求符合封面号风格
+                                    <br>
+                                    请勿使用二维码,最大5M,200x200像素
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -148,12 +183,15 @@
                         <div class="col-md-12" id="label_area">
                             <div class="col-md-4"></div>
                             <div class="col-md-7">
-                                <div class="label-of-account" v-for="(index, label) in data_of_form.AccountLabel" data-label-id="{{index}}">{{label}}
+                                <div class="label-of-account" v-for="(index, label) in data_of_form.AccountLabel" data-label-id="{{index}}">
+                                    {{label}}
                                     <em class="close-btn-of-label" data-label-id="{{index}}" v-on:click.stop="rmLabel($event)"></em>
                                 </div>
                             </div>
                         </div>
-                        <label class="control-label col-md-4" for="inputAccountKeywords">封面号关键词:</label>
+                        <label class="control-label col-md-4" for="inputAccountKeywords">
+                            封面号关键词:
+                        </label>
                         <div class="input-group col-md-7">
                             <input type="text" class="form-control" id="inputAccountKeywords" placeholder="关键词在搜索结果中展示,不超过3个" maxlength="5">
                             <span class="input-group-btn">
@@ -168,21 +206,30 @@
                         </label>
                         <div class="col-md-7">
                             <select id="inputAccountChannel" class="form-control" v-model="data_of_form.AccountChannel">
-                                <option v-for="option in list_of_channels" v-bind:value="option.id">{{ option.name }}</option>
+                                <option v-for="option in list_of_channels" v-bind:value="option.id">
+                                    {{option.name}}
+                                </option>
                             </select>
                         </div>
                     </div>
                     <!--所在地-->
                     <div class="form-group">
-                        <label class="col-md-4 control-label"><em class="flag-required">*</em> 所在地:</label>
+                        <label class="col-md-4 control-label">
+                            <em class="flag-required">*</em>
+                            所在地:
+                        </label>
                         <div class="col-md-3">
                             <select class="form-control" v-model="data_of_form.AccountProvince">
-                                <option v-for="province in list_of_provinces" v-bind:value="province.id">{{ province.name }}</option>
+                                <option v-for="province in list_of_provinces" v-bind:value="province.id">
+                                    {{province.name}}
+                                </option>
                             </select>
                         </div>
                         <div class="col-md-3">
                             <select id="inputAccountCity" class="form-control" v-model="data_of_form.AccountCity">
-                                <option v-for="city in citiesOfSelectedProvince" v-bind:value="city.id">{{ city.name }}</option>
+                                <option v-for="city in citiesOfSelectedProvince" v-bind:value="city.id">
+                                    {{city.name}}
+                                </option>
                             </select>
                         </div>
                     </div>
@@ -209,7 +256,10 @@
                         <legend>运营者信息</legend>
                         <!--运营者姓名-->
                         <div class="form-group">
-                            <label for="inputPersonName" class="col-md-4 control-label"><em class="flag-required">*</em> 运营者姓名:</label>
+                            <label for="inputPersonName" class="col-md-4 control-label">
+                                <em class="flag-required">*</em>
+                                运营者姓名:
+                            </label>
                             <div class="col-md-7">
                                 <input type="text" class="form-control" id="inputPersonName" placeholder="请填写真实姓名" required maxlength="20" v-model="data_of_form.PersonName">
                                 <span class="help-block">请填写真实姓名</span>
@@ -217,16 +267,20 @@
                         </div>
                         <!--运营者证件号码-->
                         <div class="form-group">
-                            <label for="inputPersonID" class="col-md-4 control-label"><em class="flag-required">*</em> 运营者证件号码:</label>
+                            <label for="inputPersonID" class="col-md-4 control-label">
+                                <em class="flag-required">*</em>
+                                运营者证件号码:
+                            </label>
                             <div class="col-md-7">
                                 <input type="text" class="form-control" id="inputPersonID" placeholder="请正确填写18位身份证号码" required maxlength="18" v-model="data_of_form.PersonID">
                                 <span class="help-block">请正确填写18位身份证号码</span>
                             </div>
                         </div>
                         <!--运营者持身份证照片-->
-                        <div class="form-group" id="inputPersonIDPicture" v-model="data_of_form.PersonIDPicture">
+                        <div class="form-group" id="inputPersonIDPicture">
                             <label class="col-md-4 control-label required">
-                                <em class="flag-required">*</em> 运营者持身份证照片:
+                                <em class="flag-required">*</em>
+                                运营者持身份证照片:
                             </label>
                             <div class="col-md-7">
                                 <div class="container-upload-img">
@@ -245,7 +299,8 @@
                         <!--手机号码-->
                         <div class="form-group">
                             <label for="inputPersonPhoneNum" class="col-md-4 control-label">
-                                <em class="flag-required">*</em> 手机号码:
+                                <em class="flag-required">*</em>
+                                手机号码:
                             </label>
                             <div class="col-md-7">
                                 <input type="text" class="form-control" id="inputPersonPhoneNum" required maxlength="11" v-model="data_of_form.PersonPhoneNum">
@@ -259,7 +314,9 @@
                             <label for="check_remember_passwd">
                                 <input type="checkbox" id="check_remember_passwd">
                                 <span style="margin-left: 7.5px">同意
-                                    <a href="/page/others/user_agreement.html" target="_blank" style="color: #2AB5E2">《封面号自媒体平台用户协议》</a>
+                                    <a href="/page/others/user_agreement.html" target="_blank" style="color: #2AB5E2">
+                                        《封面号自媒体平台用户协议》
+                                    </a>
                                 </span>
                             </label>
                         </div>
@@ -269,7 +326,9 @@
                     </div>
                 </fieldset>
             </form>
-            <div class="my-btn" v-bind:class="{'available': canSubmit}" id="btn_submit_form" v-on:click.stop="submit($event)">提交</div>
+            <div class="my-btn" v-bind:class="{'available': canSubmit}" id="btn_submit_form" v-on:click.stop="submit($event)">
+                提交
+            </div>
         </div>
     </div>
 </div>

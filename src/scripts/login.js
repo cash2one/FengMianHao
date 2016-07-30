@@ -101,7 +101,6 @@ var login_module = (function ($, LS) {
     'redirectTo': function (data) {
       function gotoPage(page, param) {
         console.log('gotoPage(', page, ')');
-        console.log(helpers.destination_pages[page]);
         return location.replace(page + param);
       }
       switch (data.userStatus) {
