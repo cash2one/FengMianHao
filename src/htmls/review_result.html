@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" name="viewport">
+    <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+    <meta content="webkit" name="renderer">
+    <meta content="telephone=no,address=no,email=no" name="format-detection">
+    <title>封面号|注册审核结果</title>
+    <link href="http://wapcdn.thecover.cn/wap/1.0.0/img/favicon.png" rel="alternate icon" type="image/png">
+    <link href="http://wapcdn.thecover.cn/wap/1.0.0/img/favicon.png" rel="apple-touch-icon-precomposed">
+    <style type="text/css">
+        body {
+            min-width: 1280px;
+            padding: 0;
+            margin: 0;
+            border: none;
+            font-family: -apple-system, "Hiragino Sans GB", Roboto, "Droid Sans", "Microsoft YaHei", "Microsoft YaHei UI", "Microsoft JhengHei UI", STHeiti, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Helvetica Neue", sans-serif;
+        }
+        .hidden {
+            display: none;
+        }
+        #content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 600px;
+            margin-left: -300px;
+            height: 150px;
+            margin-top: -75px;
+        }
+        #content > div {
+            font-size: 20px;
+            text-align: center;
+            line-height: 50px;
+        }
+
+    </style>
+</head>
+
+<body>
+<div id="content">
+    <div class="hidden" id="processing">
+        <img src="http://wapcdn.thecover.cn/fengmianhao/1.0.0/img/icon_reviewing.png">
+        <p>提交成功！请等待资料审核结果~</p>
+        <a href="/page/others/user_agreement.html">了解更多封面号政策</a>
+    </div>
+    <div class="hidden" id="failed">
+        审核资料失败,请修改后重新填写,或者联系我们:
+        <br>
+        <a href="mailto:biz@thecover.cn">biz@thecover.cn</a>
+    </div>
+</div>
+<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js" type="text/javascript"></script>
+<script type="application/javascript">
+    console.log(parseInt(getValueFromUrl('result')));
+    function getValueFromUrl (name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) return unescape(r[2]);
+        return null;
+    }
+    if(parseInt(getValueFromUrl('result')) === 0) {
+        $('#processing').removeClass('hidden');
+    } else {
+        $('#failed').removeClass('hidden');
+    }
+</script>
+</body>
+
+</html>

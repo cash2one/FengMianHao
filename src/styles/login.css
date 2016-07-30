@@ -1,0 +1,243 @@
+#logo,
+header nav {
+    bottom: 0;
+    position: absolute
+}
+
+#main,
+header {
+    position: relative
+}
+
+#main {
+    background-repeat: no-repeat
+}
+
+#login_container,
+#logo,
+header nav {
+    position: absolute
+}
+
+#btn_login,
+nav a {
+    text-align: center
+}
+
+#page_login {
+    -webkit-transition: opacity .2s ease-in;
+    -moz-transition: opacity .2s ease-in;
+    -ms-transition: opacity .2s ease-in;
+    -o-transition: opacity .2s ease-in;
+    transition: opacity .2s ease-in;
+    overflow: hidden;
+}
+#page_login #content {
+    background-color: transparent;
+}
+
+header {
+    height: 64px;
+    padding: 0;
+    width: 100%
+}
+
+header nav {
+    display: block;
+    width: auto;
+    right: 0
+}
+
+#logo {
+    width: 120px;
+    vertical-align: middle;
+    left: 0
+}
+
+nav .menu {
+    display: inline-block;
+    padding: 0 20px;
+    border-right: 1px solid #fff;
+    opacity: .8
+}
+
+nav a {
+    height: 100%
+}
+
+nav .menu:last-of-type {
+    border-right: none
+}
+
+nav a {
+    display: block;
+    text-decoration: none;
+    width: 100%;
+    line-height: 36px;
+    color: #fff;
+    font-size: 13px
+}
+
+#main {
+    background-color: transparent;
+    background-image: url(http://wapcdn.thecover.cn/fengmianhao/1.0.0/img/txt_login_page.png);
+    background-size: auto;
+    background-position: 15% 40%
+}
+
+#login_container {
+    width: 360px;
+    right: 18%;
+    top: 25%;
+    background-color: #fff;
+    color: #585858;
+    border-radius: 4px;
+    padding: 40px
+}
+
+#login_container h2 {
+    color: #2AB5E2;
+    text-align: center;
+    margin: 0 auto 40px;
+    font-size: 17px;
+    line-height: 17px;
+    font-weight: 400
+}
+
+.input-wrapper {
+    width: 100%;
+    height: 30px;
+    margin-top: 30px;
+    border-bottom: 1px solid #2AB5E2;
+    position: relative;
+    font-size: 15px;
+    transition: border-bottom-color .2s ease-in;
+}
+
+.full-width-input,
+.input-wrapper label {
+    margin-bottom: 0;
+    color: #585858;
+    font-size: 15px;
+    position: absolute;
+    height: 30px;
+    line-height: 30px;
+    transition: border-bottom-color .2s ease-in;
+}
+
+.input-wrapper.error, .input-wrapper.error .full-width-input {
+    border-bottom-color: #F74937
+}
+
+#login_container img {
+    position: relative;
+    top: 1px;
+    vertical-align: bottom;
+    display: inline-block;
+    line-height: 30px;
+}
+#login_container label {
+    z-index: 10;
+    left: 22px;
+    width: 70px;
+    color: #585858;
+}
+#login_container label.captcha {
+    /*left: 0;*/
+}
+
+.full-width-input {
+    width: 210px;
+    padding-left: 10px;
+    padding-right: 10px;
+    right: 0;
+    vertical-align: bottom;
+    border-bottom: 1px solid #2AB5E2;
+}
+#captcha .full-width-input {
+    width: 140px;
+    right: 70px;
+}
+#input_captcha_container {
+    border-bottom: none;
+    margin-top: 5px;
+    text-align: right;
+}
+
+#login_container #the_captcha {
+    position: relative;
+    z-index: 100;
+    margin-top: -1px;
+    background-color: white;
+    border: 1px solid transparent;
+    width: 70px;
+    height: 30px;
+    vertical-align: bottom;
+    float: right;
+}
+
+#btn_login {
+    font-size: 16px;
+    line-height: 45px;
+    margin-top: 30px;
+    color: #fff;
+    background-color: #2AB5E2;
+    width: 100%;
+    border-radius: 4px
+}
+
+#btn_login.error {
+    background-color: #D5D5D5
+}
+#btn_login.error:hover {
+    cursor: not-allowed;
+}
+#actions_passwd {
+    font-size: 15px;
+    height: 30px;
+    line-height: 30px;
+    margin-top: 8px;
+}
+
+#actions_passwd label {
+    user-select: none;
+    font-size: 15px;
+    width: auto;
+}
+
+#login_container a {
+    display: block;
+    color: #2AB5E2;
+    text-decoration: none;
+}
+
+.foget-passwd {
+    float: right
+}
+
+#actions_passwd .checkbox input[type=checkbox]:checked + .checkbox-material .check, #actions_passwd label.checkbox-inline input[type=checkbox]:checked + .checkbox-material .check {
+    color: #2AB5E2;
+    border-color: #2AB5E2;
+}
+
+#actions_passwd .checkbox input[type=checkbox]:checked + .checkbox-material .check:before, #actions_passwd label.checkbox-inline input[type=checkbox]:checked + .checkbox-material .check:before {
+    color: #2AB5E2;
+}
+#actions_passwd .checkbox .checkbox-material .check, #actions_passwd label.checkbox-inline .checkbox-material .check {
+
+}
+
+#actions_passwd .checkbox {
+    margin-top: 0;
+    margin-bottom: 0;
+    float: left;
+}
+
+.captcha-container.hidden {
+    display: none !important;
+}
+#login_error_msg {
+    text-align: center;
+    margin-top: 5px;
+    color: red;
+}

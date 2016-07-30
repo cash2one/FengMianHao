@@ -1,0 +1,117 @@
+#page_notifications {
+    color: #585858
+}
+
+#page_notifications #content {
+    background-color: #fff;
+    border-radius: 5px
+}
+
+#page_notifications a {
+    color: #2AB5E2;
+    text-decoration: none
+}
+
+#main header {
+    line-height: 70px;
+    height: 55px;
+    background-color: #e8faff;
+    width: 100%;
+    border-bottom: 2px solid #eaeaea
+}
+
+.hidden {
+    display: none
+}
+
+#content {
+    width: 1280px;
+    margin-top: 20px;
+    padding: 0
+}
+
+#main header h1 {
+    margin-left: 35px;
+    font-size: 18px;
+    line-height: 55px;
+    font-weight: 400
+}
+
+.table-container {
+    padding-left: 12px;
+    padding-right: 12px
+}
+#table_of_broadcasting {
+    width: 100%;
+    max-width: 100%;
+    background-color: white;
+}
+.title-of-notice {
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    border-bottom: 1px dashed #A4A4A4;
+}
+.title-of-notice.is-opened {
+    border-bottom: none;
+}
+#table_of_broadcasting li:hover {
+    background-color: #f5f5f5;
+}
+#table_of_broadcasting li div {
+    display: inline-block;
+    border-top: none;
+    color: #585858;
+    font-size: 15px;
+    /* line-height: 46px; */
+    /* height: 46px; */
+    vertical-align: middle;
+    padding: 8px;
+}
+#table_of_broadcasting .col-of-title {
+    max-width: 960px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+#table_of_broadcasting .col-of-date {
+    color: #A4A4A4;
+    position: absolute;
+    right: 35px;
+    top: 0;
+    width: 200px;
+}
+#table_of_broadcasting .right-align {
+    text-align: right;
+}
+#table_of_broadcasting .flag-of-read {
+    font-size: 7px;
+    width: 10px;
+}
+#table_of_broadcasting .flag-of-read.unread {
+    color: #2AB5E2;
+}
+#table_of_broadcasting .flag-of-read.read {
+    color: #000;
+}
+.toggle-dropdown-detail {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 35px;
+}
+.toggle-dropdown-detail:hover {
+    cursor: pointer;
+}
+.toggle-dropdown-detail .caret {
+    position: relative;
+    border-top: 8px solid #585858;
+    border-right: 8px solid rgba(0, 0, 0, 0);
+    border-left: 8px solid rgba(0, 0, 0, 0);
+    /*top: 15px;*/
+}
+.detail-of-notice {
+    padding: 8px 16px;
+    line-height: 20px;
+    background-color: rgb(242,242,242);
+}

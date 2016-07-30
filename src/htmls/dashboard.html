@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" name="viewport">
+    <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+    <meta content="webkit" name="renderer">
+    <meta content="telephone=no,address=no,email=no" name="format-detection">
+    <title>封面号</title>
+    <link href="http://wapcdn.thecover.cn/wap/1.0.0/img/favicon.png" rel="alternate icon" type="image/png">
+    <link href="http://wapcdn.thecover.cn/wap/1.0.0/img/favicon.png" rel="apple-touch-icon-precomposed">
+    <link href="http://wapcdn.thecover.cn/fengmianhao/1.0.0/styles/normalize_bootstrap_material_dialog_v0722.css" rel="stylesheet" type="text/css"><link href="./styles/all.css" rel="stylesheet" type="text/css">
+    <link href="./styles/dashboard.css" rel="stylesheet" type="text/css">
+</head>
+
+<body class="page-notifications" id="page_dashboard">
+<div id="content">
+    <div id="main">
+        <div class="data-block-container">
+            <div class="data-block" style="background-color: rgb(72,195,211)">
+                <h3>总订阅</h3>
+                <div class="num-with-img">
+                    <img src="http://wapcdn.thecover.cn/fengmianhao/1.0.0/img/icon_subscription.png">
+                    <span>{{data_of_page.amountTotal}}</span>
+                </div>
+            </div>
+            <div class="data-block" style="background-color: rgb(98,203,196)">
+                <h3>昨日新增订阅</h3>
+                <div class="num-with-img">
+                    <img src="http://wapcdn.thecover.cn/fengmianhao/1.0.0/img/icon_new_subscription.png">
+                    <span>{{data_of_page.amount}}</span>
+                </div>
+            </div>
+            <div class="data-block" style="background-color: rgb(98,204,164)">
+                <h3>总浏览量</h3>
+                <div class="num-with-img">
+                    <img src="http://wapcdn.thecover.cn/fengmianhao/1.0.0/img/icon_total_read.png">
+                    <span>{{data_of_page.reviewTotal}}</span>
+                </div>
+        <div onclick="location.href='/articleInfo'" class="data-block" style="background-color: rgb(223,185,75)">
+                <div class="num-with-img">
+                    <img src="http://wapcdn.thecover.cn/fengmianhao/1.0.0/img/icon_add_new_article.png">
+                    <span style="line-height: 90px;font-size: 22px">新增文章</span>
+                </div>
+            </div>
+        </div>
+        <header>
+            <h1>平台公告</h1>
+        </header>
+        <div class="table-container">
+            <table class="table table-hover table-striped" id="table_of_broadcasting">
+                <tbody>
+                <tr v-for="item in data_of_page.list_of_broadcasting">
+                    <td class="col-of-title">
+                        {{item.title}}
+                    </td>
+                    <td class="col-of-date right-align">
+                        {{item.date}}
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<script src="http://wapcdn.thecover.cn/fengmianhao/1.0.0/scripts/jquery_bootstrap_material_bootstrapDialog_v0722.js"></script>
+<script src="http://wapcdn.thecover.cn/fengmianhao/1.0.0/scripts/libs_bluebird_vue_v0722.js"></script>
+<script src="./scripts/helpers.js"></script>
+
+<script src="./scripts/dashboard.js"></script>
+</body>
+
+</html>

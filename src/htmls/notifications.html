@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" name="viewport">
+    <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+    <meta content="webkit" name="renderer">
+    <meta content="telephone=no,address=no,email=no" name="format-detection">
+    <title>封面号|通知中心</title>
+    <link href="http://wapcdn.thecover.cn/wap/1.0.0/img/favicon.png" rel="alternate icon" type="image/png">
+    <link href="http://wapcdn.thecover.cn/wap/1.0.0/img/favicon.png" rel="apple-touch-icon-precomposed">
+    <link href="http://wapcdn.thecover.cn/fengmianhao/1.0.0/styles/normalize_bootstrap_material_dialog_v0722.css" rel="stylesheet" type="text/css"><link href="./styles/all.css" rel="stylesheet" type="text/css">
+    <link href="./styles/notifications.css" rel="stylesheet" type="text/css">
+</head>
+
+<body class="page-notifications" id="page_notifications" data-img="http://wapcdn.thecover.cn/fengmianhao/1.0.0/img/bg.jpg">
+<div id="content">
+    <div id="main">
+        <header>
+            <h1>通知中心</h1>
+        </header>
+        <div class="table-container">
+            <div id="table_of_broadcasting">
+                <ul>
+                <li v-for="notice in data_of_notifications.pageList" id="title_{{notice.id}}" class="title-of-notice">
+                    <div class="flag-of-read unread">&#11044;</div>
+                    <div class="col-of-title">
+                        {{notice.title}}
+                    </div>
+                    <div class="col-of-date right-align">
+                        {{notice.datePublish | formatDate}}
+                    </div>
+                    <div class="toggle-dropdown-detail right-align" v-on:click.stop="toggleDropdown(notice, $event)">
+                        <span class="caret"></span>
+                    </div>
+                </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="http://wapcdn.thecover.cn/fengmianhao/1.0.0/scripts/jquery_bootstrap_material_bootstrapDialog_v0722.js"></script><script src="http://wapcdn.thecover.cn/fengmianhao/1.0.0/scripts/libs_bluebird_vue_v0722.js"></script><script src="./scripts/helpers.js"></script>
+
+<!--<script src="./scripts/notifications.js"></script>-->
+<script type="application/javascript">
+    helpers.VueFilters();
+    var notifications = new Vue({
+        el: '#page_notifications',
+        data: function () {
+            return {
+                data_of_notifications: {}
+            }
+        },
+        methods: {
+            getDataOfNotifications: function () {
+                return helpers.$get('http://170.240.110.242:7777/notice_list.json', {});
+            },
+            postReadNotice: function (id) {
+                return helpers.$post(helpers.apis().postReadNotice, {'id': id});
+            },
+            toggleDropdown: function(data, evt) {
+                var $attached_tr = $(evt.target).closest('.title-of-notice');
+                var $flag_of_read = $attached_tr.find('.flag-of-read');
+                if($flag_of_read.hasClass('unread')) {
+                    $flag_of_read.removeClass('unread').addClass('read');
+                    this.postReadNotice(data.id);
+                }
+                if($attached_tr.hasClass('is-opened')) {
+                    $attached_tr.removeClass('is-opened');
+                    $attached_tr.siblings('#detail_' + data.id).remove();
+                } else {
+                    $attached_tr.addClass('is-opened');
+                    $attached_tr.after(this.renderNoticeDetail(data));
+                }
+
+            },
+            renderNoticeDetail: function(data) {
+                return $('<div class="detail-of-notice"></div>').prop('id', 'detail_'+data.id).text(data.content)
+            }
+        },
+        created: function () {
+            var self = this;
+            var renderPage = function () {
+                console.log('renderPage()');
+                self.getDataOfNotifications().then(function (res) {
+                    console.log('getDataOfNotifications() => ', res);
+                    self.data_of_notifications = res;
+                });
+            };
+            renderPage();
+        }
+    });
+</script>
+</body>
+
+</html>

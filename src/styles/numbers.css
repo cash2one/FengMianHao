@@ -1,0 +1,13 @@
+#content {
+    width: 1280px;
+    margin-top: 20px;
+    padding: 0;
+    border-radius: 5px
+}
+
+#main {
+    width: 1024px;
+    padding: 20px;
+    background-color: #E6E6E9
+}
+

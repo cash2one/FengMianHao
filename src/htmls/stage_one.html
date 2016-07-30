@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" name="viewport">
+    <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+    <meta content="webkit" name="renderer">
+    <meta content="telephone=no,address=no,email=no" name="format-detection">
+    <title>封面号|注册|注册账号</title>
+    <link href="http://wapcdn.thecover.cn/wap/1.0.0/img/favicon.png" rel="alternate icon" type="image/png">
+    <link href="http://wapcdn.thecover.cn/wap/1.0.0/img/favicon.png" rel="apple-touch-icon-precomposed">
+    <link href="http://wapcdn.thecover.cn/fengmianhao/1.0.0/styles/normalize_bootstrap_material_dialog_v0722.css" rel="stylesheet" type="text/css">
+    <link href="./styles/all.css" rel="stylesheet" type="text/css">
+    <link href="./styles/register.css" rel="stylesheet" type="text/css">
+</head>
+
+<body class="page-register transparent" id="page_register" data-img="http://wapcdn.thecover.cn/fengmianhao/1.0.0/img/bg.jpg">
+<header class="header-of-page">
+    <div>
+        <img src="http://wapcdn.thecover.cn/fengmianhao/1.0.0/img/logo_inside_page.png">
+    </div>
+</header>
+<div id="content">
+    <div id="main">
+        <header>
+            <h1>申请入驻</h1> </header>
+        <div id="stage_indictor">
+            <div class="line"></div>
+            <div class="dots active" id="stage_one_dot">1</div>
+            <div class="dots inactive" id="stage_two_dot">2</div>
+            <div class="dots inactive" id="stage_three_dot">3</div>
+        </div>
+        <div class="stages" id="stage_one">
+            <div class="form" v-on:change.stop="validateForm($event)">
+                <div class="input-wrapper" id="email">
+                    <label for="input_email">邮箱号:</label>
+                    <input name="email" type="text" id="input_email" class="fixed-width-input" placeholder="请填写本人常用邮箱,该邮箱将作为登录帐号" v-model="data_of_form.email" v-on:focus="data_of_form.email_inited = true">
+                    <span class="tip">请填写正确格式的邮箱</span>
+                </div>
+                <div class="input-wrapper" id="passwd">
+                    <label for="input_passwd">设置密码:</label>
+                    <input name="passwd" type="password" id="input_passwd" class="fixed-width-input" placeholder="字母、数字或者英文符号,最短8位" v-model="data_of_form.passwd" v-on:focus="data_of_form.passwd_inited = true">
+                    <span class="tip">字母、数字或者英文符号,最短8位</span>
+                </div>
+                <div class="input-wrapper" id="passwd_repeat">
+                    <label for="input_passwd_repeat">确认密码:</label>
+                    <input name="passwd_repeat" type="password" id="input_passwd_repeat" class="fixed-width-input" placeholder="请再次输入密码" v-model="data_of_form.repeat_passwd" v-on:focus.stop="data_of_form.repeat_passwd_inited = true">
+                    <span class="tip">两次填写的密码不一致</span>
+                </div>
+                <div class="input-wrapper" id="captcha">
+                    <label for="input_captcha" class="captcha">验证码:</label>
+                    <div id="input_captcha_container">
+                        <input name="captcha" type="text" maxlength="4" id="input_captcha" class="fixed-width-input" v-model="data_of_form.captcha" v-on:focus.stop="data_of_form.captcha_inited = true">
+                        <span id="tip_for_captcha" class="tip">请填写4位验证码</span>
+                        <img id="the_captcha">
+                        <span>看不清?
+                            <a href="javascript:void(0);" id="change_captcha">换一张</a>
+                        </span>
+                    </div>
+
+                </div>
+
+                <div class="checkbox" style="text-align: center;margin: 70px auto;">
+                    <label for="check_agree_terms">
+                        <input type="checkbox" id="check_agree_terms" v-model="data_of_form.check_agree_terms">
+                        <span style="margin-left: 7.5px">我同意并遵守<a href="/page/others/user_agreement.html">《封面号用户协议》</a></span>
+                    </label>
+                </div>
+                <div class="my-btn" id="btn_register" v-bind:class="{'available': canSubmit}" >注册</div>
+            </div>
+            <div class="has-account"> <a href="login.html">已经注册?立即登录 >> </a> </div>
+        </div>
+
+    </div>
+</div>
+<footer id="footer">
+    <p> <a href="http://www.thecover.cn/aboutUs_about#about">关于我们</a> <a href="http://www.thecover.cn/aboutUs_about#contact">联系我们</a> <a href="http://www.thecover.cn/aboutUs_about#copyright">版权声明</a> <a href="mailto:content@thecover.cn">我要爆料</a> <a href="mailto:biz@thecover.cn">咨询邮箱：biz@thecover.cn</a> </p>
+    <p>© CopyRight 2016, thecover.cn, Inc.All Rights Reserved. 蜀ICP备15028104号-1 互联网新闻信息服务许可证：5112016001</p>
+</footer>
+<script src="http://wapcdn.thecover.cn/fengmianhao/1.0.0/scripts/jquery_bootstrap_material_bootstrapDialog_v0722.js"></script>
+<script src="http://wapcdn.thecover.cn/fengmianhao/1.0.0/scripts/libs_bluebird_vue_v0722.js"></script>
+<script src="./scripts/helpers.js"></script>
+<script src="./scripts/register.js"></script>
+</body>
+
+</html>

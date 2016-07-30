@@ -1,0 +1,377 @@
+#page_register {
+    color: #585858
+}
+
+#page_register .header-of-page {
+    width: 100%;
+    background-color: white;
+}
+
+#page_register .header-of-page> div {
+    position: relative;
+    width: 1280px;
+    height: 60px;
+    margin: 0 auto;
+}
+
+#page_register .header-of-page> div img {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    margin-top: -16px;
+}
+
+#page_register #content {
+    background-color: #fff;
+    border-radius: 5px;
+    margin-bottom: 100px;
+}
+
+#page_register a {
+    color: #2AB5E2;
+    text-decoration: none
+}
+
+#page_register footer a {
+    color: white;
+}
+
+#main header {
+    height: 55px;
+    background-color: #e8faff;
+    width: 100%;
+    border-bottom: 2px solid #eaeaea
+}
+
+#main header h1 {
+    margin-left: 35px;
+    font-size: 18px;
+    line-height: 55px;
+    font-weight: 400
+}
+
+.hidden {
+    display: none
+}
+
+#content {
+    width: 1280px;
+    margin-top: 20px;
+    padding: 0
+}
+
+#stage_indictor {
+    position: relative;
+    margin: 60px auto;
+    height: 50px;
+    width: 43.75%
+}
+
+#stage_indictor .line {
+    width: 100%;
+    height: 6px;
+    position: absolute;
+    left: 0;
+    top: 22px;
+    background-color: #d9d9d9
+}
+
+#stage_indictor .dots {
+    position: absolute;
+    z-index: 10;
+    top: 0;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #d9d9d9;
+    line-height: 50px;
+    font-size: 20px;
+    text-align: center;
+    user-select: none
+}
+
+#stage_indictor .dots:hover {
+    cursor: not-allowed;
+}
+
+#stage_indictor .dots.active {
+    background-color: #2AB5E2;
+    color: #fff
+}
+
+#stage_indictor .dots.active:after,
+.fixed-width-input,
+.input-wrapper label {
+    color: #585858
+}
+
+#stage_indictor #stage_one_dot {
+    left: 0
+}
+
+#stage_indictor .dots:after {
+    display: block;
+    position: relative;
+    left: -15px;
+    top: 15px;
+    line-height: 18px;
+    font-size: 18px;
+    width: 80px;
+    height: auto;
+    text-align: center
+}
+
+#stage_indictor #stage_one_dot:after {
+    content: "注册帐号"
+}
+
+#stage_indictor #stage_two_dot:after {
+    content: "选择类型"
+}
+
+#stage_indictor #stage_three_dot:after {
+    content: "提交资料"
+}
+
+#stage_indictor #stage_two_dot {
+    left: 255px
+}
+
+#stage_indictor #stage_three_dot {
+    right: 0
+}
+
+.stages {
+    margin: 0 auto;
+    width: 1024px;
+    padding-top: 50px;
+    border-top: 2px solid #FAFAFA;
+}
+
+#stage_one .form {
+    /*width: 770px;*/
+    width: 770px;
+    /*padding: 30px 150px 30px 50px;*/
+    padding: 30px 50px 30px 50px;
+    border-right: 2px solid #FAFAFA;
+    display: inline-block
+}
+
+#stage_one .has-account {
+    position: relative;
+    display: inline-block;
+    width: 254px;
+    text-align: center;
+    vertical-align: middle;
+    float: right;
+}
+
+#stage_one .has-account> a {
+    position: absolute;
+    left: 50px;
+    top: 50%;
+    width: 100%;
+}
+
+.input-wrapper {
+    width: 100%;
+    margin-bottom: 30px;
+    height: 30px;
+    line-height: 30px;
+    position: relative;
+    font-size: 15px
+}
+
+.input-wrapper.error .fixed-width-input {
+    border-bottom-color: #F74937
+}
+
+.input-wrapper label {
+    width: 120px;
+    text-align: right;
+    user-select: none
+}
+
+.fixed-width-input {
+    width: 400px;
+    padding: 0 5px;
+    border-bottom: 1px solid #C8C8C8;
+    transition: border-bottom-color .2s ease-in;
+    margin-left: 10px;
+    vertical-align: bottom;
+    float: right
+}
+#stage_one .fixed-width-input {
+    width: 300px;
+    float: none;
+}
+
+.fixed-width-input:active,
+.fixed-width-input:focus,
+.fixed-width-input:hover {
+    border-bottom: 1px solid #2AB5E2
+}
+
+#input_captcha_container {
+    /*float: right;*/
+    width: 300px;
+    /*margin-right: 100px;*/
+    width: 300px;
+    float: none;
+    margin-left: 10px;
+    vertical-align: bottom;
+    display: inline-block;
+}
+
+#stage_one #input_captcha {
+    width: 100px;
+    float: none;
+    margin-left: 0;
+}
+
+#the_captcha {
+    width: 70px;
+    height: 30px;
+    vertical-align: bottom
+}
+
+#btn_register,
+#btn_submit_chosen_type {
+    font-size: 16px;
+    line-height: 45px;
+    margin: 0 auto;
+    color: #fff;
+    background-color: #D5D5D5;
+    border-radius: 4px;
+    width: 180px
+}
+
+#btn_register.available, #btn_submit_chosen_type.available  {
+    background-color: #2AB5E2;
+}
+#btn_submit_chosen_type {
+    margin-top: 10px;
+}
+
+#stage_one {
+    padding-bottom: 50px;
+}
+
+#stage_two {
+    padding-bottom: 80px;
+}
+
+#stage_two>ul {
+    margin: 0 auto;
+    width: 810px;
+    height: 430px;
+}
+
+
+.type-of-apply {
+    float: left;
+    display: inline-block;
+    position: relative;
+    width: 230px;
+    height: 150px;
+    padding: 30px 20px;
+    margin-right: 60px;
+    margin-bottom: 60px;
+    border-radius: 5px;
+    color: #fff;
+    user-select: none;
+    box-shadow: 1px 1px 5px 2px #87808066;
+}
+
+.type-of-apply:hover {
+    cursor: pointer;
+}
+
+.desc {
+    font-size: 15px;
+    line-height: 18px;
+}
+
+.type-of-apply .linear-gradient {
+    position: absolute;
+    width: 100%;
+    height: 30px;
+    bottom: 0;
+    left: 0;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.1));
+}
+
+.type-of-apply.line-break {
+    margin-right: 0
+}
+
+.type-of-apply h3 {
+    line-height: 25px;
+    font-size: 20px;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.btn-choose-type {
+    position: absolute;
+    bottom: -18px;
+    left: 50%;
+    margin-left: -18px;
+    width: 36px;
+    height: 36px;
+    background-image: url("http://wapcdn.thecover.cn/fengmianhao/1.0.0/img/bg_choose_type.png");
+    background-position: center;
+    background-size: 50%;
+    background-repeat: no-repeat;
+    background-color: #DEE0DF;
+    border-radius: 50%;
+    z-index: 10;
+}
+
+#type_student,
+#type_student.chosen .btn-choose-type,
+#type_student:hover .btn-choose-type {
+    background-color: #62CBC4
+}
+
+#type_individual,
+#type_individual.chosen .btn-choose-type,
+#type_individual:hover .btn-choose-type {
+    background-color: #59B2DC
+}
+
+#type_enterprise,
+#type_enterprise.chosen .btn-choose-type,
+#type_enterprise:hover .btn-choose-type {
+    background-color: #48C3D3
+}
+
+#type_media,
+#type_media.chosen .btn-choose-type,
+#type_media:hover .btn-choose-type {
+    background-color: #AAD579
+}
+
+#type_bureau,
+#type_bureau.chosen .btn-choose-type,
+#type_bureau:hover .btn-choose-type {
+    background-color: #F2D172
+}
+
+#type_other,
+#type_other.chosen .btn-choose-type,
+#type_other:hover .btn-choose-type {
+    background-color: #D1D879
+}
+
+.tip {
+    display: none;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    color: red;
+    font-size: 11px;
+}
+.tip.show {
+    display: inline-block;
+}

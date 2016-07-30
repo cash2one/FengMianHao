@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns="http://www.w3.org/1999/html">
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" name="viewport">
+    <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+    <meta content="webkit" name="renderer">
+    <meta content="telephone=no,address=no,email=no" name="format-detection">
+    <title>封面号|注册</title>
+    <link href="http://wapcdn.thecover.cn/wap/1.0.0/img/favicon.png" rel="alternate icon" type="image/png">
+    <link href="http://wapcdn.thecover.cn/wap/1.0.0/img/favicon.png" rel="apple-touch-icon-precomposed">
+    <link href="http://wapcdn.thecover.cn/fengmianhao/1.0.0/styles/normalize_bootstrap_material_dialog_v0722.css" rel="stylesheet" type="text/css">
+    <link href="./styles/all.css" rel="stylesheet" type="text/css">
+    <link href="./styles/register_form.css" rel="stylesheet" type="text/css">
+</head>
+
+<body class="page-register-form" id="page_register_form">
+<header class="header-of-page">
+    <div><img src="http://wapcdn.thecover.cn/fengmianhao/1.0.0/img/logo_inside_page.png"></div>
+</header>
+<div id="content">
+    <div id="main">
+        <header>
+            <h1>申请入驻</h1></header>
+        <div id="stage_indictor">
+            <div class="line"></div>
+            <div class="dots inactive" id="stage_one_dot">1</div>
+            <div class="dots inactive" id="stage_two_dot">2</div>
+            <div class="dots active" id="stage_three_dot">3</div>
+        </div>
+        <div class="stages" id="stage_three">
+            <form id="stage_three_form" class="form-horizontal" v-on:change="log('form changed')">
+                <fieldset>
+                    <legend>运营主体信息</legend>
+                    <!--主体类型-->
+                    <div class="form-group"><label class="col-md-4 control-label">主体类型:</label>
+                        <div class="col-md-7">
+                            <h4>{{type}}</h4>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputPersonName" class="col-md-4 control-label"><em class="flag-required">*</em> 运营者姓名:</label>
+                        <div class="col-md-7">
+                            <input type="text" class="form-control" id="inputPersonName" placeholder="请填写真实姓名" required maxlength="20" v-model="data_of_form.PersonName">
+                            <span class="help-block">请填写真实姓名</span>
+                        </div>
+                    </div>
+                    <!--运营者证件号码-->
+                    <div class="form-group">
+                        <label for="inputPersonID" class="col-md-4 control-label"><em class="flag-required">*</em> 运营者证件号码:</label>
+                        <div class="col-md-7">
+                            <input type="text" class="form-control" id="inputPersonID" placeholder="请正确填写18位身份证号码" required maxlength="18" v-model="data_of_form.PersonID">
+                            <span class="help-block">请正确填写18位身份证号码</span>
+                        </div>
+                    </div>
+                    <!--运营者持身份证照片-->
+                    <div class="form-group" id="inputPersonIDPicture" v-model="data_of_form.PersonIDPicture">
+                        <label class="col-md-4 control-label required">
+                            <em class="flag-required">*</em> 运营者持身份证照片:
+                        </label>
+                        <div class="col-md-7">
+                            <div class="container-upload-img">
+                                <img  id="upImg-card" v-bind:src="data_of_form.PersonIDPicture">
+                                <a id="btn_uploadImg"
+                                   data-dom="#upImg-card"
+                                   href="javascript:void(0)"
+                                   class="upload-img btn btn-raised btn-default">
+                                    上传
+                                </a>
+                                <p class="tips-of-uploading">
+                                    照片形式请参考示例进行拍摄
+                                    <br>
+                                    身份证上信息清晰可见,大小不超过2M
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <!--手机号码-->
+                    <div class="form-group">
+                        <label for="inputPersonPhoneNum" class="col-md-4 control-label">
+                            <em class="flag-required">*</em> 手机号码:
+                        </label>
+                        <div class="col-md-7">
+                            <input type="text" class="form-control" id="inputPersonPhoneNum" required maxlength="11" v-model="data_of_form.PersonPhoneNum">
+                            <span class="help-block">必填</span>
+                        </div>
+                    </div>
+
+                    <div v-if="ui_type == 1" class="form-group">
+                        <label for="inputStuNo" class="col-md-4 control-label">
+                            <em class="flag-required">*</em>学生证号:
+                        </label>
+                        <div class="col-md-7">
+                            <input type="text" class="form-control" id="inputStuNo" required maxlength="18" v-model="data_of_form.StuNo">
+                        </div>
+                    </div>
+
+                    <div v-if="ui_type == 1" class="form-group">
+                        <label for="inputUniversity" class="col-md-4 control-label">
+                            <em class="flag-required">*</em>学校:
+                        </label>
+                        <div class="col-md-7">
+                            <input type="text" class="form-control" id="inputUniversity" required maxlength="50" v-model="data_of_form.University">
+                        </div>
+                    </div>
+
+                    <div v-if="ui_type == 1" class="form-group" id="inputStuPicture">
+                        <label class="col-md-4 control-label required">
+                            <em class="flag-required">*</em> 持学生证照片:
+                        </label>
+                        <div class="col-md-7">
+                            <div class="container-upload-img">
+                                <img  id="upImg-stuinfo" v-bind:src="data_of_form.StuPicture">
+                                <a href="javascript:void(0)"
+                                   data-dom="#upImg-stuinfo"
+                                   class="upload-img btn btn-raised btn-default">
+                                    上传
+                                </a>
+                                <p class="tips-of-uploading">照片形式请参考示例进行拍摄<br>学生证上信息清晰可见,大小不超过2M</p>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <legend>封面号主体信息</legend>
+                    <!--封面号名称-->
+                    <div class="form-group">
+                        <label for="inputAccountName" class="col-md-4 control-label"><em class="flag-required">*</em>封面号名称:</label>
+                        <div class="col-md-7">
+                            <input type="text" class="form-control" id="inputAccountName" placeholder="2-10个字,勿使用包含特殊字符或营销意图的名称" required maxlength="10" v-model="data_of_form.AccountName">
+                            <span class="help-block">2-10个字,勿使用包含特殊字符或营销意图的名称</span>
+                        </div>
+                    </div>
+                    <!--封面号介绍-->
+                    <div class="form-group"><label for="inputAccountIntro" class="col-md-4 control-label"><em class="flag-required">*</em>封面号介绍:</label>
+                        <div class="col-md-7">
+                            <textarea type="text" class="form-control" id="inputAccountIntro" rows="3" maxlength="30" placeholder="10-30个字,要求内容完整通顺,无特殊字符,请勿添加任何联系方式如微博、手机号、QQ" required v-model="data_of_form.AccountIntro">
+                            </textarea>
+                            <span class="help-block">10-30个字,请勿添加任何联系方式如微博、手机号、QQ</span>
+                        </div>
+                    </div>
+                    <!--封面号头像-->
+                    <div class="form-group" id="inputAvatarPicture" v-model="data_of_form.AvatarPicture">
+                        <label class="col-md-4 control-label required"><em class="flag-required">*</em> 封面号头像:</label>
+                        <div class="col-md-7">
+                            <div class="container-upload-img">
+                                <img  id="upImg-icon" class="avatar" v-bind:src="data_of_form.AvatarPicture">
+                                <a href="javascript:void(0)"
+                                   data-dom="#upImg-icon"
+                                   data-ratio="1/1"
+                                   data-minwidth="200"
+                                   data-minheight="200"
+                                   class="upload-img btn btn-raised btn-default">
+                                    上传
+                                </a>
+                                <p class="tips-of-uploading avatar">要求清晰、健康、代表自媒体形象<br>请勿使用二维码,最大5M,200x200像素</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!--封面号背景图-->
+                    <div class="form-group" id="inputBackgroundImageOfAccount" v-model="data_of_form.BackgroundImageOfAccount">
+                        <label class="col-md-4 control-label"><em class="flag-required">*</em> 封面号背景图:</label>
+                        <div class="col-md-7">
+                            <div class="container-upload-img">
+                                <img id="upImg-bg" v-bind:src="data_of_form.BackgroundImageOfAccount">
+                                <a href="javascript:void(0)"
+                                   data-dom="#upImg-bg"
+                                   data-ratio="1/1"
+                                   data-minwidth="200"
+                                   data-minheight="200"
+                                   class="upload-img btn btn-raised btn-default">
+                                    上传
+                                </a>
+                                <p class="tips-of-uploading">要求符合封面号风格<br>请勿使用二维码,最大5M,200x200像素</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!--封面号关键词-->
+                    <div class="form-group">
+                        <div id="label_area" class="col-md-12">
+                            <div class="col-md-4"></div>
+                            <div class="col-md-7">
+                                <div v-for="(index, label) in data_of_form.AccountLabel" data-label-id="{{index}}" class="label-of-account">{{label}}
+                                    <em class="close-btn-of-label" data-label-id="{{index}}" v-on:click.stop="rmLabel($event)"></em>
+                                </div>
+                            </div>
+                        </div>
+                        <label class="control-label col-md-4" for="inputAccountKeywords">封面号关键词:</label>
+                        <div class="input-group col-md-7">
+                            <input type="text" class="form-control" id="inputAccountKeywords" placeholder="关键词在搜索结果中展示,不超过3个" maxlength="10">
+                            <span class="input-group-btn">
+                                <button v-show="data_of_form.AccountLabel.length !== 3" class="btn btn-primary" type="button" v-on:click.stop="addLabel($event)">添加</button>
+                            </span>
+                        </div>
+                    </div>
+                    <!--封面号领域-->
+                    <div class="form-group">
+                        <label for="inputAccountChannel" class="col-md-4 control-label">
+                            <em class="flag-required">*</em>封面号领域:
+                        </label>
+                        <div class="col-md-7">
+                            <select id="inputAccountChannel" class="form-control" v-model="data_of_form.AccountChannel">
+                                <option v-for="option in list_of_channels" v-bind:value="option.id">{{ option.name }}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <!--所在地-->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label"><em class="flag-required">*</em> 所在地:</label>
+                        <div class="col-md-3">
+                            <select class="form-control" v-model="data_of_form.AccountProvince">
+                                <option v-for="province in list_of_provinces" v-bind:value="province.id">{{ province.name }}</option>
+                            </select>
+                    </div>
+                        <div class="col-md-3">
+                            <select id="inputAccountCity" class="form-control" v-model="data_of_form.AccountCity">
+                                <option v-for="city in citiesOfSelectedProvince" v-bind:value="city.id">
+                                    {{ city.name }}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                    <!--目标读者属性:-->
+                    <div class="form-group" id="inputAccountTargetReader">
+                        <label for="inputAccountTargetReader" class="col-md-4 control-label">
+                            <em class="flag-required">*</em>目标读者属性:
+                            <br/>
+                            <em class="flag-required" style="font-size: 10px;">(至少选择一个)</em>
+                        </label>
+                        <div class="col-md-7">
+                            <div class="checkbox col-md-6" v-for="reader in list_of_target_readers">
+                                <label>
+                                    <input type="checkbox" v-model="data_of_form.AccountTargetReader" value="{{reader.id}}">
+                                    <span class="checkbox-material">
+                                    </span>
+                                    {{reader.name}}
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="checkbox col-md-12" style="text-align: center"><label for="check_remember_passwd"><input type="checkbox" id="check_remember_passwd"> <span style="margin-left: 7.5px">同意 <a href="/page/others/user_agreement.html" style="color: #2AB5E2">《封面号自媒体平台用户协议》</a></span></label></div>
+                    </div>
+                    <div class="form-group hidden">
+                        <button id="imgUploadQiniu" type="button">上传图片</button>
+                    </div>
+                </fieldset>
+            </form>
+            <div class="my-btn" v-bind:class="{'available': canSubmit}" id="btn_submit_form" v-on:click.stop="submit($event)">提交</div>
+        </div>
+    </div>
+</div>
+<footer id="footer">
+    <p><a href="http://www.thecover.cn/aboutUs_about#about">关于我们</a> <a href="http://www.thecover.cn/aboutUs_about#contact">联系我们</a> <a href="http://www.thecover.cn/aboutUs_about#copyright">版权声明</a> <a href="mailto:content@thecover.cn">我要爆料</a> <a href="mailto:biz@thecover.cn">咨询邮箱：biz@thecover.cn</a></p>
+    <p>© CopyRight 2016, thecover.cn, Inc.All Rights Reserved. 蜀ICP备15028104号-1 互联网新闻信息服务许可证：5112016001</p>
+</footer>
+<script src="http://wapcdn.thecover.cn/fengmianhao/1.0.0/scripts/jquery_bootstrap_material_bootstrapDialog_v0722.js"></script>
+<script src="http://wapcdn.thecover.cn/fengmianhao/1.0.0/scripts/libs_bluebird_vue_v0722.js"></script>
+<script src="./scripts/helpers.js"></script>
+<script src="./scripts/register_form.js"></script>
+<script type="text/javascript">
+    var form = new Vue({
+        el: 'body',
+        data: function () {
+            return {
+                data_of_form: {
+                    'PersonIDPicture': 'http://wapcdn.thecover.cn/fengmianhao/1.0.0/img/bg_PersonIDPicture.png',
+                    'StuPicture': 'http://wapcdn.thecover.cn/fengmianhao/1.0.0/img/bg_PersonIDPicture.png',
+                    'BackgroundImageOfAccount': 'http://wapcdn.thecover.cn/fengmianhao/1.0.0/img/bg_PersonIDPicture.png',
+                    'AvatarPicture': 'http://wapcdn.thecover.cn/fengmianhao/1.0.0/img/bg_AvatarPicture.png',
+                    'PictureAuth': 'http://wapcdn.thecover.cn/fengmianhao/1.0.0/img/bg_PersonIDPicture.png',
+                    'AccountTargetReader': [],
+                    'AccountLabel': []
+                },
+                required_inputs_number: 1, // 表单的必填项数量
+                list_of_statelevels: ['国家级', '省部级', '市级', '区县级'],
+                list_of_channels: [],
+                list_of_provinces: [],
+                list_of_target_readers: helpers.LIST_OF_TARGET_READERS
+            }
+        },
+        computed: {
+            type: function () {
+                return helpers.LIST_OF_APPLICANT_TYPE[this.getCandidateType()];
+            },
+            ui_type: function () {
+                return this.getCandidateType();
+            },
+            canSubmit: function () {
+                return this.validateForm();
+            },
+            citiesOfSelectedProvince: function () {
+                var self = this;
+                var arr = self.list_of_provinces;
+                console.log('citiesOfSelectedProvince() list_of_provinces: ', JSON.stringify(self.list_of_provinces));
+                console.log('data_of_form.AccountProvince: ', JSON.stringify(self.data_of_form.AccountProvince));
+                console.log('self.list_of_provinces.length: ', self.list_of_provinces.length);
+                var i;
+                for (i = 0; i < self.list_of_provinces.length; ++i) {
+                    console.log('arr[i] : ', JSON.stringify(arr[i]));
+                    if (arr[i].id == self.data_of_form.AccountProvince) {
+                        console.log('MATCH: v.cities: ', JSON.stringify(arr[i].cities));
+                        return arr[i].cities;
+                    }
+                }
+            }
+        },
+        methods: {
+            getCandidateType: function () {
+                return helpers.getValueFromUrl('type');
+            },
+            postDataOfForm: function (payload) {
+                return helpers.$post(helpers.apis().registerStageThree, payload);
+            },
+            getChannelList: function () {
+                return helpers.$post(helpers.apis().getChannelList, {});
+            },
+            getProvinceList: function () {
+                return helpers.$post(helpers.apis().getProvinceList, {});
+            },
+            addLabel: function (evt) {
+                var labels = this.data_of_form.AccountLabel;
+                evt.preventDefault();
+                if($('#inputAccountKeywords').val().trim().length === 0) {
+                    return false;
+                }
+                if(labels.length === 3) {
+                    return false;
+                }
+                labels.push($('#inputAccountKeywords').val().trim());
+                $('#inputAccountKeywords').val('');
+            },
+            rmLabel: function(evt) {
+                var labels = this.data_of_form.AccountLabel;
+                evt.preventDefault();
+                var $em = $(evt.target);
+                labels.splice($em.data('label-id'), 1)
+            },
+            validateForm: function () {
+                var self = this;
+                var obj = self.data_of_form;
+                console.log('data_of_form: ', obj);
+                console.log('Object.keys(self.data_of_form).length: ', Object.keys(self.data_of_form).length);
+                console.log('self.required_inputs_number: ', self.required_inputs_number);
+                if (Object.keys(self.data_of_form).length < self.required_inputs_number) {
+                    console.log('表单的必填项数量不全');
+                    return false;
+                }
+                if (self.data_of_form.AccountTargetReader.length < 1) {
+                    console.log('目标读者属性数量有误');
+                    return false;
+                }
+                if (helpers.checkItemIsEmptyStr([
+                            obj.PersonName,
+                            obj.PersonID,
+                            obj.PersonIDPicture,
+                            obj.PersonPhoneNum,
+                            obj.AccountName,
+                            obj.AccountIntro,
+                            obj.AvatarPicture,
+                            obj.BackgroundImageOfAccount,
+                            obj.AccountChannel,
+                            obj.AccountProvince,
+                            obj.AccountCity
+                        ])) {
+                    console.log('有空字符串条目');
+                    return false;
+                }
+                if (self.getCandidateType() == 1) {
+                    if (helpers.checkItemIsEmptyStr([
+                            obj.StuNo,
+                            obj.University,
+                            obj.StuPicture
+                        ])) {
+                        console.log('学生有空字符串条目');
+                        return false;
+                    }
+                }
+                if (obj.PersonName.trim().length === 0) {
+                    return false;
+                }
+                if (self.data_of_form.AccountIntro.length < 10 || self.data_of_form.AccountIntro.length > 30) {
+                    alert('封面号介绍字段字数不符合');
+                    return false;
+                }
+                return true;
+            },
+            log: function (label, str) {
+                console.log(label + '=> ', JSON.stringify(str));
+            },
+            submit: function (evt) {
+                var self = this;
+                var obj = self.data_of_form;
+                var $btn = $(evt.target);
+                if ($btn.hasClass('error') || $btn.hasClass('processing')) {
+                    return false;
+                }
+                $btn.addClass('processing');
+                var to_be_posted = {
+                    // 运营主体信息
+                    proKind: self.getCandidateType(), // 1：学生 2：个人 3：媒体 4：国家机关 5：企业 6：其他
+                    // 运营者信息
+                    username: obj.PersonName, // 运营者姓名
+                    identityNo: obj.PersonID, // 运营者证件号码
+                    picture: obj.PersonIDPicture, // file:运营者证件照片
+                    mobile: obj.PersonPhoneNum, // 运营者手机号码
+                    // 封面号主体信息
+                    proAccount: obj.AccountName, // 封面号名称
+                    proBrief: obj.AccountIntro, // 封面号介绍
+                    proAvatar: obj.AvatarPicture, // file:封面号头像
+                    proBackground: obj.BackgroundImageOfAccount, // file:封面号背景图
+                    labelPgc: obj.AccountLabel, // [封面号关键词标签]
+                    channelPgc: obj.AccountChannel, // 建议频道领域
+                    province: obj.AccountProvince, // 省
+                    city: obj.AccountCity, // 城市
+                    pgc: obj.AccountTargetReader // [目标读者属性]
+                };
+                // 学生
+                if (self.getCandidateType() == 1) {
+                    to_be_posted.stuNo = obj.StuNo; // 学生证号
+                    to_be_posted.university = obj.University; // 学校
+                    to_be_posted.stuPicture = obj.StuPicture; // 持学生证照片
+                }
+                if (self.validateForm()) {
+                    self.postDataOfForm({
+                        'data': JSON.stringify(to_be_posted)
+                    }).then(function (result) {
+                        console.log('sendCredits() => ', result);
+                        $btn.removeClass('processing');
+                        return location.replace(helpers.destination_pages.page_review_result + '?result=0');
+                    }, function(code, msg) {
+                        $btn.removeClass('processing');
+                        return alert(JSON.stringify(msg));
+                    });
+                }
+            }
+        },
+        created: function () {
+            var self = this;
+            var renderPage = function () {
+                console.log('renderPage()');
+                self.getChannelList()
+                        .then(function (res) {
+                            self.list_of_channels = res.data;
+                        });
+                self.getProvinceList()
+                        .then(function (res) {
+                            self.list_of_provinces = res;
+                            console.log('getProvinceList() => ', res)
+                        });
+            };
+            renderPage();
+        }
+    });
+</script>
+</body>
+
+</html>
