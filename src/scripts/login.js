@@ -64,7 +64,8 @@ var login_module = (function ($, LS) {
         $btn_login.addClass('processing');
         self.sendCredits(payload).then(function (result) {
           LS.setItem('userinfo', JSON.stringify(result));
-          $btn_login.removeClass('processing');
+          $btn_login.removeClass('processing').removeClass('error');
+          $login_error_msg.addClass('hidden');
           self.redirectTo(result);
         }, function (status_code, msg) {
           console.log(JSON.stringify(status_code), JSON.stringify(msg));
@@ -74,6 +75,10 @@ var login_module = (function ($, LS) {
             self.changeCaptcha($('#the_captcha'));
             $('.captcha-container').removeClass('hidden');
             $('#login_container').addClass('require-captcha');
+          }
+          if (parseInt(status_code) === 441) {
+            $('#input_email').trigger('select');
+            $('#input_passwd').val('');
           }
         });
       });

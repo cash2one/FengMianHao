@@ -237,7 +237,8 @@ nav a {
     display: none !important;
 }
 #login_error_msg {
-    text-align: center;
-    margin-top: 5px;
-    color: red;
+    top: 20px;
+    color: #f00;
+    position: relative;
+    line-height: 20px;
 }
