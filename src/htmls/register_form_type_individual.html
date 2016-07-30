@@ -61,11 +61,8 @@
                         </label>
                         <div class="col-md-7">
                             <div class="container-upload-img">
-                                <img  id="upImg-card" v-bind:src="data_of_form.PersonIDPicture">
-                                <a id="btn_uploadImg"
-                                   data-dom="#upImg-card"
-                                   href="javascript:void(0)"
-                                   class="upload-img btn btn-raised btn-default">
+                                <img id="upImg-card" v-bind:src="data_of_form.PersonIDPicture">
+                                <a id="btn_uploadImg" data-dom="#upImg-card" href="javascript:void(0)" class="upload-img btn btn-raised btn-default">
                                     上传
                                 </a>
                                 <p class="tips-of-uploading">
@@ -87,7 +84,7 @@
                         </div>
                     </div>
 
-                    <div v-if="ui_type == 1" class="form-group">
+                    <div class="form-group" v-if="ui_type == 1">
                         <label for="inputStuNo" class="col-md-4 control-label">
                             <em class="flag-required">*</em>学生证号:
                         </label>
@@ -96,7 +93,7 @@
                         </div>
                     </div>
 
-                    <div v-if="ui_type == 1" class="form-group">
+                    <div class="form-group" v-if="ui_type == 1">
                         <label for="inputUniversity" class="col-md-4 control-label">
                             <em class="flag-required">*</em>学校:
                         </label>
@@ -105,16 +102,14 @@
                         </div>
                     </div>
 
-                    <div v-if="ui_type == 1" class="form-group" id="inputStuPicture">
+                    <div class="form-group" v-if="ui_type == 1" id="inputStuPicture">
                         <label class="col-md-4 control-label required">
                             <em class="flag-required">*</em> 持学生证照片:
                         </label>
                         <div class="col-md-7">
                             <div class="container-upload-img">
-                                <img  id="upImg-stuinfo" v-bind:src="data_of_form.StuPicture">
-                                <a href="javascript:void(0)"
-                                   data-dom="#upImg-stuinfo"
-                                   class="upload-img btn btn-raised btn-default">
+                                <img id="upImg-stuinfo" v-bind:src="data_of_form.StuPicture">
+                                <a href="javascript:void(0)" data-dom="#upImg-stuinfo" class="upload-img btn btn-raised btn-default">
                                     上传
                                 </a>
                                 <p class="tips-of-uploading">照片形式请参考示例进行拍摄<br>学生证上信息清晰可见,大小不超过2M</p>
@@ -146,13 +141,8 @@
                         <label class="col-md-4 control-label required"><em class="flag-required">*</em> 封面号头像:</label>
                         <div class="col-md-7">
                             <div class="container-upload-img">
-                                <img  id="upImg-icon" class="avatar" v-bind:src="data_of_form.AvatarPicture">
-                                <a href="javascript:void(0)"
-                                   data-dom="#upImg-icon"
-                                   data-ratio="1/1"
-                                   data-minwidth="200"
-                                   data-minheight="200"
-                                   class="upload-img btn btn-raised btn-default">
+                                <img id="upImg-icon" class="avatar" v-bind:src="data_of_form.AvatarPicture">
+                                <a href="javascript:void(0)" data-dom="#upImg-icon" data-ratio="1/1" data-minwidth="200" data-minheight="200" class="upload-img btn btn-raised btn-default">
                                     上传
                                 </a>
                                 <p class="tips-of-uploading avatar">要求清晰、健康、代表自媒体形象<br>请勿使用二维码,最大5M,200x200像素</p>
@@ -165,12 +155,7 @@
                         <div class="col-md-7">
                             <div class="container-upload-img">
                                 <img id="upImg-bg" v-bind:src="data_of_form.BackgroundImageOfAccount">
-                                <a href="javascript:void(0)"
-                                   data-dom="#upImg-bg"
-                                   data-ratio="1/1"
-                                   data-minwidth="200"
-                                   data-minheight="200"
-                                   class="upload-img btn btn-raised btn-default">
+                                <a href="javascript:void(0)" data-dom="#upImg-bg" data-ratio="1/1" data-minwidth="200" data-minheight="200" class="upload-img btn btn-raised btn-default">
                                     上传
                                 </a>
                                 <p class="tips-of-uploading">要求符合封面号风格<br>请勿使用二维码,最大5M,200x200像素</p>
@@ -179,17 +164,17 @@
                     </div>
                     <!--封面号关键词-->
                     <div class="form-group">
-                        <div id="label_area" class="col-md-12">
+                        <div class="col-md-12" id="label_area">
                             <div class="col-md-4"></div>
                             <div class="col-md-7">
-                                <div v-for="(index, label) in data_of_form.AccountLabel" data-label-id="{{index}}" class="label-of-account">{{label}}
+                                <div class="label-of-account" v-for="(index, label) in data_of_form.AccountLabel" data-label-id="{{index}}">{{label}}
                                     <em class="close-btn-of-label" data-label-id="{{index}}" v-on:click.stop="rmLabel($event)"></em>
                                 </div>
                             </div>
                         </div>
                         <label class="control-label col-md-4" for="inputAccountKeywords">封面号关键词:</label>
                         <div class="input-group col-md-7">
-                            <input type="text" class="form-control" id="inputAccountKeywords" placeholder="关键词在搜索结果中展示,不超过3个" maxlength="10">
+                            <input type="text" class="form-control" id="inputAccountKeywords" placeholder="关键词在搜索结果中展示,不超过3个" maxlength="5">
                             <span class="input-group-btn">
                                 <button v-show="data_of_form.AccountLabel.length !== 3" class="btn btn-primary" type="button" v-on:click.stop="addLabel($event)">添加</button>
                             </span>
@@ -226,8 +211,8 @@
                     <div class="form-group" id="inputAccountTargetReader">
                         <label for="inputAccountTargetReader" class="col-md-4 control-label">
                             <em class="flag-required">*</em>目标读者属性:
-                            <br/>
-                            <em class="flag-required" style="font-size: 10px;">(至少选择一个)</em>
+                            <br>
+                            <em class="flag-required" style="font-size: 10px">(至少选择一个)</em>
                         </label>
                         <div class="col-md-7">
                             <div class="checkbox col-md-6" v-for="reader in list_of_target_readers">
@@ -241,7 +226,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <div class="checkbox col-md-12" style="text-align: center"><label for="check_remember_passwd"><input type="checkbox" id="check_remember_passwd"> <span style="margin-left: 7.5px">同意 <a href="/page/others/user_agreement.html" style="color: #2AB5E2">《封面号自媒体平台用户协议》</a></span></label></div>
+                        <div class="checkbox col-md-12" style="text-align: center"><label for="check_remember_passwd"><input type="checkbox" id="check_remember_passwd"> <span style="margin-left: 7.5px">同意 <a href="/page/others/user_agreement.html" target="_blank" style="color: #2AB5E2">《封面号自媒体平台用户协议》</a></span></label></div>
                     </div>
                     <div class="form-group hidden">
                         <button id="imgUploadQiniu" type="button">上传图片</button>

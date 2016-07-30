@@ -61,15 +61,15 @@
 
                 </div>
 
-                <div class="checkbox" style="text-align: center;margin: 70px auto;">
+                <div class="checkbox" style="text-align: center;margin: 70px auto">
                     <label for="check_agree_terms">
                         <input type="checkbox" id="check_agree_terms" v-model="data_of_form.check_agree_terms">
-                        <span style="margin-left: 7.5px">我同意并遵守<a href="/page/others/user_agreement.html">《封面号用户协议》</a></span>
+                        <span style="margin-left: 7.5px">我同意并遵守<a href="/page/others/user_agreement.html" target="_blank">《封面号用户协议》</a></span>
                     </label>
                 </div>
-                <div class="my-btn" id="btn_register" v-bind:class="{'available': canSubmit}" >注册</div>
+                <div class="my-btn" id="btn_register" v-bind:class="{'available': canSubmit}">注册</div>
             </div>
-            <div class="has-account"> <a href="login.html">已经注册?立即登录 >> </a> </div>
+            <div class="has-account"> <a href="/login">已经注册?立即登录 >> </a> </div>
         </div>
 
     </div>
