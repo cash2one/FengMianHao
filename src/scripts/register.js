@@ -43,7 +43,6 @@ var register_module = (function ($, LS) {
         self.changeCaptcha($('#the_captcha'));
       });
       $btn_register.on('click', function () {
-        console.log('$btn_register onClick');
         if ($btn_register.hasClass('error') || $btn_register.hasClass('processing')) {
           return false;
         }
@@ -64,6 +63,7 @@ var register_module = (function ($, LS) {
             self.redirectTo(result);
           }, function (status_code, msg) {
             alert(JSON.stringify(msg));
+            self.changeCaptcha($('#the_captcha'));
             $btn_register.removeClass('processing');
           });
         }
@@ -160,47 +160,41 @@ var form = new Vue({
       var self = this;
       var obj = self.data_of_form;
       if (!helpers.validateEmailAddr(obj.email)) {
-        if(obj.email_inited === true) {
+        if (obj.email_inited === true) {
           $('#input_email').siblings('.tip').addClass('show');
         }
         return false;
       } else {
         $('#input_email').siblings('.tip').removeClass('show');
       }
-
       if (!helpers.validatePasswd(obj.passwd)) {
         console.log('密码复杂度不够');
-        if(obj.passwd_inited === true) {
+        if (obj.passwd_inited === true) {
           $('#input_passwd').siblings('.tip').addClass('show');
         }
         return false;
       } else {
         $('#input_passwd').siblings('.tip').removeClass('show');
       }
-
       if (obj.passwd !== obj.repeat_passwd) {
-        if(obj.repeat_passwd_inited === true) {
+        if (obj.repeat_passwd_inited === true) {
           $('#input_passwd_repeat').siblings('.tip').addClass('show');
         }
         return false;
       } else {
         $('#input_passwd_repeat').siblings('.tip').removeClass('show');
       }
-
       if (obj.captcha.length !== 4) {
-        if(obj.captcha_inited === true) {
+        if (obj.captcha_inited === true) {
           $('#tip_for_captcha').addClass('show');
         }
         return false;
       } else {
         $('#tip_for_captcha').removeClass('show');
       }
-
       if (obj.check_agree_terms === false) {
         return false;
-      } else {
-      }
-
+      } else {}
       return true;
     },
     log: function (label, str) {

@@ -522,6 +522,14 @@
                         });
             };
             renderPage();
+            self.$watch('data_of_form.PersonIDPicture', function (val) {
+                console.log('data_of_form.PersonIDPicture val changed: ' + val);
+                console.log('data_of_form.PersonIDPicture now value: ' + val);
+            });
+            self.$watch('data_of_form', function (val) {
+                console.log('data_of_form val changed: ' + val);
+                console.log('data_of_form now value: ' + val);
+            });
         }
     });
 </script>
