@@ -60,7 +60,10 @@
                         <div class="col-md-7">
                             <div class="container-upload-img">
                                 <img id="upImg-org" v-bind:src="data_of_form.PictureOrg">
-                                <a data-dom="#upImg-org" href="javascript:void(0)" class="upload-img btn btn-raised btn-default">
+                                <a data-dom="#upImg-org"
+                                   data-img-src="PictureOrg"
+                                   href="javascript:void(0)"
+                                   class="upload-img btn btn-raised btn-default">
                                     上传
                                 </a>
                                 <p class="tips-of-uploading">
@@ -79,6 +82,7 @@
                             <div class="container-upload-img">
                                 <img id="upImg-sqs" v-bind:src="data_of_form.PictureAuth">
                                 <a data-dom="#upImg-sqs"
+                                   data-img-src="PictureAuth"
                                    href="javascript:void(0)"
                                    class="upload-img btn btn-raised btn-default">
                                     上传
@@ -136,6 +140,7 @@
                             <div class="container-upload-img">
                                 <img id="upImg-icon" class="avatar" v-bind:src="data_of_form.AvatarPicture">
                                 <a href="javascript:void(0)"
+                                   data-img-src="AvatarPicture"
                                    data-dom="#upImg-icon"
                                    data-ratio="1/1"
                                    data-minwidth="200"
@@ -146,7 +151,7 @@
                                 <p class="tips-of-uploading avatar">
                                     要求清晰、健康、代表自媒体形象
                                     <br>
-                                    请勿使用二维码,最大5M,200x200像素
+                                    请勿使用二维码,最大5M
                                 </p>
                             </div>
                         </div>
@@ -161,17 +166,18 @@
                             <div class="container-upload-img">
                                 <img id="upImg-bg" v-bind:src="data_of_form.BackgroundImageOfAccount">
                                 <a href="javascript:void(0)"
+                                   data-img-src="BackgroundImageOfAccount"
                                    data-dom="#upImg-bg"
-                                   data-ratio="1/1"
-                                   data-minwidth="200"
-                                   data-minheight="200"
+                                   data-ratio="621/445"
+                                   data-minwidth="600"
+                                   data-minheight="430"
                                    class="upload-img btn btn-raised btn-default">
                                     上传
                                 </a>
                                 <p class="tips-of-uploading">
                                     要求符合封面号风格
                                     <br>
-                                    请勿使用二维码,最大5M,200x200像素
+                                    请勿使用二维码,最大5M
                                 </p>
                             </div>
                         </div>
@@ -280,6 +286,7 @@
                                 <div class="container-upload-img">
                                     <img id="upImg-card" v-bind:src="data_of_form.PersonIDPicture">
                                     <a id="btn_uploadImg"
+                                       data-img-src="PersonIDPicture"
                                        data-dom="#upImg-card"
                                        href="javascript:void(0)"
                                        class="upload-img btn btn-raised btn-default">
@@ -288,7 +295,7 @@
                                     <p class="tips-of-uploading">
                                         照片形式请参考示例进行拍摄
                                         <br>
-                                        身份证上信息清晰可见,大小不超过2M
+                                        身份证上信息清晰可见,大小不超过5M
                                     </p>
                                 </div>
                             </div>

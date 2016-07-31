@@ -16,7 +16,7 @@
 
 <body class="page-login transparent" id="page_login" data-img="http://wapcdn.thecover.cn/fengmianhao/1.0.0/img/bg_login_page.jpg">
 <div id="content">
-	<header><img id="logo" src="http://wapcdn.thecover.cn/fengmianhao/1.0.0/img/logo_fengmianhao.png">
+	<header><img src="http://wapcdn.thecover.cn/fengmianhao/1.0.0/img/logo_fengmianhao.png" id="logo">
         <nav>
             <ul>
 				<li class="menu"><a href="/login/stage1">立即注册</a></li>
@@ -27,10 +27,10 @@
     <div id="main">
         <div id="login_container">
             <h2>账户登录</h2>
-			<div id="email" class="input-wrapper"><img src="http://wapcdn.thecover.cn/fengmianhao/1.0.0/img/logo_email.png"><label for="input_email">邮箱号:</label><input name="email" type="text" id="input_email" class="full-width-input"></div>
-			<div id="passwd" class="input-wrapper"><img src="http://wapcdn.thecover.cn/fengmianhao/1.0.0/img/logo_password.png"><label for="input_passwd">密码:</label><input name="passwd" type="password" id="input_passwd" class="full-width-input"></div>
-            <div id="captcha" class="captcha-container input-wrapper hidden"><img src="http://wapcdn.thecover.cn/fengmianhao/1.0.0/img/logo_captcha.png"><label for="input_captcha">验证码:</label><input name="captcha" type="text" id="input_captcha" class="full-width-input" maxlength="4"> <img id="the_captcha"></div>
-			<div id="input_captcha_container" class="captcha-container input-wrapper hidden"><span>看不清? <a href="javascript:void(0);" id="change_captcha" style="display: inline">换一张</a></span></div>
+			<div class="input-wrapper" id="email"><img src="http://wapcdn.thecover.cn/fengmianhao/1.0.0/img/logo_email.png"><label for="input_email">邮箱号:</label><input name="email" type="text" id="input_email" class="full-width-input"></div>
+			<div class="input-wrapper" id="passwd"><img src="http://wapcdn.thecover.cn/fengmianhao/1.0.0/img/logo_password.png"><label for="input_passwd">密码:</label><input name="passwd" type="password" id="input_passwd" class="full-width-input"></div>
+            <div class="captcha-container input-wrapper hidden" id="captcha"><img src="http://wapcdn.thecover.cn/fengmianhao/1.0.0/img/logo_captcha.png"><label for="input_captcha">验证码:</label><input name="captcha" type="text" id="input_captcha" class="full-width-input" maxlength="4"> <img id="the_captcha"></div>
+			<div class="captcha-container input-wrapper hidden" id="input_captcha_container"><span>看不清? <a href="javascript:void(0);" id="change_captcha" style="display: inline">换一张</a></span></div>
             <div id="actions_passwd">
 				<div class="checkbox">
                     <label for="check_remember_passwd">

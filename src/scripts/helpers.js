@@ -143,11 +143,11 @@ window.helpers = (function ($, LS) {
           if (parseInt(result.status) === 0 || parseInt(result.status) === 200) {
             $d.resolve(result.data);
           } else {
-            $d.reject(result.status, result.message);
+            $d.reject(result.status, result.message, result.data);
           }
         },
         error: function (xhr, type) {
-          $d.reject('网络请求失败~');
+          $d.reject(444, '网络请求失败~');
         }
       });
       return $d.promise();

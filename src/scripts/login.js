@@ -67,19 +67,37 @@ var login_module = (function ($, LS) {
           $btn_login.removeClass('processing').removeClass('error');
           $login_error_msg.addClass('hidden');
           self.redirectTo(result);
-        }, function (status_code, msg) {
+        }, function (status_code, msg, data) {
           console.log(JSON.stringify(status_code), JSON.stringify(msg));
           $login_error_msg.text(msg).removeClass('hidden');
           $btn_login.removeClass('processing');
-          if (parseInt(status_code) === 445) {
-            self.changeCaptcha($('#the_captcha'));
-            $('.captcha-container').removeClass('hidden');
-            $('#login_container').addClass('require-captcha');
-          }
+          // 邮箱或密码错误
           if (parseInt(status_code) === 441) {
             $('#input_email').trigger('select');
             $('#input_passwd').val('');
+            if (data.requireCaptcha === 'true') {
+        	  console.log('data.requireCaptcha: ', data.requireCaptcha)
+              $('.captcha-container').removeClass('hidden');
+              $('#login_container').addClass('require-captcha');
+              $('#input_captcha').val('');
+              self.changeCaptcha($('#the_captcha'));
+          } else {
+        	  console.log('data: ', data);
+            }
           }
+          // 验证码错误
+          if (parseInt(status_code) === 434) {
+            $('.captcha-container').removeClass('hidden');
+            $('#login_container').addClass('require-captcha');
+            $('#input_captcha').val('').trigger('select');
+            self.changeCaptcha($('#the_captcha'));
+          }
+          // 失败三次，需要验证码
+          //if (parseInt(status_code) === 445) {
+          //  self.changeCaptcha($('#the_captcha'));
+          //  $('.captcha-container').removeClass('hidden');
+          //  $('#login_container').addClass('require-captcha');
+          //}
         });
       });
       $change_captcha.on('click', function () {

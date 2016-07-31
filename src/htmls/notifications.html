@@ -22,19 +22,19 @@
         </header>
         <div class="table-container">
             <div id="table_of_broadcasting">
-                <ul>
-                <li v-for="notice in data_of_notifications.pageList" id="title_{{notice.id}}" class="title-of-notice">
-                    <div class="flag-of-read unread">&#11044;</div>
-                    <div class="col-of-title">
-                        {{notice.title}}
-                    </div>
-                    <div class="col-of-date right-align">
-                        {{notice.datePublish | formatDate}}
-                    </div>
-                    <div class="toggle-dropdown-detail right-align" v-on:click.stop="toggleDropdown(notice, $event)">
-                        <span class="caret"></span>
-                    </div>
-                </li>
+                <ul v-if="data_of_notifications.pageList.length > 0">
+                    <li v-for="notice in data_of_notifications.pageList" id="title_{{notice.id}}" class="title-of-notice">
+                        <div class="flag-of-read unread">&#11044;</div>
+                        <div class="col-of-title">
+                            {{notice.title}}
+                        </div>
+                        <div class="col-of-date right-align">
+                            {{notice.datePublish | formatDate}}
+                        </div>
+                        <div class="toggle-dropdown-detail right-align" v-on:click.stop="toggleDropdown(notice, $event)">
+                            <span class="caret"></span>
+                        </div>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -46,7 +46,7 @@
 <script type="application/javascript">
     helpers.VueFilters();
     var notifications = new Vue({
-        el: '#page_notifications',
+        el: 'body',
         data: function () {
             return {
                 data_of_notifications: {}
@@ -54,7 +54,12 @@
         },
         methods: {
             getDataOfNotifications: function () {
-                return helpers.$get('http://170.240.110.242:7777/notice_list.json', {});
+                return helpers.$post(helpers.apis().getNotifications, {
+                    'data': JSON.stringify({
+                        'page': 1,
+                        'pageSize': 20
+                    })
+                });
             },
             postReadNotice: function (id) {
                 return helpers.$post(helpers.apis().postReadNotice, {'id': id});
