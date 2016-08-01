@@ -27,8 +27,16 @@
     <div id="main">
         <div id="login_container">
             <h2>账户登录</h2>
-			<div class="input-wrapper" id="email"><img src="http://wapcdn.thecover.cn/fengmianhao/1.0.0/img/logo_email.png"><label for="input_email">邮箱号:</label><input name="email" type="text" id="input_email" class="full-width-input"></div>
-			<div class="input-wrapper" id="passwd"><img src="http://wapcdn.thecover.cn/fengmianhao/1.0.0/img/logo_password.png"><label for="input_passwd">密码:</label><input name="passwd" type="password" id="input_passwd" class="full-width-input"></div>
+			<div class="input-wrapper" id="email">
+                <img src="http://wapcdn.thecover.cn/fengmianhao/1.0.0/img/logo_email.png">
+                <label for="input_email">邮箱号:</label>
+                <input name="username" type="email" id="input_email" class="full-width-input">
+            </div>
+			<div class="input-wrapper" id="passwd">
+                <img src="http://wapcdn.thecover.cn/fengmianhao/1.0.0/img/logo_password.png">
+                <label for="input_passwd">密码:</label>
+                <input name="password" type="password" id="input_passwd" class="full-width-input">
+            </div>
             <div class="captcha-container input-wrapper hidden" id="captcha"><img src="http://wapcdn.thecover.cn/fengmianhao/1.0.0/img/logo_captcha.png"><label for="input_captcha">验证码:</label><input name="captcha" type="text" id="input_captcha" class="full-width-input" maxlength="4"> <img id="the_captcha"></div>
 			<div class="captcha-container input-wrapper hidden" id="input_captcha_container"><span>看不清? <a href="javascript:void(0);" id="change_captcha" style="display: inline">换一张</a></span></div>
             <div id="actions_passwd">
@@ -40,7 +48,7 @@
                 </div>
                 <a href="/login/forgetPwd" class="foget-passwd">忘记密码?</a>
             </div>
-            <div class="my-btn" id="btn_login">登录</div>
+            <div class="my-btn" type="submit" id="btn_login">登录</div>
             <p id="login_error_msg" class="hidden"></p>
         </div>
     </div>
