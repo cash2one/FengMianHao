@@ -49,6 +49,11 @@ var login_module = (function ($, LS) {
           $btn_login.addClass('error');
         }
       });
+      $input_passwd.on('keyup', function(evt) {
+        if(evt.keyCode === 13 && helpers.validateEmailAddr($input_email.val()) && $input_passwd.val() !== '') {
+          $btn_login.trigger('click');
+        }
+      });
       $btn_login.on('click', function () {
         if ($btn_login.hasClass('error') || $btn_login.hasClass('processing')) {
           return false;

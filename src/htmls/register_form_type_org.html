@@ -374,14 +374,9 @@
             citiesOfSelectedProvince: function () {
                 var self = this;
                 var arr = self.list_of_provinces;
-                console.log('citiesOfSelectedProvince() list_of_provinces: ', JSON.stringify(self.list_of_provinces));
-                console.log('data_of_form.AccountProvince: ', JSON.stringify(self.data_of_form.AccountProvince));
-                console.log('self.list_of_provinces.length: ', self.list_of_provinces.length);
                 var i;
                 for (i = 0; i < self.list_of_provinces.length; ++i) {
-                    console.log('arr[i] : ', JSON.stringify(arr[i]));
                     if (arr[i].id == self.data_of_form.AccountProvince) {
-                        console.log('MATCH: v.cities: ', JSON.stringify(arr[i].cities));
                         return arr[i].cities;
                     }
                 }

@@ -1,38 +1,38 @@
-#page_register {
+body {
     color: #585858
 }
 
-#page_register .header-of-page {
+body .header-of-page {
     width: 100%;
     background-color: white;
 }
 
-#page_register .header-of-page> div {
+body .header-of-page> div {
     position: relative;
     width: 1280px;
     height: 60px;
     margin: 0 auto;
 }
 
-#page_register .header-of-page> div img {
+body .header-of-page> div img {
     position: absolute;
     left: 0;
     top: 50%;
     margin-top: -16px;
 }
 
-#page_register #content {
+body #content {
     background-color: #fff;
     border-radius: 5px;
     margin-bottom: 100px;
 }
 
-#page_register a {
+body a {
     color: #2AB5E2;
     text-decoration: none
 }
 
-#page_register footer a {
+body footer a {
     color: white;
 }
 

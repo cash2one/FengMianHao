@@ -64,6 +64,7 @@ var register_module = (function ($, LS) {
           }, function (status_code, msg) {
             alert(JSON.stringify(msg));
             self.changeCaptcha($('#the_captcha'));
+            $input_captcha.val('');
             $btn_register.removeClass('processing');
           });
         }
