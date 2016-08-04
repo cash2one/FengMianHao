@@ -84,11 +84,10 @@ input[type="password"] {
     font-family: monospace;
 }
 
-.form-group.stay-error .help-block {
+.help-block.input-error {
     color: #f44336;
     display: block !important;
 }
-/*houfei*/
 
 .modal-content .modal-header{padding: 15px 20px 0px; }  .bootstrap-dialog .bootstrap-dialog-title{  }
 .bootstrap-dialog .icon-spin{

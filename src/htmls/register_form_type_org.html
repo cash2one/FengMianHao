@@ -10,7 +10,7 @@
     <title>封面号|注册</title>
     <link href="http://wapcdn.thecover.cn/wap/1.0.0/img/favicon.png" rel="alternate icon" type="image/png">
     <link href="http://wapcdn.thecover.cn/wap/1.0.0/img/favicon.png" rel="apple-touch-icon-precomposed">
-    <link href="http://wapcdn.thecover.cn/fengmianhao/1.0.0/styles/normalize_bootstrap_material_dialog_v0722.css" rel="stylesheet" type="text/css">
+    <link href="https://wapcdn.thecover.cn/fengmianhao/1.0.0/styles/normalize_bootstrap_material_dialog_v0722.css" rel="stylesheet" type="text/css">
     <link href="./styles/all.css" rel="stylesheet" type="text/css">
     <link href="./styles/register_form.css" rel="stylesheet" type="text/css">
 </head>
@@ -30,7 +30,7 @@
             <div class="dots active" id="stage_three_dot">3</div>
         </div>
         <div class="stages" id="stage_three">
-            <form id="stage_three_form" class="form-horizontal" v-on:change="log('form changed')">
+            <form id="stage_three_form" class="form-horizontal" v-on:change="">
                 <fieldset>
                     <legend>运营主体信息</legend>
                     <!--主体类型-->
@@ -48,7 +48,7 @@
                         </label>
                         <div class="col-md-7">
                             <input type="text" class="form-control" id="inputOrgName" required maxlength="30" v-model="data_of_form.OrgName">
-                            <span class="help-block">请与组织机构代码证名称一致</span>
+                            <span class="help-block" v-bind:class="{'input-error': validates.}">请与组织机构代码证名称一致</span>
                         </div>
                     </div>
                     <!--组织机构代码证-->
@@ -100,7 +100,7 @@
                         <div class="col-md-7">
                             <textarea class="form-control" id="inputOtherDoc" rows="5" maxlength="300" v-model="data_of_form.OtherDoc">
                             </textarea>
-                            <span class="help-block">其他辅助证明材料，包括不限于网站、报道、专业资质证明</span>
+                            <span class="help-block" v-bind:class="{'input-error': validates.}">其他辅助证明材料，包括不限于网站、报道、专业资质证明</span>
                         </div>
                     </div>
                 </fieldset>
@@ -109,29 +109,29 @@
                     <legend>封面号主体信息</legend>
                     <!--封面号名称-->
                     <div class="form-group">
-                        <label for="inputAccountName" class="col-md-4 control-label">
+                        <label for="AccountName" class="col-md-4 control-label">
                             <em class="flag-required">*</em>
                             封面号名称:
                         </label>
                         <div class="col-md-7">
-                            <input type="text" class="form-control" id="inputAccountName" placeholder="2-10个字,勿使用包含特殊字符或营销意图的名称" required maxlength="10" v-model="data_of_form.AccountName">
-                            <span class="help-block">2-10个字,勿使用包含特殊字符或营销意图的名称</span>
+                            <input type="text" class="form-control" id="AccountName" placeholder="2-10个字,勿使用包含特殊字符或营销意图的名称" required maxlength="10" v-model="data_of_form.AccountName">
+                            <span class="help-block" v-bind:class="{'input-error': validates.}">2-10个字,勿使用包含特殊字符或营销意图的名称</span>
                         </div>
                     </div>
                     <!--封面号介绍-->
                     <div class="form-group">
-                        <label for="inputAccountIntro" class="col-md-4 control-label">
+                        <label for="AccountIntro" class="col-md-4 control-label">
                             <em class="flag-required">*</em>
                             封面号介绍:
                         </label>
                         <div class="col-md-7">
-                            <textarea type="text" class="form-control" id="inputAccountIntro" rows="3" maxlength="30" placeholder="10-30个字,要求内容完整通顺,无特殊字符,请勿添加任何联系方式如微博、手机号、QQ" required v-model="data_of_form.AccountIntro">
+                            <textarea type="text" class="form-control" id="AccountIntro" rows="3" maxlength="30" placeholder="10-30个字,要求内容完整通顺,无特殊字符,请勿添加任何联系方式如微博、手机号、QQ" required v-model="data_of_form.AccountIntro">
                             </textarea>
-                            <span class="help-block">10-30个字,请勿添加任何联系方式如微博、手机号、QQ</span>
+                            <span class="help-block" v-bind:class="{'input-error': validates.}">10-30个字,请勿添加任何联系方式如微博、手机号、QQ</span>
                         </div>
                     </div>
                     <!--封面号头像-->
-                    <div class="form-group" id="inputAvatarPicture">
+                    <div class="form-group" id="AvatarPicture">
                         <label class="col-md-4 control-label required">
                             <em class="flag-required">*</em>
                             封面号头像:
@@ -157,7 +157,7 @@
                         </div>
                     </div>
                     <!--封面号背景图-->
-                    <div class="form-group" id="inputBackgroundImageOfAccount">
+                    <div class="form-group" id="BackgroundImageOfAccount">
                         <label class="col-md-4 control-label">
                             <em class="flag-required">*</em>
                             封面号背景图:
@@ -203,12 +203,12 @@
                     </div>
                     <!--封面号领域-->
                     <div class="form-group">
-                        <label for="inputAccountChannel" class="col-md-4 control-label">
+                        <label for="AccountChannel" class="col-md-4 control-label">
                             <em class="flag-required">*</em>
                             封面号领域:
                         </label>
                         <div class="col-md-7">
-                            <select id="inputAccountChannel" class="form-control" v-model="data_of_form.AccountChannel">
+                            <select id="AccountChannel" class="form-control" v-model="data_of_form.AccountChannel">
                                 <option v-for="option in list_of_channels" v-bind:value="option.id">
                                     {{option.name}}
                                 </option>
@@ -257,23 +257,23 @@
                     <fieldset>
                         <legend>运营者信息</legend>
                         <!--运营者姓名-->
-                        <div class="form-group"><label for="inputPersonName" class="col-md-4 control-label">
+                        <div class="form-group"><label for="PersonName" class="col-md-4 control-label">
                             <em class="flag-required">*</em>
                             运营者姓名:
                         </label>
                             <div class="col-md-7">
-                                <input type="text" class="form-control" id="inputPersonName" placeholder="请填写真实姓名" required maxlength="20" v-model="data_of_form.PersonName">
-                                <span class="help-block">请填写真实姓名</span>
+                                <input type="text" class="form-control" id="PersonName" placeholder="请填写真实姓名" required maxlength="20" v-model="data_of_form.PersonName">
+                                <span class="help-block" v-bind:class="{'input-error': validates.}">请填写真实姓名</span>
                             </div>
                         </div>
                         <!--运营者证件号码-->
-                        <div class="form-group"><label for="inputPersonID" class="col-md-4 control-label">
+                        <div class="form-group"><label for="PersonID" class="col-md-4 control-label">
                             <em class="flag-required">*</em>
                             运营者证件号码:
                         </label>
                             <div class="col-md-7">
-                                <input type="text" class="form-control" id="inputPersonID" placeholder="请正确填写18位身份证号码" required maxlength="18" v-model="data_of_form.PersonID">
-                                <span class="help-block">请正确填写18位身份证号码</span>
+                                <input type="text" class="form-control" id="PersonID" placeholder="请正确填写18位身份证号码" required maxlength="18" v-model="data_of_form.PersonID">
+                                <span class="help-block" v-bind:class="{'input-error': validates.}">请正确填写18位身份证号码</span>
                             </div>
                         </div>
                         <!--运营者持身份证照片-->
@@ -308,7 +308,7 @@
                             </label>
                             <div class="col-md-7">
                                 <input type="text" class="form-control" id="inputPersonPhoneNum" required maxlength="11" v-model="data_of_form.PersonPhoneNum">
-                                <span class="help-block">必填</span>
+                                <span class="help-block" v-bind:class="{'input-error': validates.}">必填</span>
                             </div>
                         </div>
 
@@ -333,11 +333,11 @@
     </div>
 </div>
 <footer id="footer">
-    <p><a href="http://www.thecover.cn/aboutUs_about#about">关于我们</a> <a href="http://www.thecover.cn/aboutUs_about#contact">联系我们</a> <a href="http://www.thecover.cn/aboutUs_about#copyright">版权声明</a> <a href="mailto:content@thecover.cn">我要爆料</a> <a href="mailto:biz@thecover.cn">咨询邮箱：biz@thecover.cn</a></p>
+    <p><a href="http://www.thecover.cn/aboutUs_about#about" target="_blank">关于我们</a> <a href="http://www.thecover.cn/aboutUs_about#contact" target="_blank">联系我们</a> <a href="http://www.thecover.cn/aboutUs_about#copyright" target="_blank">版权声明</a> <a href="mailto:content@thecover.cn">我要爆料</a> <a href="mailto:biz@thecover.cn">咨询邮箱：biz@thecover.cn</a></p>
     <p>© CopyRight 2016, thecover.cn, Inc.All Rights Reserved. 蜀ICP备15028104号-1 互联网新闻信息服务许可证：5112016001</p>
 </footer>
-<script src="http://wapcdn.thecover.cn/fengmianhao/1.0.0/scripts/jquery_bootstrap_material_bootstrapDialog_v0722.js"></script>
-<script src="http://wapcdn.thecover.cn/fengmianhao/1.0.0/scripts/libs_bluebird_vue_v0722.js"></script>
+<script src="https://wapcdn.thecover.cn/fengmianhao/1.0.0/scripts/jquery_bootstrap_material_bootstrapDialog_v0722.js"></script>
+<script src="https://wapcdn.thecover.cn/fengmianhao/1.0.0/scripts/libs_bluebird_vue_v0722.js"></script>
 <script src="./scripts/helpers.js"></script>
 <script src="./scripts/register_form.js"></script>
 <script type="text/javascript">
