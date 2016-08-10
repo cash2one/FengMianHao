@@ -124,8 +124,8 @@ var register_module = (function ($, LS) {
       }
     },
     'redirectTo': function () {
-      console.log('redirectTo(', helpers.destination_pages.page_choose_type, ')');
-      return location.replace(helpers.destination_pages.page_choose_type);
+      console.log('redirectTo(', helpers.destination_pages.page_activation_email_success_sent, ')');
+      return location.replace(helpers.destination_pages.page_activation_email_success_sent);
     },
     'setSize': function () {
       $('#stage_one .has-account').css('height', $('#stage_one .form').height() + 'px');
@@ -198,9 +198,6 @@ var form = new Vue({
       } else {}
       return true;
     },
-    log: function (label, str) {
-      console.log(label + '=> ', JSON.stringify(str));
-    },
     submit: function (evt) {
       var self = this;
       var $btn = $(evt.target);
@@ -209,8 +206,5 @@ var form = new Vue({
       }
       $btn.addClass('processing');
     }
-  },
-  created: function () {
-    var self = this;
   }
 });

@@ -7,7 +7,7 @@
     <meta content="IE=Edge" http-equiv="X-UA-Compatible">
     <meta content="webkit" name="renderer">
     <meta content="telephone=no,address=no,email=no" name="format-detection">
-    <title>封面号|注册审核结果</title>
+    <title>封面号|激活码邮件发送成功</title>
     <link href="http://wapcdn.thecover.cn/wap/1.0.0/img/favicon.png" rel="alternate icon" type="image/png">
     <link href="http://wapcdn.thecover.cn/wap/1.0.0/img/favicon.png" rel="apple-touch-icon-precomposed">
     <link href="./styles/register.css" rel="stylesheet" type="text/css">
@@ -153,15 +153,11 @@
         }
 
         #stage_three h2 {
-            font-size: 22px;
+            font-size: 15px;
             font-weight: normal;
-            height: 50px;
-            line-height: 50px;
+            /*height: 50px;*/
+            line-height: 30px;
             vertical-align: middle;
-            padding-left: 75px;
-            background-position: left center;
-            background-size: 50px;
-            background-repeat: no-repeat;
             margin: 0 auto;
             text-align: center;
         }
@@ -171,10 +167,14 @@
             margin: 100px auto;
             padding-top: 100px;
         }
-
+        #stage_three p {
+            margin: 0;
+        }
         #stage_three a {
-            font-size: 18px;
+            font-size: 13px;
+            line-height: 20px;
             text-decoration: underline;
+            display: inline;
         }
 
         #stage_three #processing h2 {
@@ -185,12 +185,12 @@
         }
 
         .grey-bg {
-            font-size: 18px;
+            font-size: 13px;
             background-color: #d9d9d9;
-            text-align: center;
+            text-align: left;
             margin: 20px auto;
-            padding: 30px 0;
-            line-height: 30px;
+            padding: 20px 40px;
+            line-height: 20px;
         }
     </style>
 </head>
@@ -204,33 +204,28 @@
 <div id="content">
     <div id="main">
         <header>
-            <h1>申请入驻</h1> </header>
+            <h1>申请入驻</h1>
+        </header>
         <div id="stage_indictor">
             <div class="line"></div>
-            <div class="dots inactive" id="stage_one_dot">1</div>
+            <div class="dots active" id="stage_one_dot">1</div>
             <div class="dots inactive" id="stage_two_dot">2</div>
-            <div class="dots active" id="stage_three_dot">3</div>
+            <div class="dots inactive" id="stage_three_dot">3</div>
         </div>
         <div id="stage_three">
-            <div class="hidden" id="processing">
+            <div>
                 <h2>
-                    您的资料已经提交成功,进入等待审核状态
+                    感谢您注册,为了保障您的账号安全,我们已向您填写的邮箱发送了一封激活邮件,
+                    <br/>
+                    请去您的邮箱点击链接激活账号。
                 </h2>
-                <p class="grey-bg">我们将在1~3个工作日内审核您的资料,
-                    <br/> 并将结果以短信和电邮的形式同时反馈给您。
-                </p>
-                <a href="/page/others/user_agreement.html" target="_blank">了解更多封面号政策</a>
+                <div class="grey-bg">
+                    <p>如果在30分钟内没有收到我们的邮件,您可以:</p>
+                    <p>1. 查看是否被误拦截放入垃圾邮件。</p>
+                    <p><span>2. 检查是否填写错误并</span><a href="/login/stage1">重新提交</a><span>。</span></p>
+                </div>
             </div>
-            <div class="hidden" id="failed">
-                <h2>
-                    很抱歉,您提交的资料未能通过审核
-                </h2>
-                <p class="grey-bg">未通过的原因已经发送至您的邮箱和手机,
-                    <br/> 请按照本平台规则
-                    <a href="/login/stage1">重新提交资料</a>
-                    。
-                </p>
-            </div>
+
         </div>
     </div>
 </div>

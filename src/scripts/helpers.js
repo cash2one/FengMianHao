@@ -31,7 +31,8 @@ window.helpers = (function ($, LS) {
       'page_register_form_type_bureau': '/login/formBureau',
       'page_register_form_type_individual': '/login/formIndividual',
       'page_register_form_type_org': '/login/formOrg',
-      'page_user_agreement': '/page/others/user_agreement.html'
+      'page_user_agreement': '/page/others/user_agreement.html',
+      'page_activation_email_success_sent': '/page/others/activation_email_success_sent.html'
     },
     'LIST_OF_TARGET_READERS': [
       {

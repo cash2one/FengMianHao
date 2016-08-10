@@ -46,9 +46,6 @@ gulp.task('clean', function () {
 gulp.task('copyHTML', function () {
   gulp.src('src/htmls/*.html')
       .pipe(htmlmin({
-        //collapseWhitespace: true,
-        sortAttributes: true,
-        sortClassName: true
       }))
       .pipe(gulp.dest('dist'));
 });

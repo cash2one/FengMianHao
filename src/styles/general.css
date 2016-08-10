@@ -30,12 +30,10 @@ body {
     margin: 0;
     border: none;
     font-family: -apple-system, "Hiragino Sans GB", Roboto, "Droid Sans", "Microsoft YaHei", "Microsoft YaHei UI", "Microsoft JhengHei UI", STHeiti, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Helvetica Neue", sans-serif;
-    background-image: url(http://wapcdn.thecover.cn/fengmianhao/1.0.0/img/bg.jpg);
-    background-position: center;
+    background: url(http://wapcdn.thecover.cn/fengmianhao/1.0.0/img/bg.jpg) no-repeat center center fixed;
     -webkit-background-size: cover;
     background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
+
 }
 #page_login {
     background-image: none;
