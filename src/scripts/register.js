@@ -195,7 +195,7 @@ var form = new Vue({
       }
       if (obj.check_agree_terms === false) {
         return false;
-      } else {}
+      }
       return true;
     },
     submit: function (evt) {

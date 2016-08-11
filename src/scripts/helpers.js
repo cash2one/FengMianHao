@@ -1,8 +1,8 @@
 window.helpers = (function ($, LS) {
   var CONFIG = {
-    //API_BASE_URL: 'http://170.240.110.30:8080' //盖卵
+    API_BASE_URL: 'http://170.240.110.30:8080' //盖卵
     //API_BASE_URL: 'http://170.240.110.120:8181' //韩卵
-    API_BASE_URL: 'http://170.240.110.243:80' //李卵
+    //API_BASE_URL: 'http://170.240.110.243:80' //李卵
     //API_BASE_URL: 'http://170.240.110.21:8090'     //steven
   };
   $.material.init();
@@ -198,7 +198,6 @@ window.helpers = (function ($, LS) {
       return re.test(input) ? input : false;
     },
     'validatePasswd': function (input) {
-      //var re = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,32}$/;
       var re = /^(?!^\\d+$)(?!^[a-zA-Z]+$)(?!^[_#@]+$).{8,32}$/; // copy自后台
       if (input.length < 1) {
         return false;
