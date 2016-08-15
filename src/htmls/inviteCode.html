@@ -249,11 +249,13 @@
                 'inviteCode': $('#inputInviteCode').val().toUpperCase()
             })
         }).then(function(result) {
-            alert('验证码正确!');
+            console.log(result.inviteCode);
+            $('#btn_sendInviteCode').removeClass('frozen');
+            location.replace('/login/stage1' + '?inviteCode=' + result.inviteCode);
             // 去登陆页面
-        }, function(code, msg) {
-            alert(JSON.stringify(code, msg));
-            //440: "链接超时"
+        }, function(status, message) {
+            alert(JSON.stringify(message));
+            $('#btn_sendInviteCode').removeClass('frozen');
         });
     });
 </script>

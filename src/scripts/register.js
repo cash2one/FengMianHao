@@ -58,7 +58,8 @@ var register_module = (function ($, LS) {
               password: helpers.validatePasswd($input_passwd.val()),
               confirm_password: helpers.validatePasswd($input_passwd.val()),
               vcode: $input_captcha.val(),
-              vcode_id: $change_captcha.data('captcha-id')
+              vcode_id: $change_captcha.data('captcha-id'),
+              inviteCode: helpers.getValueFromUrl('inviteCode')
             })
           }).then(function (result) {
             console.log('sendCredits() => ', result);
