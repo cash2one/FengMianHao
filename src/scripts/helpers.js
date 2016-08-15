@@ -12,6 +12,7 @@ window.helpers = (function ($, LS) {
       return {
         'userLogin': CONFIG.API_BASE_URL + '/user/auth', // 首页--登录
         'getCaptcha': CONFIG.API_BASE_URL + '/login/getVCode', // 获取验证码
+        'checkInviteCode': CONFIG.API_BASE_URL + '/login/checkInviteCode', // 验证邀请码
         'registerStageOne': CONFIG.API_BASE_URL + '/login/register', // 注册--第一步,提交邮箱&密码
         'registerStageTwo': CONFIG.API_BASE_URL + '/login/getVCode', // 注册--第二步,选择类型
         'registerStageThree': CONFIG.API_BASE_URL + '/user/checkIn', // 注册--第三步,提交某类型的表单

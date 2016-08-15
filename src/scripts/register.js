@@ -22,6 +22,9 @@ var register_module = (function ($, LS) {
       };
     },
     'init': function () {
+      if(!helpers.getValueFromUrl('inviteCode')) {
+        return location.replace('/page/others/inviteCode.html');
+      }
       var self = this;
       Promise.race([helpers.setBackgroundImg($body), helpers.delay(1000)]).then(function () {
         $body.removeClass('transparent');

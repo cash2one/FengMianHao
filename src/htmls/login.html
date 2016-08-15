@@ -12,52 +12,74 @@
     <link href="http://wapcdn.thecover.cn/wap/1.0.0/img/favicon.png" rel="apple-touch-icon-precomposed">
     <link href="https://wapcdn.thecover.cn/fengmianhao/1.0.0/styles/normalize_bootstrap_material_dialog_v0722.css" rel="stylesheet" type="text/css">
     <link href="./styles/all.css" rel="stylesheet" type="text/css">
-    <link href="./styles/login.css" rel="stylesheet" type="text/css"> </head>
+    <link href="./styles/login.css" rel="stylesheet" type="text/css">
+</head>
 
-<body class="page-login transparent" id="page_login" data-img="http://wapcdn.thecover.cn/fengmianhao/1.0.0/img/bg_login_page.jpg">
-<div id="content">
-	<header><img src="http://wapcdn.thecover.cn/fengmianhao/1.0.0/img/logo_fengmianhao.png" id="logo">
-        <nav>
-            <ul>
-				<li class="menu"><a href="/login/stage1">立即注册</a></li>
-                <li class="menu"><a href="/page/others/faq.html">常见问题</a></li>
-            </ul>
-        </nav>
-    </header>
-    <div id="main">
-        <div id="login_container">
-            <h2>账户登录</h2>
-			<div class="input-wrapper" id="email">
-                <img src="http://wapcdn.thecover.cn/fengmianhao/1.0.0/img/logo_email.png">
-                <label for="input_email">邮箱号:</label>
-                <input name="username" type="email" id="input_email" class="full-width-input">
-            </div>
-			<div class="input-wrapper" id="passwd">
-                <img src="http://wapcdn.thecover.cn/fengmianhao/1.0.0/img/logo_password.png">
-                <label for="input_passwd">密码:</label>
-                <input name="password" type="password" id="input_passwd" class="full-width-input">
-            </div>
-            <div class="captcha-container input-wrapper hidden" id="captcha"><img src="http://wapcdn.thecover.cn/fengmianhao/1.0.0/img/logo_captcha.png"><label for="input_captcha">验证码:</label><input name="captcha" type="text" id="input_captcha" class="full-width-input" maxlength="4"> <img id="the_captcha"></div>
-			<div class="captcha-container input-wrapper hidden" id="input_captcha_container"><span>看不清? <a href="javascript:void(0);" id="change_captcha" style="display: inline">换一张</a></span></div>
-            <div id="actions_passwd">
-				<div class="checkbox">
-                    <label for="check_remember_passwd">
-                        <input type="checkbox" id="check_remember_passwd">
-                        <span style="margin-left: 7.5px">记住密码</span>
-                    </label>
+<body class="page-login transparent" id="page_login">
+<div class="wrapper" data-curr-slide-idx="0">
+    <section class="slides slide-1" data-img="https://wapcdn.thecover.cn/fengmianhao/1.0.0/img/bg-login-slide-1.jpg">
+        <div id="content">
+            <header><img src="http://wapcdn.thecover.cn/fengmianhao/1.0.0/img/logo_fengmianhao.png" id="logo">
+                <nav>
+                    <ul>
+                        <li class="menu"><a href="/page/others/inviteCode.html">邀请码注册</a></li>
+                        <li class="menu slash"></li>
+                        <li class="menu"><a href="/page/others/faq.html">常见问题</a></li>
+                    </ul>
+                </nav>
+            </header>
+            <div id="main">
+                <div id="login_container">
+                    <h2>账户登录</h2>
+                    <div class="input-wrapper" id="email">
+                        <img src="https://wapcdn.thecover.cn/fengmianhao/1.0.0/img/logo_email.png">
+                        <label for="input_email">邮箱号:</label>
+                        <input name="username" type="email" id="input_email" class="full-width-input">
+                    </div>
+                    <div class="input-wrapper" id="passwd">
+                        <img src="https://wapcdn.thecover.cn/fengmianhao/1.0.0/img/logo_password.png">
+                        <label for="input_passwd">密码:</label>
+                        <input name="password" type="password" id="input_passwd" class="full-width-input">
+                    </div>
+                    <div class="captcha-container input-wrapper hidden" id="captcha">
+                        <img src="https://wapcdn.thecover.cn/fengmianhao/1.0.0/img/logo_captcha.png">
+                        <label for="input_captcha">验证码:</label>
+                        <input name="captcha" type="text" id="input_captcha" class="full-width-input" maxlength="4">
+                        <img id="the_captcha">
+                    </div>
+                    <div class="captcha-container input-wrapper hidden" id="input_captcha_container">
+                        <span>看不清? <a href="javascript:void(0);" id="change_captcha" style="display: inline">换一张</a></span>
+                    </div>
+                    <div id="actions_passwd">
+                        <div class="checkbox">
+                            <label for="check_remember_passwd">
+                                <input type="checkbox" id="check_remember_passwd">
+                                <span style="margin-left: 7.5px;font-weight: normal;">记住密码</span>
+                            </label>
+                        </div>
+                        <a href="/login/forgetPwd" class="foget-passwd">忘记密码?</a>
+                    </div>
+                    <div class="my-btn" type="submit" id="btn_login">登录</div>
+                    <p id="login_error_msg" class="hidden"></p>
                 </div>
-                <a href="/login/forgetPwd" class="foget-passwd">忘记密码?</a>
             </div>
-            <div class="my-btn" type="submit" id="btn_login">登录</div>
-            <p id="login_error_msg" class="hidden"></p>
+            <footer id="footer">
+                <p> <a href="http://www.thecover.cn/aboutUs_about#about" target="_blank">关于我们</a> <a href="http://www.thecover.cn/aboutUs_about#contact" target="_blank">联系我们</a> <a href="http://www.thecover.cn/aboutUs_about#copyright" target="_blank">版权声明</a> <a href="mailto:content@thecover.cn">我要爆料</a> <a href="mailto:biz@thecover.cn">咨询邮箱：biz@thecover.cn</a> </p>
+                <p>© CopyRight 2016, thecover.cn, Inc.All Rights Reserved. 蜀ICP备15028104号-1 互联网新闻信息服务许可证：5112016001</p>
+            </footer>
         </div>
-    </div>
-    <footer id="footer">
-        <p> <a href="http://www.thecover.cn/aboutUs_about#about" target="_blank">关于我们</a> <a href="http://www.thecover.cn/aboutUs_about#contact" target="_blank">联系我们</a> <a href="http://www.thecover.cn/aboutUs_about#copyright" target="_blank">版权声明</a> <a href="mailto:content@thecover.cn">我要爆料</a> <a href="mailto:biz@thecover.cn">咨询邮箱：biz@thecover.cn</a> </p>
-        <p>© CopyRight 2016, thecover.cn, Inc.All Rights Reserved. 蜀ICP备15028104号-1 互联网新闻信息服务许可证：5112016001</p>
-    </footer>
+    </section>
+    <section class="slides slide-2" data-img="https://wapcdn.thecover.cn/fengmianhao/1.0.0/img/bg-login-slide-2.jpg">
+    </section>
+    <section class="slides slide-3" data-img="https://wapcdn.thecover.cn/fengmianhao/1.0.0/img/bg-login-slide-3.jpg">
+    </section>
+    <section class="slides slide-4" data-img="https://wapcdn.thecover.cn/fengmianhao/1.0.0/img/bg-login-slide-4.jpg">
+    </section>
+    <section class="slides slide-5" data-img="https://wapcdn.thecover.cn/fengmianhao/1.0.0/img/bg-login-slide-5.jpg">
+    </section>
 </div>
 <script src="https://wapcdn.thecover.cn/fengmianhao/1.0.0/scripts/jquery_bootstrap_material_bootstrapDialog_v0722.js"></script>
+<script src="https://wapcdn.thecover.cn/fengmianhao/1.0.0/scripts/jquery.ba-throttle-debounce.min.js"></script>
 <script src="https://wapcdn.thecover.cn/fengmianhao/1.0.0/scripts/libs_bluebird_vue_v0722.js"></script>
 <script src="./scripts/helpers.js"></script>
 <script src="./scripts/login.js"></script>
