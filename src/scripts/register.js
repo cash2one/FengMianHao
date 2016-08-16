@@ -22,9 +22,6 @@ var register_module = (function ($, LS) {
       };
     },
     'init': function () {
-      //if(!helpers.getValueFromUrl('inviteCode')) {
-      //  return location.replace('/page/others/inviteCode.html');
-      //}
       var self = this;
       Promise.race([helpers.setBackgroundImg($body), helpers.delay(1000)]).then(function () {
         $body.removeClass('transparent');
@@ -48,6 +45,9 @@ var register_module = (function ($, LS) {
       $btn_register.on('click', function () {
         if ($btn_register.hasClass('error') || $btn_register.hasClass('processing')) {
           return false;
+        }
+        if(!helpers.getValueFromUrl('inviteCode')) {
+          return location.replace('/page/others/inviteCode.html');
         }
         $btn_register.addClass('processing');
         //if (helpers.validateEmailAddr($input_email.val()) && helpers.validatePasswd($input_passwd.val()) && helpers.validatePasswd(self.data_of_form.password)) {
