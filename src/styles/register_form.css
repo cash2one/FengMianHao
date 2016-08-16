@@ -148,7 +148,7 @@
     border-top: 2px solid #FAFAFA;
 }
 
-#stage_three {
+#stage_three, #main_section {
     width: 800px;
 }
 

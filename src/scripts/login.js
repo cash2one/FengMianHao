@@ -225,8 +225,7 @@ var login_module = (function ($, LS) {
           });
     },
     'sendCredits': function (payload) {
-      return helpers.$post(helpers.apis()
-          .userLogin, (payload));
+      return helpers.$post(helpers.apis().userLogin, (payload));
     },
     'redirectTo': function (data) {
       function gotoPage(page, param) {

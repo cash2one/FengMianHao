@@ -22,7 +22,9 @@ window.helpers = (function ($, LS) {
         'postReadNotice': CONFIG.API_BASE_URL + '/notice/detail', // 通知中心--置某条未读通知为已读状态
         'resetPassword': CONFIG.API_BASE_URL + '/login/resetPassword', // 重置密码
         'sendEmail': CONFIG.API_BASE_URL + '/login/sendEmail', // 发送验证邮件
-        'getIndexPage': CONFIG.API_BASE_URL + '/index' // 获取首页数据
+        'getIndexPage': CONFIG.API_BASE_URL + '/index', // 获取首页数据
+        'getAccountInfo': CONFIG.API_BASE_URL + '/user/getUserInfo', // 获取账号资料
+        'updateAccountInfo': CONFIG.API_BASE_URL + '/user/updateUserInfo' // 修改账号资料
       };
     },
     'destination_pages': {
