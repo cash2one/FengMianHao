@@ -221,7 +221,10 @@ window.helpers = (function ($, LS) {
       Vue.filter('formatDate', function (value) {
         var date = new Date(value);
         return date.getFullYear() + '/' + date.getMonth() + '/' + date.getDate() + '  ' + date.getHours() + ':' + date.getMinutes()
-      })
+      });
+      Vue.filter('formatUIType', function (value) {
+        return ['', '学生', '个人', '媒体', '政务', '企业', '组织'][value];
+      });
     }
   };
 })(jQuery, window.localStorage);

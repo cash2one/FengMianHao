@@ -4,27 +4,27 @@
 
 #page_register_form .header-of-page {
     width: 100%;
-    background-color: white;
+    background-color: #fff
 }
 
-#page_register_form .header-of-page> div {
+#page_register_form .header-of-page>div {
     position: relative;
     width: 1280px;
     height: 60px;
-    margin: 0 auto;
+    margin: 0 auto
 }
 
-#page_register_form .header-of-page> div img {
+#page_register_form .header-of-page>div img {
     position: absolute;
     left: 0;
     top: 50%;
-    margin-top: -16px;
+    margin-top: -16px
 }
 
 #page_register_form #content {
     background-color: #fff;
     border-radius: 5px;
-    margin-bottom: 100px;
+    margin-bottom: 100px
 }
 
 #page_register_form a {
@@ -33,7 +33,7 @@
 }
 
 #page_register_form footer a {
-    color: white;
+    color: #fff
 }
 
 #main header {
@@ -58,6 +58,14 @@
     width: 1280px;
     margin-top: 20px;
     padding: 0
+}
+
+#content.account-management {
+    background-color: #fff
+}
+
+.account-management.transparent {
+    opacity: 0
 }
 
 #stage_indictor {
@@ -87,11 +95,14 @@
     line-height: 50px;
     font-size: 20px;
     text-align: center;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
     user-select: none
 }
 
 #stage_indictor .dots:hover {
-    cursor: not-allowed;
+    cursor: not-allowed
 }
 
 #stage_indictor .dots.active {
@@ -145,11 +156,12 @@
     margin: 0 auto;
     width: 1024px;
     padding-top: 50px;
-    border-top: 2px solid #FAFAFA;
+    border-top: 2px solid #FAFAFA
 }
 
-#stage_three, #main_section {
-    width: 800px;
+#main_section,
+#stage_three {
+    width: 800px
 }
 
 .input-wrapper {
@@ -168,6 +180,9 @@
 .input-wrapper label {
     width: 120px;
     text-align: right;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
     user-select: none
 }
 
@@ -175,6 +190,7 @@
     width: 400px;
     padding: 0 5px;
     border-bottom: 1px solid #C8C8C8;
+    -webkit-transition: border-bottom-color .2s ease-in;
     transition: border-bottom-color .2s ease-in;
     margin-left: 10px;
     vertical-align: bottom;
@@ -190,13 +206,13 @@
 #input_captcha_container {
     float: right;
     width: 300px;
-    margin-right: 100px;
+    margin-right: 100px
 }
 
 #input_captcha {
     width: 100px;
     float: none;
-    margin-left: 0;
+    margin-left: 0
 }
 
 #the_captcha {
@@ -205,6 +221,7 @@
     vertical-align: bottom
 }
 
+#btn_cancel,
 #btn_register,
 #btn_submit_form {
     font-size: 16px;
@@ -216,139 +233,164 @@
     width: 180px
 }
 
+#btn_cancel,
+#btn_submit_form,
+.btn-wrapper {
+    margin: 30px auto
+}
+
+#btn_cancel,
 #btn_register.error,
 #btn_submit_form {
     background-color: #D5D5D5
 }
 
-#btn_submit_form {
-    margin: 30px auto;
+#btn_submit_form.available,
+.label-of-account {
+    background-color: #2AB5E2
 }
 
-#btn_submit_form.available {
-    background-color: #2AB5E2;
+.btn-wrapper {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex
 }
+
+.account-management #btn_cancel,
+.account-management #btn_submit_form {
+    display: inline-block
+}
+
 #stage_three_form fieldset {
     width: 700px;
-    margin: 0 auto;
-    margin-top: 50px;
+    margin: 50px auto 0
 }
+
 #stage_three_form fieldset:first-of-type {
-    margin-top: 0px;
+    margin-top: 0
 }
+
 legend {
     font-size: 20px;
     border-bottom: 1px solid #e5e5e5;
     margin-bottom: 0;
     padding-bottom: 10px;
-    margin-left: 10px;
+    margin-left: 10px
 }
+
 #stage_three_form .form-group {
-    margin-top: 20px;
+    margin-top: 20px
 }
+
 #stage_three_form .form-group.is-focused .form-control {
-    outline: none;
+    outline: 0;
     background-image: -webkit-gradient(linear, left top, left bottom, from(#2AB5E2), to(#2AB5E2)), -webkit-gradient(linear, left top, left bottom, from(#D2D2D2), to(#D2D2D2));
     background-image: -webkit-linear-gradient(#2AB5E2, #2AB5E2), -webkit-linear-gradient(#D2D2D2, #D2D2D2);
-    background-image: -o-linear-gradient(#2AB5E2, #2AB5E2), -o-linear-gradient(#D2D2D2, #D2D2D2);
     background-image: linear-gradient(#2AB5E2, #2AB5E2), linear-gradient(#D2D2D2, #D2D2D2);
-    -webkit-background-size: 100% 2px, 100% 1px;
     background-size: 100% 2px, 100% 1px;
-    -webkit-box-shadow: none;
     box-shadow: none;
-    -webkit-transition-duration: 0.3s;
-    -o-transition-duration: 0.3s;
-    transition-duration: 0.3s;
+    -webkit-transition-duration: .3s;
+    transition-duration: .3s
 }
-#stage_three_form label, #stage_three_form .form-control {
-    color: #585858;
+
+#stage_three_form .form-control,
+#stage_three_form label {
+    color: #585858
 }
+
 #stage_three_form .form-group label.control-label {
     font-size: 18px;
-    margin: 4px 0 0 0;
+    margin: 4px 0 0
 }
+
 em.flag-required {
-    color: #f00;
+    color: red;
     position: relative;
     right: 5px;
     font-size: 18px;
     line-height: 18px;
-    font-style: normal;
+    font-style: normal
 }
+
 .container-upload-img {
     position: relative;
-    padding: 20px 0px;
+    padding: 20px 0;
     border-radius: 6px;
     min-height: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 20px
 }
-.container-upload-img > img {
+
+.container-upload-img>img {
     display: inline-block;
     width: 50%;
     max-width: 50%;
     height: auto;
     vertical-align: middle;
-    margin-right: 20px;
+    margin-right: 20px
 }
-.container-upload-img > img.avatar {
+
+.container-upload-img>img.avatar {
     width: 75px;
     height: 75px;
-    -webkit-border-radius: 50%;
-    -moz-border-radius: 50%;
-    border-radius: 50%;
+    border-radius: 50%
 }
+
 #page_register_form .upload-img {
     color: #333;
     vertical-align: top;
-    margin: 0px;
-    margin-bottom: 20px;
-    position: relative;
+    margin: 0 0 20px;
+    position: relative
 }
-.tips-of-uploading {
-    position: absolute;
-    bottom: 20px;
-    left: 50%;
-    margin-left: 25px;
-    font-size: 12px;
-    line-height: 18px;
-    max-width: 50%;
-    display: inline-block;
-}
+
+.tips-of-uploading,
 .tips-of-uploading.avatar {
     position: absolute;
-    bottom: 0px;
-    left: 75px;
     margin-left: 25px;
-    margin-top: 20px;
     font-size: 12px;
     line-height: 18px;
     max-width: 50%;
-    display: inline-block;
+    display: inline-block
 }
+
+.tips-of-uploading {
+    bottom: 20px;
+    left: 50%
+}
+
+.tips-of-uploading.avatar {
+    bottom: 0;
+    left: 75px;
+    margin-top: 20px
+}
+
 #inputAccountKeywords {
     float: left;
     padding-right: 15px;
-    padding-left: 15px;
+    padding-left: 15px
 }
-#label_area >div {
+
+#label_area>div {
     min-height: 50px;
-    padding: 10px;
+    padding: 10px
 }
+
 .label-of-account {
     position: relative;
     display: inline-block;
     word-break: keep-all;
     margin: 0 10px;
-    padding: 0px 10px;
+    padding: 0 10px;
     height: 30px;
     width: auto;
     line-height: 30px;
     font-size: 15px;
     text-align: center;
     color: #fff;
-    background-color: #2AB5E2;
-    border-radius: 15px;
+    border-radius: 15px
 }
+
 .close-btn-of-label {
     position: absolute;
     right: -9px;
@@ -356,11 +398,20 @@ em.flag-required {
     width: 18px;
     height: 18px;
     border-radius: 50%;
-    background-image: url("http://wapcdn.thecover.cn/fengmianhao/1.0.0/img/icon_rm_tag.png");
+    background-image: url(https://wapcdn.thecover.cn/fengmianhao/1.0.0/img/icon_rm_tag.png);
     background-size: contain;
     background-position: center;
-    background-repeat: no-repeat;
+    background-repeat: no-repeat
 }
+
 .close-btn-of-label:hover {
-    cursor: pointer;
+    cursor: pointer
+}
+
+.account-management .stages {
+    border-top: none;
+}
+
+.account-management {
+    background-color: white;
 }

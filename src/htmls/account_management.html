@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns="http://www.w3.org/1999/html">
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" name="viewport">
+    <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+    <meta content="webkit" name="renderer">
+    <meta content="telephone=no,address=no,email=no" name="format-detection">
+    <title>封面号|账号管理</title>
+    <link href="http://wapcdn.thecover.cn/wap/1.0.0/img/favicon.png" rel="alternate icon" type="image/png">
+    <link href="http://wapcdn.thecover.cn/wap/1.0.0/img/favicon.png" rel="apple-touch-icon-precomposed">
+    <link href="https://wapcdn.thecover.cn/fengmianhao/1.0.0/styles/normalize_bootstrap_material_dialog_v0722.css" rel="stylesheet" type="text/css">
+    <link href="./styles/all.css" rel="stylesheet" type="text/css">
+    <link href="./styles/register_form.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<!--<div id="content" class="account-management transparent">-->
+<div>
+    <div id="main" class="account-management">
+        <header>
+            <h1>账号设置</h1>
+        </header>
+        <div class="stages" id="stage_three">
+            <form id="stage_three_form" class="form-horizontal">
+                <fieldset>
+
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">封面号:</label>
+                        <div class="col-md-7">
+                            <h4>{{data_of_form.proAccount}}</h4>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">类型:</label>
+                        <div class="col-md-7">
+                            <h4>{{data_of_form.proKind | formatUIType}}</h4>
+                        </div>
+                    </div>
+
+                    <!--封面号头像-->
+                    <div class="form-group" id="proAvatar">
+                        <label class="col-md-4 control-label required">
+                            <em class="flag-required">*</em>
+                            封面号头像:
+                        </label>
+                        <div class="col-md-7">
+                            <div class="container-upload-img">
+                                <img id="upImg-icon"
+                                     class="avatar"
+                                     v-bind:src="data_of_form.proAvatar">
+                                <a class="upload-img btn btn-raised btn-default"
+                                   data-dom="#upImg-icon"
+                                   data-img-src="proAvatar"
+                                   data-minheight="200"
+                                   data-minwidth="200"
+                                   data-ratio="1/1"
+                                   href="javascript:void(0)">
+                                    修改
+                                </a>
+                                <p class="tips-of-uploading avatar">
+                                    要求清晰、健康、代表自媒体形象
+                                    <br>
+                                    请勿使用二维码,最大5M
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <!--封面号背景图-->
+                    <div class="form-group" id="proBackground">
+                        <label class="col-md-4 control-label">
+                            <em class="flag-required">*</em>
+                            封面号背景图:
+                        </label>
+                        <div class="col-md-7">
+                            <div class="container-upload-img">
+                                <img id="upImg-bg"
+                                     v-bind:src="data_of_form.proBackground">
+                                <a class="upload-img btn btn-raised btn-default"
+                                   data-dom="#upImg-bg"
+                                   data-img-src="proBackground"
+                                   data-minheight="430"
+                                   data-minwidth="600"
+                                   data-ratio="621/445"
+                                   href="javascript:void(0)">
+                                    修改
+                                </a>
+                                <p class="tips-of-uploading">
+                                    要求符合封面号风格
+                                    <br>
+                                    请勿使用二维码,最大5M
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--封面号介绍-->
+                    <div class="form-group">
+                        <label for="proBrief" class="col-md-4 control-label">
+                            <em class="flag-required">*</em>
+                            封面号介绍:
+                        </label>
+                        <div class="col-md-7">
+                            <textarea class="form-control"
+                                      id="proBrief"
+                                      maxlength="30"
+                                      placeholder="10-30个字,要求内容完整通顺,无特殊字符,请勿添加任何联系方式如微博、手机号、QQ"
+                                      required
+                                      readonly
+                                      rows="3"
+                                      type="text"
+                                      v-model="data_of_form.proBrief">
+                            </textarea>
+                            <a class="upload-img btn btn-raised btn-default" href="javascript:void(0)" v-on:click.stop="toggleEditText()">
+                                修改
+                            </a>
+                            <span class="help-block" v-bind:class="{'input-error': validates.proBrief}">
+                                10-30个字,请勿添加任何联系方式如微博、手机号、QQ
+                            </span>
+                        </div>
+                    </div>
+
+                    <!--封面号关键词-->
+                    <div class="form-group">
+                        <div class="col-md-12" id="label_area">
+                            <div class="col-md-4"></div>
+                            <div class="col-md-7">
+                                <div class="label-of-account"
+                                     data-label-id="{{index}}"
+                                     v-for="(index, label) in data_of_form.labelPgc">
+                                     {{label}}
+                                    <em class="close-btn-of-label" data-label-id="{{index}}" v-on:click.stop="rmLabel($event)">
+                                    </em>
+                                </div>
+                            </div>
+                        </div>
+                        <label class="control-label col-md-4" for="inputAccountKeywords">
+                            <em class="flag-required">*</em>
+                            封面号关键词:
+                        </label>
+                        <div class="input-group col-md-7">
+                            <input class="form-control" id="inputAccountKeywords" maxlength="5" placeholder="关键词在搜索结果中展示,不超过3个" type="text">
+                            <span class="input-group-btn">
+                                <button class="btn btn-primary"
+                                        type="button"
+                                        v-on:click.stop="addLabel($event)"
+                                        v-show="data_of_form.labelPgc.length !== 3">
+                                        修改
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+
+                    <!--运营者-->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">运营者:</label>
+                        <div class="col-md-7">
+                            <h4>{{data_of_form.username}}</h4>
+                        </div>
+                    </div>
+                    <!--手机号码-->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">联系方式:</label>
+                        <div class="col-md-7">
+                            <h4>{{data_of_form.mobile}}</h4>
+                        </div>
+                    </div>
+                    <!--电子邮箱-->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">电子邮箱:</label>
+                        <div class="col-md-7">
+                            <h4>{{data_of_form.email}}</h4>
+                        </div>
+                    </div>
+                    <!--组织类型-->
+                    <div class="form-group" v-if="ui_type !== 2">
+                        <label class="col-md-4 control-label">组织类型:</label>
+                        <div class="col-md-7">
+                            <h4>{{data_of_form.proKind | formatUIType}}</h4>
+                        </div>
+                    </div>
+                    <!--学校-->
+                    <div class="form-group" v-if="ui_type == 1">
+                        <label class="col-md-4 control-label">学校:</label>
+                        <div class="col-md-7">
+                            <h4>{{data_of_form.university}}</h4>
+                        </div>
+                    </div>
+                    <!--组织名称-->
+                    <div class="form-group" v-if="ui_type == 3 || ui_type == 5 || ui_type == 6">
+                        <label class="col-md-4 control-label">组织名称:</label>
+                        <div class="col-md-7">
+                            <h4>{{data_of_form.orgName}}</h4>
+                        </div>
+                    </div>
+
+                    <div class="form-group hidden">
+                        <button id="imgUploadQiniu" type="button">修改图片</button>
+                    </div>
+                </fieldset>
+            </form>
+            <div class="form-group btn-wrapper">
+                <div class="my-btn" id="btn_submit_form" v-bind:class="{'available': canSubmit}" v-on:click.stop="submit($event)">
+                    确认
+                </div>
+                <div class="my-btn" id="btn_cancel" v-on:click.stop="cancel($event)">
+                    取消
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://wapcdn.thecover.cn/fengmianhao/1.0.0/scripts/jquery_bootstrap_material_bootstrapDialog_v0722.js"></script>
+<script src="https://wapcdn.thecover.cn/fengmianhao/1.0.0/scripts/libs_bluebird_vue_v0722.js"></script>
+<script src="./scripts/helpers.js"></script>
+
+<script type="text/javascript">
+    helpers.VueFilters();
+    var form = new Vue({
+        el: 'body',
+        data: function () {
+            return {
+                data_of_form: {
+                    'proBrief': '', // 封面号介绍
+                    'labelPgc': [], // 封面号关键词
+                    'proAvatar': 'https://wapcdn.thecover.cn/fengmianhao/1.0.0/img/bg_proAvatar.png', // 封面号头像
+                    'proBackground': 'https://wapcdn.thecover.cn/fengmianhao/1.0.0/img/bg_PersonIDPicture.png' // 封面号背景图
+                }
+            }
+        },
+        computed: {
+            type: function () {
+                return helpers.LIST_OF_APPLICANT_TYPE[this.getUIType()];
+            },
+            ui_type: function () {
+                return this.getUIType();
+            },
+            canSubmit: function () {
+                return this.validateForm();
+            }
+        },
+        methods: {
+            getAccountInfo: function () {
+                return helpers.$post(helpers.apis().getAccountInfo, {});
+            },
+            getUIType: function () {
+                return this.data_of_form.proKind;
+            },
+            updateAccountInfo: function (payload) {
+                return helpers.$post(helpers.apis().updateAccountInfo, payload);
+            },
+            toggleEditText: function() {
+                $('#proBrief').removeAttr('readonly');
+                $('#proBrief').focus().select();
+            },
+            addLabel: function (evt) {
+                var labels = this.data_of_form.labelPgc;
+                evt.preventDefault();
+                if ($('#inputAccountKeywords').val().trim().length === 0) {
+                    return false;
+                }
+                if (labels.length === 3) {
+                    return false;
+                }
+                labels.push($('#inputAccountKeywords').val().trim());
+                $('#inputAccountKeywords').val('');
+            },
+            rmLabel: function (evt) {
+                var labels = this.data_of_form.labelPgc;
+                evt.preventDefault();
+                var $em = $(evt.target);
+                labels.splice($em.data('label-id'), 1)
+            },
+            validateForm: function () {
+                var self = this;
+
+                if (self.data_of_form.proBrief.length < 10 || self.data_of_form.proBrief.length > 30) {
+                    // alert('封面号介绍字段字数不符合');
+                    return false;
+                }
+                return true;
+            },
+            log: function (label, str) {
+                console.log(label + '=> ', JSON.stringify(str));
+            },
+            submit: function (evt) {
+                var self = this;
+                var obj = self.data_of_form;
+                var $btn = $(evt.target);
+                if ($btn.hasClass('error') || $btn.hasClass('processing')) {
+                    return false;
+                }
+                $btn.addClass('processing');
+                var to_be_posted = {
+                    proBrief: obj.proBrief, // 封面号介绍
+                    proAvatar: obj.proAvatar, // file:封面号头像
+                    proBackground: obj.proBackground, // file:封面号背景图
+                    labelPgc: obj.labelPgc // [封面号关键词标签]
+                };
+                if (self.validateForm()) {
+                    self.updateAccountInfo({
+                        'data': JSON.stringify(to_be_posted)
+                    }).then(function (result) {
+                        console.log('updateAccountInfo() => ', result);
+                        $btn.removeClass('processing');
+                        return $('#btn_submit_form').removeClass('available');
+                    }, function (code, msg) {
+                        $btn.removeClass('processing');
+                        return alert(JSON.stringify(msg));
+                    });
+                } else {
+                    alert('有项目填写错误!');
+                    $btn.removeClass('processing');
+                }
+            }
+        },
+        created: function () {
+            var self = this;
+            var renderPage = function () {
+                console.log('renderPage()');
+                self.getAccountInfo().then(function (res) {
+                    console.log('getAccountInfo() => ', JSON.stringify(res));
+                    self.data_of_form = res;
+                    self.ui_type = self.getUIType();
+                    self.data_of_form.labelPgc = JSON.parse(res.labelPgc);
+                    $('.account-management').removeClass('transparent');
+                });
+            };
+            renderPage();
+            $('.btn-raised').one('click', function() {
+                $('#btn_submit_form').addClass('available');
+            });
+        }
+    });
+</script>
+</body>
+
+</html>
