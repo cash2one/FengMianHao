@@ -270,10 +270,8 @@ var login_module = (function ($, LS) {
       //$('html, body').height(wH);
       $slides.width(wW);
       $slides.height(wH);
-      $('#main')
-          .css('height', (wH - 90 - 64) + 'px');
-      $('#main')
-          .css('min-height', (400) + 'px');
+      //$('#main').css('height', (wH - 90 - 64) + 'px');
+      $('#main').css('min-height', (wH - 90 - 64) + 'px');
     }
   };
 })(jQuery, window.localStorage);

@@ -222,7 +222,10 @@
                 <div class="grey-bg">
                     <p>如果在30分钟内没有收到我们的邮件,您可以:</p>
                     <p>1. 查看是否被误拦截放入垃圾邮件。</p>
-                    <p><span>2. 检查是否填写错误并</span><a href="/login/stage1">重新提交</a><span>。</span></p>
+                    <p><span>2. 检查是否填写错误并</span>
+                        <a id="reapply" href="javascript:void(0)">重新提交</a>
+                        <span>。</span>
+                    </p>
                 </div>
             </div>
 
@@ -242,6 +245,9 @@
     } else {
         $('#failed').removeClass('hidden');
     }
+    $('#reapply').on('click', function() {
+        return location.replace('/login/stage1' + '?inviteCode=' + getValueFromUrl('inviteCode'));
+    });
 </script>
 </body>
 

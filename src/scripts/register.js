@@ -129,7 +129,7 @@ var register_module = (function ($, LS) {
     },
     'redirectTo': function () {
       console.log('redirectTo(', helpers.destination_pages.page_activation_email_success_sent, ')');
-      return location.replace(helpers.destination_pages.page_activation_email_success_sent);
+      return location.replace(helpers.destination_pages.page_activation_email_success_sent + '?inviteCode=' + helpers.getValueFromUrl('inviteCode'));
     },
     'setSize': function () {
       $('#stage_one .has-account').css('height', $('#stage_one .form').height() + 'px');

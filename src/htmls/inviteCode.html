@@ -14,34 +14,132 @@
     <link href="./styles/register.css" rel="stylesheet" type="text/css">
     <style type="text/css">
         body {
+            position: relative;
             min-width: 1280px;
             padding: 0;
             margin: 0;
             border: none;
             font-family: -apple-system, "Hiragino Sans GB", Roboto, "Droid Sans", "Microsoft YaHei", "Microsoft YaHei UI", "Microsoft JhengHei UI", STHeiti, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Helvetica Neue", sans-serif;
-            background: url("http://wapcdn.thecover.cn/fengmianhao/1.0.0/img/bg.jpg") no-repeat center center fixed;
+            background: url("https://wapcdn.thecover.cn/fengmianhao/1.0.0/img/bg-login-slide-1.jpg") no-repeat center center fixed;
             background-size: cover;
+            -webkit-transition: opacity .2s ease-in;
+            -moz-transition: opacity .2s ease-in;
+            -ms-transition: opacity .2s ease-in;
+            -o-transition: opacity .2s ease-in;
+            transition: opacity .2s ease-in;
+            overflow-x: hidden;
+            overflow-y: hidden;
         }
 
         .hidden {
             display: none;
         }
 
-        #main {}
-
-        #main> div,
-        a {
-            color: black;
-            font-size: 20px;
-            text-align: center;
-            line-height: 50px;
+        #logo,
+        header nav {
+            bottom: 0;
+            position: absolute
         }
 
-        #main header {
-            height: 55px;
-            background-color: #e8faff;
+        #main,
+        header {
+            position: relative
+        }
+
+        #main {
+            background-repeat: no-repeat
+        }
+
+        #login_container,
+        #logo,
+        header nav {
+            position: absolute
+        }
+
+        #btn_login,
+        nav a {
+            text-align: center
+        }
+
+        #page_invitecode #content {
+            background-color: transparent;
+            padding: 0;
+        }
+
+        header {
+            height: 64px;
+            padding: 0;
+            width: 100%
+        }
+
+        header nav {
+            display: block;
+            width: auto;
+            right: 0
+        }
+
+        #logo {
+            width: 120px;
+            vertical-align: middle;
+            left: 0
+        }
+
+        nav .menu {
+            display: inline-block;
+            padding: 0 20px;
+            opacity: .8;
+            float: right;
+        }
+
+        nav .menu.slash {
+            padding: 0;
+            color: #fff;
+            line-height: 36px;
+            height: 36px;
+            display: inline-block;
+            border-right: 1px solid #fff;
+            -webkit-transform: rotate(15deg);
+            -moz-transform: rotate(15deg);
+            -ms-transform: rotate(15deg);
+            -o-transform: rotate(15deg);
+            transform: rotate(15deg);
+            -webkit-transform-origin: 50%;
+            -moz-transform-origin: 50%;
+            -ms-transform-origin: 50%;
+            -o-transform-origin: 50%;
+            transform-origin: 50%;
+        }
+
+        nav a {
+            height: 100%
+        }
+
+        nav .menu:last-of-type {
+            border-right: none
+        }
+
+        nav a {
+            display: block;
+            text-decoration: none;
             width: 100%;
-            border-bottom: 2px solid #eaeaea
+            line-height: 36px;
+            color: #fff;
+            font-size: 13px
+        }
+
+        #main {
+            min-height: 300px;
+            width: 60%;
+            position: relative;
+            top: 50%;
+            margin: 0 auto;
+            margin-top: -64px;
+            -webkit-transform: translateY(-50%);
+            -moz-transform: translateY(-50%);
+            -ms-transform: translateY(-50%);
+            -o-transform: translateY(-50%);
+            transform: translateY(-50%);
+            color: white;
         }
 
         #main header h1 {
@@ -56,178 +154,121 @@
         }
 
         #content {
-            width: 1280px;
-            margin-top: 20px;
+            width: 1004px;
             padding: 0;
-            background-color: #fff;
-            border-radius: 5px;
             margin: 0 auto;
             height: 100%;
         }
 
-        #stage_indictor {
-            position: relative;
-            margin: 60px auto;
-            height: 50px;
-            width: 43.75%
-        }
-
-        #stage_indictor .line {
-            width: 100%;
-            height: 6px;
+        #footer {
             position: absolute;
+            bottom: 0;
             left: 0;
-            top: 22px;
-            background-color: #d9d9d9
+            right: 0;
+            width: 100%;
+            font-size: 12px;
+            vertical-align: bottom;
+            line-height: 20px;
+            padding: 0 0 50px;
         }
 
-        #stage_indictor .dots {
-            position: absolute;
-            z-index: 10;
-            top: 0;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background-color: #d9d9d9;
-            line-height: 50px;
-            font-size: 20px;
+        #footer,
+        .my-btn {
             text-align: center;
-            user-select: none
         }
 
-        #stage_indictor .dots:hover {
-            cursor: not-allowed;
+        #footer,
+        #footer a {
+            color: #fff;
         }
 
-        #stage_indictor .dots.active {
-            background-color: #2AB5E2;
-            color: #fff
-        }
-
-        #stage_indictor .dots.active:after,
-        .fixed-width-input,
-        .input-wrapper label {
-            color: #585858
-        }
-
-        #stage_indictor #stage_one_dot {
-            left: 0
-        }
-
-        #stage_indictor .dots:after {
-            display: block;
+        .input-wrapper {
+            width: 100%;
+            margin-top: 30px;
             position: relative;
-            left: -15px;
-            top: 15px;
-            line-height: 18px;
-            font-size: 18px;
-            width: 80px;
-            height: auto;
-            text-align: center
+            font-size: 15px;
+            border: 2px solid #ffffff;
+            border-radius: 4px;
+            max-height: 60px;
+            padding: 15px 10px;
         }
-
-        #stage_indictor #stage_one_dot:after {
-            content: "注册帐号"
-        }
-
-        #stage_indictor #stage_two_dot:after {
-            content: "选择类型"
-        }
-
-        #stage_indictor #stage_three_dot:after {
-            content: "提交资料"
-        }
-
-        #stage_indictor #stage_two_dot {
-            left: 255px
-        }
-
-        #stage_indictor #stage_three_dot {
-            right: 0
-        }
-
-        .stages {
-            margin: 0 auto;
-            width: 1024px;
-            padding-top: 50px;
-            border-top: 2px solid #FAFAFA;
-        }
-
-        #stage_three h2 {
-            font-size: 22px;
-            font-weight: normal;
-            height: 50px;
-            line-height: 50px;
-            vertical-align: middle;
-            padding-left: 75px;
-            background-position: left center;
-            background-size: 50px;
-            background-repeat: no-repeat;
-            margin: 0 auto;
+        #btn_sendInviteCode {
+            display: block;
+            border: none;
             text-align: center;
+            font-size: 16px;
+            line-height: 35px;
+            margin: 0 auto;
+            margin-top: 30px;
+            color: #fff;
+            width: 145px;
+            padding: 0;
+            border-radius: 4px;
+            -moz-appearance: none!important;
+            -webkit-appearance: none!important;
+            appearance: none!important;
+            letter-spacing: .25em;
+            background: #3e60fa;
+            background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0,#3e60fa),color-stop(1,#203cc7));
+            background-image: -webkit-linear-gradient(bottom,#3e60fa 0,#203cc7 100%);
+            background-image: -webkit-linear-gradient(top,#3e60fa 0,#203cc7 100%);
+            background-image: linear-gradient(to bottom,#3e60fa 0,#203cc7 100%);
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3E60FA', endColorstr='#1e5799', GradientType=0 );
         }
-
-        #stage_three {
-            width: 43.75%;
-            margin: 100px auto;
-            padding-top: 100px;
+        #inputInviteCode {
+            width: 333px;
+            display: block;
+            margin: 0 auto;
+            margin-top: 40px;
+            position: relative;
+            font-size: 15px;
+            border: 2px solid rgba(255,255,255,.3);
+            border-radius: 4px;
+            max-height: 60px;
+            padding: 15px 10px;
+            background-color: rgba(255,255,255,.2);
         }
-
-        #stage_three a {
-            font-size: 18px;
-            text-decoration: underline;
-        }
-
-        #stage_three #processing h2 {
-            background-image: url("http://wapcdn.thecover.cn/fengmianhao/1.0.0/img/icon_reviewing.png");
-        }
-
-        #stage_three #failed h2 {
-            background-image: url("http://wapcdn.thecover.cn/fengmianhao/1.0.0/img/icon_exclamation.png");
-        }
-
-        .grey-bg {
-            font-size: 18px;
-            background-color: #d9d9d9;
+        #tips {
             text-align: center;
-            margin: 20px auto;
-            padding: 30px 0;
-            line-height: 30px;
+            margin-top: 70px;
         }
     </style>
 </head>
 
-<body class="page-register transparent">
-<header class="header-of-page">
-    <div> <img src="http://wapcdn.thecover.cn/fengmianhao/1.0.0/img/logo_inside_page.png"> </div>
-</header>
+<body id="page_invitecode" class="page-register transparent">
 <div id="content">
+    <header> <img src="http://wapcdn.thecover.cn/fengmianhao/1.0.0/img/logo_fengmianhao.png" id="logo">
+        <nav>
+            <ul>
+                <li class="menu"><a href="/page/others/inviteCode.html">邀请码注册</a></li>
+                <li class="menu slash"></li>
+                <li class="menu"><a href="/page/others/faq.html">常见问题</a></li>
+            </ul>
+        </nav>
+    </header>
     <div id="main">
-        <header>
-            <h1>申请入驻</h1> </header>
-        <div id="stage_indictor">
-            <div class="line"></div>
-            <div class="dots inactive" id="stage_one_dot">1</div>
-            <div class="dots inactive" id="stage_two_dot">2</div>
-            <div class="dots inactive" id="stage_three_dot">3</div>
-        </div>
-        <div id="stage_three">
-            <h1 style="font-size: 20px;text-align: center;">
+        <div class="invitecode-input-wrapper">
+            <h1 style="font-size: 20px;text-align: center; margin-top: 0;">
                 请输入邀请码
             </h1>
-            <div class="form-container">
-                <div class="form-group">
-                    <div class="input-group col-md-4" style="margin: 0 auto;"> <input type="text" id="inputInviteCode" maxlength="6" class="form-control"> <button class="btn btn-raised btn-info frozen" type="button" id="btn_sendInviteCode">
-                        确认
-                    </button> </div>
-                </div>
-            </div>
+            <input type="text" id="inputInviteCode" maxlength="6">
+            <button type="button" id="btn_sendInviteCode">
+            确认
+        </button>
         </div>
+        <p id="tips">*封面号目前采用邀请入驻形式,若没有邀请码,请保持关注封面号平台动态</p>
     </div>
+    <footer id="footer">
+        <p> <a href="http://www.thecover.cn/aboutUs_about#about" target="_blank">关于我们</a> <a href="http://www.thecover.cn/aboutUs_about#contact" target="_blank">联系我们</a> <a href="http://www.thecover.cn/aboutUs_about#copyright" target="_blank">版权声明</a> <a href="mailto:content@thecover.cn">我要爆料</a> <a href="mailto:biz@thecover.cn">咨询邮箱：biz@thecover.cn</a> </p>
+        <p>© CopyRight 2016, thecover.cn, Inc.All Rights Reserved. 蜀ICP备15028104号-1 互联网新闻信息服务许可证：5112016001</p>
+    </footer>
 </div>
 <script src="https://wapcdn.thecover.cn/fengmianhao/1.0.0/scripts/jquery_bootstrap_material_bootstrapDialog_v0722.js"></script>
 <script src="./scripts/helpers.js"></script>
 <script type="application/javascript">
+    $('html, body').height($(window).height());
+    $('html, body').width($(window).width());
+
     function getValueFromUrl(name) {
         var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
         var r = window.location.search.substr(1).match(reg);
@@ -248,12 +289,12 @@
             'data': JSON.stringify({
                 'inviteCode': $('#inputInviteCode').val().toUpperCase()
             })
-        }).then(function(result) {
+        }).then(function (result) {
             console.log(result.inviteCode);
             $('#btn_sendInviteCode').removeClass('frozen');
             location.replace('/login/stage1' + '?inviteCode=' + result.inviteCode);
             // 去登陆页面
-        }, function(status, message) {
+        }, function (status, message) {
             alert(JSON.stringify(message));
             $('#btn_sendInviteCode').removeClass('frozen');
         });

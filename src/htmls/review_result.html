@@ -227,7 +227,7 @@
                 </h2>
                 <p class="grey-bg">未通过的原因已经发送至您的邮箱和手机,
                     <br/> 请按照本平台规则
-                    <a href="/login/stage1">重新提交资料</a>
+                    <a id="reapply" href="javascript:void(0)">重新提交资料</a>
                     。
                 </p>
             </div>
@@ -247,6 +247,10 @@
     } else {
         $('#failed').removeClass('hidden');
     }
+    $('#reapply').on('click', function() {
+        // TO BE DONE
+        return location.replace('/login/stage1' + '?inviteCode=' + getValueFromUrl('inviteCode'));
+    });
 </script>
 </body>
 
