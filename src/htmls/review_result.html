@@ -180,6 +180,7 @@
         #stage_three #processing h2 {
             background-image: url("http://wapcdn.thecover.cn/fengmianhao/1.0.0/img/icon_reviewing.png");
         }
+
         #stage_three #failed h2 {
             background-image: url("http://wapcdn.thecover.cn/fengmianhao/1.0.0/img/icon_exclamation.png");
         }
@@ -197,9 +198,7 @@
 
 <body class="page-register transparent">
 <header class="header-of-page">
-    <div>
-        <img src="http://wapcdn.thecover.cn/fengmianhao/1.0.0/img/logo_inside_page.png">
-    </div>
+    <div> <img src="http://wapcdn.thecover.cn/fengmianhao/1.0.0/img/logo_inside_page.png"> </div>
 </header>
 <div id="content">
     <div id="main">
@@ -216,17 +215,15 @@
                 <h2>
                     您的资料已经提交成功,进入等待审核状态
                 </h2>
-                <p class="grey-bg">我们将在1~3个工作日内审核您的资料,
-                    <br/> 并将结果以短信和电邮的形式同时反馈给您。
-                </p>
-                <a href="/page/others/user_agreement.html" target="_blank">了解更多封面号政策</a>
-            </div>
+                <p class="grey-bg">我们将在1~3个工作日内审核您的资料, <br/> 并将结果以短信和电邮的形式同时反馈给您。 </p> <a href="/page/others/user_agreement.html" target="_blank">了解更多封面号政策</a> </div>
             <div class="hidden" id="failed">
                 <h2>
                     很抱歉,您提交的资料未能通过审核
                 </h2>
-                <p class="grey-bg">未通过的原因已经发送至您的邮箱和手机,
-                    <br/> 请按照本平台规则
+                <p class="grey-bg">
+                    未通过的原因已经发送至您的邮箱和手机,
+                    <br/>
+                    请按照本平台规则
                     <a id="reapply" href="javascript:void(0)">重新提交资料</a>
                     。
                 </p>
@@ -247,7 +244,7 @@
     } else {
         $('#failed').removeClass('hidden');
     }
-    $('#reapply').on('click', function() {
+    $('#reapply').on('click', function () {
         // TO BE DONE
         return location.replace('/login/stage1' + '?inviteCode=' + getValueFromUrl('inviteCode'));
     });
