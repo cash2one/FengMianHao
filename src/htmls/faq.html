@@ -7,72 +7,262 @@
     <meta content="IE=Edge" http-equiv="X-UA-Compatible">
     <meta content="webkit" name="renderer">
     <meta content="telephone=no,address=no,email=no" name="format-detection">
-    <title>封面号常见问题汇总</title>
-    <link href="http://wapcdn.thecover.cn/wap/1.0.0/img/favicon.png" rel="alternate icon" type="image/png">
-    <link href="http://wapcdn.thecover.cn/wap/1.0.0/img/favicon.png" rel="apple-touch-icon-precomposed">
+    <title>封面号|常见问题</title>
+    <link href="https://wapcdn.thecover.cn/wap/1.0.0/img/favicon.png" rel="alternate icon" type="image/png">
+    <link href="https://wapcdn.thecover.cn/wap/1.0.0/img/favicon.png" rel="apple-touch-icon-precomposed">
+    <link href="./styles/register.css" rel="stylesheet" type="text/css">
     <style type="text/css">
         body {
+            min-width: 1280px;
+            padding: 0;
+            margin: 0;
+            border: none;
             font-family: -apple-system, "Hiragino Sans GB", Roboto, "Droid Sans", "Microsoft YaHei", "Microsoft YaHei UI", "Microsoft JhengHei UI", STHeiti, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Helvetica Neue", sans-serif;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        #main header {
+            height: 55px;
+            background-color: rgb(229, 230, 233);
             width: 100%;
-            overflow-x: hidden;
-            overflow-y: scroll;
         }
 
-        header,
+        #main header h1 {
+            margin: 0;
+            margin-left: 35px;
+            font-size: 18px;
+            line-height: 55px;
+            font-weight: 400
+        }
+
+        .hidden {
+            display: none
+        }
+
         #content {
-            width: 80%;
+            width: 1280px;
+            margin-top: 20px;
+            padding: 0;
+            background-color: #fff;
+            border-radius: 5px;
             margin: 0 auto;
+            height: 100%;
         }
 
-        h1 {
-            text-align: center;
+
+        .stages {
+            margin: 0 auto;
+            width: 1024px;
+            padding-top: 50px;
+            border-top: 2px solid #FAFAFA;
+        }
+        #stage_three {
+            width: 43.75%;
+            margin: 0;
+            position: relative;
+            box-shadow: 1px 1px 5px 1px #87808066
         }
 
-        #content p {
-            text-align: center;
-            line-height: 1.8rem;
-            margin-bottom: 1rem;
-            font-size: 1.125rem;
+        #stage_three .nav {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 300px;
+            background-color: rgb(53, 60, 76);
+            color: white;
+            /*flex-grow: 1;*/
+            flex-basis: auto;
+            margin: auto;
+            z-index: 100;
         }
 
+        #stage_three .nav ul, #stage_three .nav li {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        #stage_three .nav .nav-item {
+            line-height: 20px;
+            padding: 25px 30px;
+            font-size: 16px;
+            text-align: left;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        #stage_three .nav .nav-item.current {
+            background-color: rgb(41, 48, 60);
+        }
+
+        #stage_three .nav .nav-item:hover {
+            cursor: pointer;
+            background-color: rgb(41, 48, 60);
+        }
+
+        #stage_three .details-area {
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            width: 1280px;
+            padding: 25px 20px;
+            padding-left: 320px;
+            border-bottom: 2px solid rgb(241, 242, 244);
+            border-right: 2px solid rgb(241, 242, 244);
+            overflow-x: hidden;
+            overflow-y: hidden;
+        }
+        #stage_three a {
+            font-size: 18px;
+            text-decoration: underline;
+        }
+        h2#question_title {
+            line-height: 20px;
+            font-size: 16px;
+            border-bottom: 2px solid rgb(241, 242, 244);
+            text-align: left;
+            margin: 0;
+            padding: 0;
+            padding-bottom: 25px;
+        }
         #footer {
-            color: black;
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
             font-size: 12px;
-            text-align: center;
             vertical-align: bottom;
             line-height: 20px;
             width: 100%;
-            padding: 0px 0 50px 0;
+            padding: 0 0 50px;
+            text-align: center;
+        }
+        #footer a {
+            text-decoration: none;
+            color: rgb(88, 88, 88);
         }
 
-        #footer a {
-            color: black;
-            text-decoration: none;
-        }
     </style>
 </head>
 
-<body>
-<header>
-    <h1>《封面号常见问题汇总》</h1>
+<body class="page-register transparent">
+<header class="header-of-page">
+    <div>
+        <img src="https://wapcdn.thecover.cn/fengmianhao/1.0.0/img/logo_inside_page.png">
+    </div>
 </header>
 <div id="content">
-    <p>1、 从哪里看到我的收益?</p>
-
-    <p>2、为什么没有认证功能？</p>
-
-    <p>3、从哪里导入我其他平台的内容？</p>
-
-    <p>4、封面号为什么不能扫二维码关注？</p>
-
-    <p>5、我的文章为什么会审核不通过？</p>
-
-    <p>6、如何才能被推荐？</p>
+    <div id="main">
+        <header>
+            <h1>常见问题列表</h1>
+        </header>
+        <div id="stage_three">
+                <div class="nav">
+                    <ul>
+                        <li class="nav-item">
+                            1、如何获得邀请码？
+                        </li>
+                        <li class="nav-item">
+                            2、邀请码如何使用？
+                        </li>
+                        <li class="nav-item">
+                            3、入驻封面号平台有哪些步骤？
+                        </li>
+                        <li class="nav-item">
+                            4、注册封面号需要提交哪些材料？
+                        </li>
+                        <li class="nav-item">
+                            5、平台奖励怎么看？
+                        </li>
+                        <li class="nav-item">
+                            6、什么是一键排版功能？
+                        </li>
+                        <li class="nav-item">
+                            7、文章被推荐是什么状态？
+                        </li>
+                    </ul>
+                </div>
+            <div class="details-area">
+                <h2 id="question_title"></h2>
+                <div class="details-question hidden">
+                    <p>为保证良好的用户体验，封面号平台前期采用邀请制入驻。</p>
+                    <p>从以下两种途径能获得邀请码：</p>
+                    <p>第一，封面号将主动向一些优秀的并且与封面新闻用户调性一致的自媒体作者、媒体以及政府机构发放邀请码；</p>
+                    <p>第二，优秀自媒体可通过wm@thecover.cn主动与封面号团队联系，我们将根据具体情况进行审核，向申请自媒体发放邀请码入驻封面号平台。</p>
+                </div>
+                <div class="details-question hidden">
+                    <p>邀请码用于注册封面号账号，一个邀请码只能被使用一次。</p>
+                    <p>使用邀请码完成了注册流程，即算作使用了该邀请码，不可继续使用；</p>
+                    <p>若输入了邀请码但未注册，或未激活邮件，仍可继续使用该邀请码。</p>
+                </div>
+                <div class="details-question hidden">
+                    <p>目前入驻封面号的前提条件是拥有邀请码，所以第一步请获得邀请码；</p>
+                    <p>第二步注册封面号平台，这里需注意，一个邮箱仅能注册一个封面号账号</p>
+                    <p>为了保证您的账号安全，注册后我们将向您的注册邮箱发送激活邮件，半小时内点击激活链接即完成了注册流程；</p>
+                    <p>第三步选择封面号类型，目前我们支持六种基本类型；</p>
+                    <p>第四步提交该类型所需资料，即可完成入驻申请，我们将在两个工作日内对您的资料进行审核，并以邮件的方式通知您审核结果。</p>
+                </div>
+                <div class="details-question hidden">
+                    <p>不同类型封面号所需提交材料如下：</p>
+                    <img style="width: 100%; height: auto;" src="https://wapcdn.thecover.cn/fengmianhao/1.0.0/img/required_credentials.jpg">
+                </div>
+                <div class="details-question hidden">
+                    <p>前期封面号尚处公测阶段，平台奖励规则及查看入口将于10月左右上线。</p>
+                </div>
+                <div class="details-question hidden">
+                    <p>新建文章的文本编辑框右下侧有一键排版功能，点击即可使用。</p>
+                    <p>使用一键排版功能后，文章中的文本字体、大小、字间距、行间距、排列方式自动转变为封面新闻APP上的最佳浏览效果。</p>
+                </div>
+                <div class="details-question hidden">
+                    <p>封面新闻采用人工+机器推荐，以达到最好的内容匹配效果。</p>
+                    <p>文章被推荐表示该文章在后台被推荐至了推荐频道或一二级频道，同时该文章匹配给了更精准的读者群。</p>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 <footer id="footer">
     <p> <a href="http://www.thecover.cn/aboutUs_about#about" target="_blank">关于我们</a> <a href="http://www.thecover.cn/aboutUs_about#contact" target="_blank">联系我们</a> <a href="http://www.thecover.cn/aboutUs_about#copyright" target="_blank">版权声明</a> <a href="mailto:content@thecover.cn">我要爆料</a> <a href="mailto:biz@thecover.cn">咨询邮箱：biz@thecover.cn</a> </p>
     <p>© CopyRight 2016, thecover.cn, Inc.All Rights Reserved. 蜀ICP备15028104号-1 互联网新闻信息服务许可证：5112016001</p>
 </footer>
+<script src="https://wapcdn.thecover.cn/fengmianhao/1.0.0/scripts/jquery_v2.1.4.min.js" type="text/javascript"></script>
+<script type="application/javascript">
+    init();
+    function init() {
+        $('#stage_three, .details-area').css('height', $('.nav').height() + 'px');
+        bindEvents();
+        console.log('L216: showSection()');
+        showSection((location.hash).replace('#',''));
+    }
+    function bindEvents() {
+        $(window).on("hashchange", function (evt) {
+            evt.preventDefault();
+            showSection((location.hash).replace('#',''));
+        });
+        $(".nav-item").on("click", function (n) {
+            console.log('clicked');
+            n.preventDefault();
+            showSection($(this).index());
+        })
+    }
+    function showSection(hash) {
+        console.log('showSection(', hash, ')');
+        location.hash = hash;
+        var $current_section = $('.details-question').eq(hash);
+        var $current_nav = $('.nav-item').eq(hash);
+        $('#question_title').text($current_nav.text());
+        $current_section.siblings(".details-question").addClass("hidden");
+        $current_nav.siblings(".nav-item").removeClass("current");
+        $current_section.removeClass("hidden");
+        $current_nav.addClass("current");
+        $current_section.scrollTop(0);
+    }
+</script>
 </body>
 
 </html>
