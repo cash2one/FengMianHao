@@ -232,6 +232,7 @@
     </div>
 </div>
 <script src="https://wapcdn.thecover.cn/fengmianhao/1.0.0/scripts/jquery_v2.1.4.min.js" type="text/javascript"></script>
+<script src="./scripts/helpers.js" type="text/javascript"></script>
 <script type="application/javascript">
     function getValueFromUrl(name) {
         var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
@@ -246,7 +247,13 @@
     }
     $('#reapply').on('click', function () {
         // TO BE DONE
-        return location.replace('/login/stage1' + '?inviteCode=' + getValueFromUrl('inviteCode'));
+        return helpers.$post(helpers.apis().changeUserStatus, {
+            'data': JSON.stringify('MADE IN CHENGDU BY SHANGHAIESE')
+        }).then(function () {
+            return location.replace('/login/stage2');
+        }, function(code, msg) {
+            return alert(JSON.stringify(msg));
+        });
     });
 </script>
 </body>

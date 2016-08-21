@@ -18,6 +18,7 @@ window.helpers = (function ($, LS) {
         'registerStageThree': CONFIG.API_BASE_URL + '/user/checkIn', // 注册--第三步,提交某类型的表单
         'getChannelList': CONFIG.API_BASE_URL + '/login/getChannelList', // 注册--第三步,获取领域列表
         'getProvinceList': CONFIG.API_BASE_URL + '/common/province', // 注册--第三步,获取省市列表
+        'changeUserStatus': CONFIG.API_BASE_URL + '/user/changeStatus', // 注册--已注册未通过的用户重新提交资料
         'getNotifications': CONFIG.API_BASE_URL + '/notice/list', // 通知中心--获取所有通知的列表
         'postReadNotice': CONFIG.API_BASE_URL + '/notice/detail', // 通知中心--置某条未读通知为已读状态
         'resetPassword': CONFIG.API_BASE_URL + '/login/resetPassword', // 重置密码
