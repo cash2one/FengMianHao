@@ -85,14 +85,22 @@
     text-align: right;
 }
 #table_of_broadcasting .flag-of-read {
-    font-size: 7px;
-    width: 10px;
+    /*font-size: 7px;*/
+    margin-left: 5px;
+    width: 7px;
+    height: 7px;
+    background-color: #2AB5E2;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
 }
 #table_of_broadcasting .flag-of-read.unread {
     color: #2AB5E2;
+    background-color: #2AB5E2;
 }
 #table_of_broadcasting .flag-of-read.read {
     color: #000;
+    background-color: #000;
 }
 .toggle-dropdown-detail {
     position: absolute;
