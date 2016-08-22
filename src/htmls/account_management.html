@@ -17,6 +17,16 @@
         .form-group a.upload-img {
             float: right;
         }
+        #stage_three_form .form-group label.control-label {
+            margin-top: 0;
+            padding-top: 0;
+        }
+        .container-upload-img {
+            padding-top: 0;
+        }
+        a.upload-img {
+            margin-top: 0;
+        }
     </style>
 </head>
 
@@ -266,6 +276,13 @@
                 }
                 if (labels.length === 3) {
                     return false;
+                }
+
+                for (var i = 0; i < labels.length; ++i) {
+                    console.log(labels[i]);
+                    if (labels[i] === $('#inputAccountKeywords').val().trim()) {
+                        return false;
+                    }
                 }
                 labels.push($('#inputAccountKeywords').val().trim());
                 $('#inputAccountKeywords').val('');
