@@ -17,12 +17,17 @@ var login_module = (function ($, LS) {
   return {
     'init': function () {
       var self = this;
+      $(document).ready(function() {
+        $('#fullpage').fullpage({
+          navigation: true,
+          navigationPosition: 'left'
+        });
+      });
       Promise.race([helpers.setBackgroundImg($('.slide-1')), helpers.delay(1000)])
           .then(function () {
             $body.removeClass('transparent');
             $.each($slides, function (idx, val) {
-              if (!$(val)
-                      .hasClass('slide-1')) {
+              if (!$(val).hasClass('slide-1')) {
                 helpers.setBackgroundImg($(val));
               }
             });
@@ -35,25 +40,23 @@ var login_module = (function ($, LS) {
     },
     'bindEvent': function () {
       var self = this;
-      self.wheel_scroll_throttle(function (evt) {
-        var dir = evt.originalEvent.deltaY > 0 ? 'next' : 'prev';
-        evt.preventDefault();
-        if ($window.hasClass('animating')) {
-          return false;
-        } else {
-          return self.slide(dir);
-        }
-      }, 250);
-      $window.on('resize', function () {
-        wW = $window.width();
-        wH = $window.height();
-        self.setSize()
+      //self.wheel_scroll_throttle(function (evt) {
+      //  var dir = evt.originalEvent.deltaY > 0 ? 'next' : 'prev';
+      //  evt.preventDefault();
+      //  if ($window.hasClass('animating')) {
+      //    return false;
+      //  } else {
+      //    return self.slide(dir);
+      //  }
+      //}, 250);
+      //$window.on('resize', function () {
+      //  wW = $window.width();
+      //  wH = $window.height();
+      //  self.setSize()
+      //});
+      $('#login_container').on('change', function () {
+        $login_error_msg.text('').addClass('hidden');
       });
-      $('#login_container')
-          .on('change', function () {
-            $login_error_msg.text('')
-                .addClass('hidden');
-          });
       $input_email.on('change keyup', function () {
         if ($(this)
                 .val()
@@ -155,64 +158,64 @@ var login_module = (function ($, LS) {
         self.changeCaptcha($('#the_captcha'));
       });
     },
-    'wheel_scroll_throttle': function (callback, delay) {
-      $window.on('wheel', function (evt) {
-        if (Timer_Scroll) {
-          window.clearTimeout(Timer_Scroll);
-        }
-        Timer_Scroll = window.setTimeout(function () {
-          callback(evt);
-        }, delay);
-      });
-    },
-    'slide': function (arg) {
-      var self = this
-      console.log('slide(', arg, ')');
-      console.log('curr_slide_idx: ', curr_slide_idx);
-      if (arg === 'prev') {
-        if (curr_slide_idx <= 0) {
-          return false;
-        } else {
-          self.animateSlide(-1)
-              .then(function () {
-                $window.removeClass('animating');
-                curr_slide_idx = Math.max(0, curr_slide_idx - 1);
-              });
-        }
-      } else if (arg === 'next') {
-        if (curr_slide_idx >= total_slides - 1) {
-          console.log('curr_slide_idx === total_slides - 1');
-          return false;
-        } else {
-          self.animateSlide(+1)
-              .then(function () {
-                $window.removeClass('animating');
-                curr_slide_idx = Math.min(total_slides - 1, curr_slide_idx + 1);
-              });
-        }
-      } else {
-        console.log('else');
-      }
-    },
-    'animateSlide': function (step) {
-      console.log('animateSlide(', step, ')');
-      $window.addClass('animating');
-      var $d = $.Deferred();
-      if (step > 0) {
-        $wrapper.animate({
-          marginTop: '-=' + ((wH * Math.abs(step)) + 'px')
-        }, 300, function () {
-          $d.resolve();
-        });
-      } else {
-        $wrapper.animate({
-          marginTop: '+=' + ((wH * Math.abs(step)) + 'px')
-        }, 300, function () {
-          $d.resolve();
-        });
-      }
-      return $d.promise();
-    },
+    //'wheel_scroll_throttle': function (callback, delay) {
+    //  $window.on('wheel', function (evt) {
+    //    if (Timer_Scroll) {
+    //      window.clearTimeout(Timer_Scroll);
+    //    }
+    //    Timer_Scroll = window.setTimeout(function () {
+    //      callback(evt);
+    //    }, delay);
+    //  });
+    //},
+    //'slide': function (arg) {
+    //  var self = this
+    //  console.log('slide(', arg, ')');
+    //  console.log('curr_slide_idx: ', curr_slide_idx);
+    //  if (arg === 'prev') {
+    //    if (curr_slide_idx <= 0) {
+    //      return false;
+    //    } else {
+    //      self.animateSlide(-1)
+    //          .then(function () {
+    //            $window.removeClass('animating');
+    //            curr_slide_idx = Math.max(0, curr_slide_idx - 1);
+    //          });
+    //    }
+    //  } else if (arg === 'next') {
+    //    if (curr_slide_idx >= total_slides - 1) {
+    //      console.log('curr_slide_idx === total_slides - 1');
+    //      return false;
+    //    } else {
+    //      self.animateSlide(+1)
+    //          .then(function () {
+    //            $window.removeClass('animating');
+    //            curr_slide_idx = Math.min(total_slides - 1, curr_slide_idx + 1);
+    //          });
+    //    }
+    //  } else {
+    //    console.log('else');
+    //  }
+    //},
+    //'animateSlide': function (step) {
+    //  console.log('animateSlide(', step, ')');
+    //  $window.addClass('animating');
+    //  var $d = $.Deferred();
+    //  if (step > 0) {
+    //    $wrapper.animate({
+    //      marginTop: '-=' + ((wH * Math.abs(step)) + 'px')
+    //    }, 300, function () {
+    //      $d.resolve();
+    //    });
+    //  } else {
+    //    $wrapper.animate({
+    //      marginTop: '+=' + ((wH * Math.abs(step)) + 'px')
+    //    }, 300, function () {
+    //      $d.resolve();
+    //    });
+    //  }
+    //  return $d.promise();
+    //},
     'changeCaptcha': function ($img) {
       helpers.$post(helpers.apis()
               .getCaptcha, {})
@@ -268,8 +271,8 @@ var login_module = (function ($, LS) {
     'setSize': function () {
       //$('html, body').width(wW);
       //$('html, body').height(wH);
-      $slides.width(wW);
-      $slides.height(wH);
+      //$slides.width(wW);
+      //$slides.height(wH);
       //$('#main').css('height', (wH - 90 - 64) + 'px');
       $('#main').css('min-height', (wH - 90 - 64) + 'px');
     }

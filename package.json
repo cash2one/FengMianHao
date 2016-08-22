@@ -14,6 +14,7 @@
     "bootstrap": "^3.3.6",
     "bootstrap-dialog": "^1.34.6",
     "bootstrap-material-design": "^0.5.10",
+    "fullpage.js": "^2.8.4",
     "jquery": "^1.12.4",
     "materialize-css": "^0.97.6",
     "normalize.css": "^4.2.0",

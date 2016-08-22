@@ -415,3 +415,7 @@ em.flag-required {
 .account-management {
     background-color: white;
 }
+
+.btn:not(.btn-raised).btn-primary, .input-group-btn .btn:not(.btn-raised).btn-primary {
+    color: #2dc2e8;
+}

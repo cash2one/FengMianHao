@@ -301,3 +301,13 @@ nav a {
     line-height: 20px;
     text-align: center;
 }
+
+#fp-nav ul li a span, .fp-slidesNav ul li a span {
+    background: rgba(255, 255, 255, 0.6) !important;
+    height: 6px;
+    width: 6px;
+    margin: -3px 0 0 -3px;
+}
+#fp-nav ul li a.active span {
+    background: rgba(255, 255, 255, 0.8) !important;
+}
