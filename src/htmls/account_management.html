@@ -13,6 +13,11 @@
     <link href="https://wapcdn.thecover.cn/fengmianhao/1.0.0/styles/normalize_bootstrap_material_dialog_v0722.css" rel="stylesheet" type="text/css">
     <link href="./styles/all.css" rel="stylesheet" type="text/css">
     <link href="./styles/register_form.css" rel="stylesheet" type="text/css">
+    <style type="text/css">
+        .form-group a.upload-img {
+            float: right;
+        }
+    </style>
 </head>
 
 <body>
@@ -60,11 +65,11 @@
                                    href="javascript:void(0)">
                                     修改
                                 </a>
-                                <p class="tips-of-uploading avatar">
-                                    要求清晰、健康、代表自媒体形象
-                                    <br>
-                                    请勿使用二维码,最大5M
-                                </p>
+                                <!--<p class="tips-of-uploading avatar">-->
+                                    <!--要求清晰、健康、代表自媒体形象-->
+                                    <!--<br>-->
+                                    <!--请勿使用二维码,最大5M-->
+                                <!--</p>-->
                             </div>
                         </div>
                     </div>
@@ -87,11 +92,11 @@
                                    href="javascript:void(0)">
                                     修改
                                 </a>
-                                <p class="tips-of-uploading">
-                                    要求符合封面号风格
-                                    <br>
-                                    请勿使用二维码,最大5M
-                                </p>
+                                <!--<p class="tips-of-uploading">-->
+                                    <!--要求符合封面号风格-->
+                                    <!--<br>-->
+                                    <!--请勿使用二维码,最大5M-->
+                                <!--</p>-->
                             </div>
                         </div>
                     </div>
@@ -203,10 +208,7 @@
             </form>
             <div class="form-group btn-wrapper">
                 <div class="my-btn" id="btn_submit_form" v-bind:class="{'available': canSubmit}" v-on:click.stop="submit($event)">
-                    确认
-                </div>
-                <div class="my-btn" id="btn_cancel" v-on:click.stop="cancel($event)">
-                    取消
+                    提交
                 </div>
             </div>
         </div>
@@ -226,7 +228,7 @@
                 data_of_form: {
                     'proBrief': '', // 封面号介绍
                     'labelPgc': [], // 封面号关键词
-                    'proAvatar': 'https://wapcdn.thecover.cn/fengmianhao/1.0.0/img/bg_proAvatar.png', // 封面号头像
+                    'proAvatar': 'https://wapcdn.thecover.cn/fengmianhao/1.0.0/img/bg_AvatarPicture.png', // 封面号头像
                     'proBackground': 'https://wapcdn.thecover.cn/fengmianhao/1.0.0/img/bg_PersonIDPicture.png' // 封面号背景图
                 }
             }
