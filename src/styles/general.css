@@ -68,7 +68,12 @@ body {
 #footer a {
     text-decoration: none
 }
-
+.slides #footer {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
 .my-btn {
     -webkit-transition: background-color .2s ease-in;
     transition: background-color .2s ease-in;
