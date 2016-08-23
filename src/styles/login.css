@@ -147,7 +147,9 @@ nav a {
     max-height: 60px;
     padding: 15px 10px;
 }
-
+#input_passwd {
+    font-family: monospace;
+}
 .full-width-input,
 .input-wrapper label {
     margin-bottom: 0;
@@ -163,8 +165,8 @@ nav a {
     border-bottom-color: #F74937
 }
 #login_container input {
-    background-color: transparent;
-    color: white;
+    background-color: transparent !important;
+    color: white !important;
 }
 #login_container img {
     vertical-align: middle;
@@ -310,4 +312,13 @@ nav a {
 }
 #fp-nav ul li a.active span {
     background: rgba(255, 255, 255, 0.8) !important;
+}
+
+#login_container input:-webkit-autofill,
+#login_container input:-webkit-autofill:hover,
+#login_container input:-webkit-autofill:focus,
+#login_container textarea:-webkit-autofill,
+#login_container select:-webkit-autofill {
+    background-color: rgba(0, 0, 0, 0) !important;
+    color: rgb(255, 255, 255) !important;
 }
