@@ -185,9 +185,12 @@ nav a {
 }
 
 .full-width-input {
-    width: 210px;
-    padding-left: 10px;
-    padding-right: 10px;
+    /*width: 210px;*/
+    /*padding-left: 10px;*/
+    /*padding-right: 10px;*/
+    width: 190px;
+    margin-left: 10px;
+    margin-right: 10px;
     right: 0;
     vertical-align: bottom;
 }
