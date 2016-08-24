@@ -43,7 +43,10 @@ var register_module = (function ($, LS) {
         self.changeCaptcha($('#the_captcha'));
       });
       $btn_register.on('click', function () {
-        if ($btn_register.hasClass('error') || $btn_register.hasClass('processing')) {
+        if(!$(this).hasClass('available')) {
+          return false;
+        }
+        if ($(this).hasClass('error') || $(this).hasClass('processing')) {
           return false;
         }
         if(!helpers.getValueFromUrl('inviteCode')) {
