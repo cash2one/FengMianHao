@@ -203,8 +203,10 @@ var form = new Vue({
       return true;
     },
     submit: function (evt) {
-      var self = this;
       var $btn = $(evt.target);
+      if(!$btn.hasClass('available')) {
+        return false;
+      }
       if ($btn.hasClass('error') || $btn.hasClass('processing')) {
         return false;
       }

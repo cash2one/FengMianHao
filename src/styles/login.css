@@ -175,28 +175,27 @@ nav a {
     margin-top: -8px;
 }
 #login_container label {
-    z-index: 10;
-    left: 40px;
-    width: 70px;
     color: white;
+    left: 40px;
+    width: 55px;
+    z-index: 10;
 }
 #login_container .checkbox .checkbox-material .check, #login_container label.checkbox-inline .checkbox-material .check {
     border-color: rgba(255,255,255,0.75);
 }
 
 .full-width-input {
-    /*width: 210px;*/
-    /*padding-left: 10px;*/
-    /*padding-right: 10px;*/
-    width: 190px;
+    width: 186px;
+    right: 0;
     margin-left: 10px;
     margin-right: 10px;
-    right: 0;
+    padding-left: 10px;
+    padding-right: 10px;
     vertical-align: bottom;
 }
 #captcha .full-width-input {
-    width: 140px;
-    right: 70px;
+    width: 100px;
+    right: 85px;
 }
 #input_captcha_container {
     border-bottom: none;

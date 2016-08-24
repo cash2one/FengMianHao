@@ -89,7 +89,7 @@ body {
 }
 
 input[type=password] {
-    /*font-family: monospace*/
+    font-family: -apple-system, "Hiragino Sans GB", Roboto, "Droid Sans", "Microsoft YaHei", "Microsoft YaHei UI", "Microsoft JhengHei UI", STHeiti, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Helvetica Neue", sans-serif;
 }
 
 .help-block.input-error {
