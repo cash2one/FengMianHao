@@ -324,3 +324,7 @@ nav a {
     background-color: rgba(0, 0, 0, 0) !important;
     color: rgb(255, 255, 255) !important;
 }
+.menu a:hover {
+    color: rgb(42, 181, 226);
+    text-decoration: none;
+}
