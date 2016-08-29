@@ -8,16 +8,16 @@
     <meta content="webkit" name="renderer">
     <meta content="telephone=no,address=no,email=no" name="format-detection">
     <title>封面号|注册</title>
-    <link href="http://wapcdn.thecover.cn/wap/1.0.0/img/favicon.png" rel="alternate icon" type="image/png">
-    <link href="http://wapcdn.thecover.cn/wap/1.0.0/img/favicon.png" rel="apple-touch-icon-precomposed">
-    <link href="https://wapcdn.thecover.cn/fengmianhao/1.0.0/styles/normalize_bootstrap_material_dialog_v0722.css" rel="stylesheet" type="text/css">
+    <link href="https://wapcdn.thecover.cn/wap/1.0.0/img/favicon.png" rel="alternate icon" type="image/png">
+    <link href="https://wapcdn.thecover.cn/wap/1.0.0/img/favicon.png" rel="apple-touch-icon-precomposed">
+    <link href="https://wapcdn.thecover.cn/fengmianhao/1.0.0/styles/normalize_bootstrap_material_dialog_v0816.css" rel="stylesheet" type="text/css">
     <link href="./styles/all.css" rel="stylesheet" type="text/css">
     <link href="./styles/register_form.css" rel="stylesheet" type="text/css">
 </head>
 
 <body class="page-register-form" id="page_register_form">
 <header class="header-of-page">
-    <div><img src="http://wapcdn.thecover.cn/fengmianhao/1.0.0/img/logo_inside_page.png"></div>
+    <div><img src="https://wapcdn.thecover.cn/fengmianhao/1.0.0/img/logo_inside_page.png"></div>
 </header>
 <div id="content">
     <div id="main">
@@ -30,7 +30,7 @@
             <div class="dots active" id="stage_three_dot">3</div>
         </div>
         <div class="stages" id="stage_three">
-            <form id="stage_three_form" class="form-horizontal" v-on:change="log('form changed')">
+            <form id="stage_three_form" class="form-horizontal" v-on:change="validateForm()">
                 <fieldset>
                     <legend>运营主体信息</legend>
                     <!--主体类型-->
@@ -41,23 +41,25 @@
                     </div>
                     <!--机构名称-->
                     <div class="form-group">
-                        <label for="inputOrgName" class="col-md-4 control-label">
+                        <label for="OrgName" class="col-md-4 control-label">
                             <em class="flag-required">*</em>
                             机构名称:
                         </label>
                         <div class="col-md-7">
-                            <input type="text" class="form-control" id="inputOrgName" required maxlength="30" v-model="data_of_form.OrgName">
-                            <span class="help-block" v-bind:class="{'input-error': validates.}">请与组织机构代码证名称一致</span>
+                            <input type="text" class="form-control is-required" id="OrgName" required maxlength="30" v-on:blur="validateInputLength($event, 4, 30)" v-on:focus="initInput($event)" v-model="data_of_form.OrgName">
+                            <span class="help-block" v-bind:class="{'input-error': validates.OrgName}">
+                                请与组织机构代码证名称一致
+                            </span>
                         </div>
                     </div>
                     <!--机构级别-->
                     <div class="form-group">
-                        <label for="inputStateLevel" class="col-md-4 control-label">
+                        <label for="StateLevel" class="col-md-4 control-label">
                             <em class="flag-required">*</em>
                             机构级别:
                         </label>
                         <div class="col-md-7">
-                            <select id="inputStateLevel" class="form-control" v-model="data_of_form.StateLevel">
+                            <select id="StateLevel" class="form-control" v-model="data_of_form.StateLevel">
                                 <option v-for="option in list_of_statelevels" v-bind:value="option">
                                     {{option}}
                                 </option>
@@ -66,17 +68,19 @@
                     </div>
                     <!--机构电话-->
                     <div class="form-group">
-                        <label for="inputStateTel" class="col-md-4 control-label">
+                        <label for="StateTel" class="col-md-4 control-label">
                             <em class="flag-required">*</em>
                             机构电话:
                         </label>
                         <div class="col-md-7">
-                            <input type="text" class="form-control" id="inputStateTel" required maxlength="20" v-model="data_of_form.StateTel">
-                            <span class="help-block" v-bind:class="{'input-error': validates.}">请按 '区号-固定电话号码(-分机号)' 填写</span>
+                            <input type="text" class="form-control is-required" id="StateTel" required maxlength="20" v-on:blur="validateInputLength($event, 8, 11)" v-on:focus="initInput($event)" v-model="data_of_form.StateTel">
+                            <span class="help-block" v-bind:class="{'input-error': validates.StateTel}">
+                                请按 '区号-固定电话号码(-分机号)' 填写
+                            </span>
                         </div>
                     </div>
                     <!--封面号公众平台授权书-->
-                    <div class="form-group" id="inputPictureAuth">
+                    <div class="form-group" id="PictureAuth">
                         <label class="col-md-4 control-label required">
                             <em class="flag-required">*</em>
                             封面号公众平台授权书:
@@ -84,14 +88,15 @@
                         <div class="col-md-7">
                             <div class="container-upload-img">
                                 <img id="upImg-sqs" v-bind:src="data_of_form.PictureAuth">
-                                <a data-dom="#upImg-sqs"
-                                   data-img-src="PictureAuth"
-                                   href="javascript:void(0)"
-                                   class="upload-img btn btn-raised btn-default">
+                                <a data-dom="#upImg-sqs" data-img-src="PictureAuth" href="javascript:void(0)" class="upload-img btn btn-raised btn-default">
                                     上传
                                 </a>
                                 <p class="tips-of-uploading">
-                                    请下载《授权书》原件<br>
+                                    请下载
+                                    <a target="_blank" href="https://wapcdn.thecover.cn/fengmianhao/1.0.0/%E5%B0%81%E9%9D%A2%E5%8F%B7%E7%94%B3%E8%AF%B7%E6%8E%88%E6%9D%83%E4%B9%A6%E6%A8%A1%E6%9D%BF.docx">
+                                        《授权书》原件
+                                    </a>
+                                    <br>
                                     填写完毕后加盖公章上传扫描件
                                 </p>
                             </div>
@@ -99,13 +104,15 @@
                     </div>
                     <!--其他材料-->
                     <div class="form-group">
-                        <label for="inputOtherDoc" class="col-md-4 control-label">
+                        <label for="OtherDoc" class="col-md-4 control-label">
                             其他材料:
                         </label>
                         <div class="col-md-7">
-                            <textarea class="form-control" id="inputOtherDoc" rows="5" maxlength="300" v-model="data_of_form.OtherDoc">
+                            <textarea class="form-control" id="OtherDoc" rows="5" maxlength="300" v-model="data_of_form.OtherDoc">
                             </textarea>
-                            <span class="help-block" v-bind:class="{'input-error': validates.OtherDoc}">其他辅助证明材料，包括不限于网站、报道、专业资质证明</span>
+                            <span class="help-block" v-bind:class="{'input-error': validates.OtherDoc}">
+                                其他辅助证明材料，包括不限于网站、报道、专业资质证明
+                            </span>
                         </div>
                     </div>
                 </fieldset>
@@ -119,7 +126,7 @@
                             封面号名称:
                         </label>
                         <div class="col-md-7">
-                            <input type="text" class="form-control" id="AccountName" placeholder="2-10个字,勿使用包含特殊字符或营销意图的名称" required maxlength="10" v-model="data_of_form.AccountName">
+                            <input class="form-control is-required" id="AccountName" maxlength="10" placeholder="2-10个字,勿使用包含特殊字符或营销意图的名称" required type="text" v-on:blur="validateInputLength($event, 2, 10)" v-on:focus="initInput($event)" v-model="data_of_form.AccountName">
                             <span class="help-block" v-bind:class="{'input-error': validates.AccountName}">2-10个字,勿使用包含特殊字符或营销意图的名称</span>
                         </div>
                     </div>
@@ -130,9 +137,9 @@
                             封面号介绍:
                         </label>
                         <div class="col-md-7">
-                            <textarea type="text" class="form-control" id="AccountIntro" rows="3" maxlength="30" placeholder="10-30个字,要求内容完整通顺,无特殊字符,请勿添加任何联系方式如微博、手机号、QQ" required v-model="data_of_form.AccountIntro">
+                            <textarea class="form-control is-required" id="AccountIntro" maxlength="30" placeholder="10-30个字,要求内容完整通顺,无特殊字符,请勿添加任何联系方式如微博、手机号、QQ" required rows="3" type="text" v-on:blur="validateInputLength($event, 10, 30)" v-on:focus="initInput($event)" v-model="data_of_form.AccountIntro">
                             </textarea>
-                            <span class="help-block" v-bind:class="{'input-error': validates.}">
+                            <span class="help-block" v-bind:class="{'input-error': validates.AccountIntro}">
                                 10-30个字,请勿添加任何联系方式如微博、手机号、QQ
                             </span>
                         </div>
@@ -146,13 +153,7 @@
                         <div class="col-md-7">
                             <div class="container-upload-img">
                                 <img id="upImg-icon" class="avatar" v-bind:src="data_of_form.AvatarPicture">
-                                <a href="javascript:void(0)"
-                                   data-img-src="AvatarPicture"
-                                   data-dom="#upImg-icon"
-                                   data-ratio="1/1"
-                                   data-minwidth="200"
-                                   data-minheight="200"
-                                   class="upload-img btn btn-raised btn-default">
+                                <a class="upload-img btn btn-raised btn-default" data-dom="#upImg-icon" data-img-src="AvatarPicture" data-minheight="200" data-minwidth="200" data-ratio="1/1" href="javascript:void(0)">
                                     上传
                                 </a>
                                 <p class="tips-of-uploading avatar">要求清晰、健康、代表自媒体形象<br>请勿使用二维码,最大5M</p>
@@ -168,13 +169,7 @@
                         <div class="col-md-7">
                             <div class="container-upload-img">
                                 <img id="upImg-bg" v-bind:src="data_of_form.BackgroundImageOfAccount">
-                                <a href="javascript:void(0)"
-                                   data-img-src="BackgroundImageOfAccount"
-                                   data-dom="#upImg-bg"
-                                   data-ratio="621/445"
-                                   data-minwidth="600"
-                                   data-minheight="430"
-                                   class="upload-img btn btn-raised btn-default">
+                                <a class="upload-img btn btn-raised btn-default" data-dom="#upImg-bg" data-img-src="BackgroundImageOfAccount" data-minheight="215" data-minwidth="300" data-ratio="621/445" href="javascript:void(0)">
                                     上传
                                 </a>
                                 <p class="tips-of-uploading">
@@ -190,19 +185,23 @@
                         <div class="col-md-12" id="label_area">
                             <div class="col-md-4"></div>
                             <div class="col-md-7">
-                                <div class="label-of-account" v-for="(index, label) in data_of_form.AccountLabel" data-label-id="{{index}}">
+                                <div class="label-of-account" data-label-id="{{index}}" v-for="(index, label) in data_of_form.AccountLabel">
                                     {{label}}
-                                    <em class="close-btn-of-label" data-label-id="{{index}}" v-on:click.stop="rmLabel($event)"></em>
+                                    <em class="close-btn-of-label" data-label-id="{{index}}" v-on:click.stop="rmLabel($event)">
+                                    </em>
                                 </div>
                             </div>
                         </div>
-                        <label class="control-label col-md-4" for="inputAccountKeywords">
+                        <label class="control-label col-md-4" for="AccountKeywords">
+                            <em class="flag-required">*</em>
                             封面号关键词:
                         </label>
                         <div class="input-group col-md-7">
-                            <input type="text" class="form-control" id="inputAccountKeywords" placeholder="关键词在搜索结果中展示,不超过3个" maxlength="5">
+                            <input class="form-control" id="AccountKeywords" maxlength="5" placeholder="关键词在搜索结果中展示,不超过3个" type="text">
                             <span class="input-group-btn">
-                                <button v-show="data_of_form.AccountLabel.length !== 3" class="btn btn-primary" type="button" v-on:click.stop="addLabel($event)">添加</button>
+                                <button class="btn btn-primary" type="button" v-on:click.stop="addLabel($event)" v-show="data_of_form.AccountLabel.length !== 3">
+                                        添加
+                                </button>
                             </span>
                         </div>
                     </div>
@@ -212,8 +211,8 @@
                             <em class="flag-required">*</em>封面号领域:
                         </label>
                         <div class="col-md-7">
-                            <select id="AccountChannel" class="form-control" v-model="data_of_form.AccountChannel">
-                                <option v-for="option in list_of_channels" v-bind:value="option.id">
+                            <select class="form-control" id="AccountChannel" v-model="data_of_form.AccountChannel">
+                                <option v-bind:value="option.id" v-for="option in list_of_channels">
                                     {{option.name}}
                                 </option>
                             </select>
@@ -226,26 +225,26 @@
                             所在地:
                         </label>
                         <div class="col-md-3">
-                            <select class="form-control" v-model="data_of_form.AccountProvince">
-                                <option v-for="province in list_of_provinces" v-bind:value="province.id">
+                            <select class="form-control" v-model="data_of_form.AccountProvince" v-on:change.stop="resetCity($event)">
+                                <option v-bind:value="province.id" v-for="province in list_of_provinces">
                                     {{province.name}}
                                 </option>
                             </select>
                         </div>
                         <div class="col-md-3">
                             <select id="inputAccountCity" class="form-control" v-model="data_of_form.AccountCity">
-                                <option v-for="city in citiesOfSelectedProvince" v-bind:value="city.id">
+                                <option v-bind:value="city.id" v-for="city in citiesOfSelectedProvince">
                                     {{city.name}}
                                 </option>
                             </select>
                         </div>
                     </div>
                     <!--目标读者属性:-->
-                    <div class="form-group" id="inputAccountTargetReader">
-                        <label for="inputAccountTargetReader" class="col-md-4 control-label">
+                    <div class="form-group" id="AccountTargetReader">
+                        <label for="AccountTargetReader" class="col-md-4 control-label">
                             <em class="flag-required">*</em>目标读者属性:
                             <br>
-                            <em class="flag-required" style="font-size: 10px">(至少选择一个)</em>
+                            <!--<em class="flag-required" style="font-size: 10px">(至少选择一个)</em>-->
                         </label>
                         <div class="col-md-7">
                             <div class="checkbox col-md-6" v-for="reader in list_of_target_readers">
@@ -268,62 +267,65 @@
                                 运营者姓名:
                             </label>
                             <div class="col-md-7">
-                                <input type="text" class="form-control" id="PersonName" placeholder="请填写真实姓名" required maxlength="20" v-model="data_of_form.PersonName">
-                                <span class="help-block" v-bind:class="{'input-error': validates.}">请填写真实姓名</span>
+                                <input class="form-control is-required" data-inited="false" id="PersonName" maxlength="30" placeholder="请填写真实姓名" required type="text" v-model="data_of_form.PersonName" v-on:blur="validateInputLength($event, 2, 30)" v-on:focus="initInput($event)">
+                                <span class="help-block" v-bind:class="{'input-error': validates.PersonName}">
+                                    请填写真实姓名,至少2个字符
+                                </span>
                             </div>
                         </div>
-                        <!--运营者证件号码-->
-                        <div class="form-group">
-                            <label for="PersonID" class="col-md-4 control-label">
-                                <em class="flag-required">*</em>
-                                运营者证件号码:
-                            </label>
-                            <div class="col-md-7">
-                                <input type="text" class="form-control" id="PersonID" placeholder="请正确填写18位身份证号码" required maxlength="18" v-model="data_of_form.PersonID">
-                                <span class="help-block" v-bind:class="{'input-error': validates.}">请正确填写18位身份证号码</span>
+                    <!--运营者证件号码-->
+                    <div class="form-group">
+                        <label for="PersonID" class="col-md-4 control-label">
+                            <em class="flag-required">*</em>
+                            运营者证件号码:
+                        </label>
+                        <div class="col-md-7">
+                                <input class="form-control is-required" id="PersonID" maxlength="18" placeholder="请正确填写18位身份证号码" required type="text" v-model="data_of_form.PersonID" v-on:blur="validateInputLength($event, 18, 18)" v-on:focus="initInput($event)">
+                            <span class="help-block" v-bind:class="{'input-error': validates.PersonID}">
+                                请正确填写18位身份证号码
+                            </span>
+                        </div>
+                    </div>
+                    <!--运营者持身份证照片-->
+                    <div class="form-group" id="inputPersonIDPicture">
+                        <label class="col-md-4 control-label required">
+                            <em class="flag-required">*</em>
+                            运营者持身份证照片:
+                        </label>
+                        <div class="col-md-7">
+                            <div class="container-upload-img">
+                                <img id="upImg-card" v-bind:src="data_of_form.PersonIDPicture">
+                                <a id="btn_uploadImg" data-img-src="PersonIDPicture" data-dom="#upImg-card" href="javascript:void(0)" class="upload-img btn btn-raised btn-default">
+                                    上传
+                                </a>
+                                <p class="tips-of-uploading">
+                                    照片形式请参考
+                                    <a target="_blank" href="https://wapcdn.thecover.cn/fengmianhao/1.0.0/example_woman_with_id_card.jpg">示例</a>
+                                    进行拍摄
+                                    <br>
+                                    身份证上信息清晰可见,大小不超过5M
+                                </p>
                             </div>
                         </div>
-                        <!--运营者持身份证照片-->
-                        <div class="form-group" id="inputPersonIDPicture">
-                            <label class="col-md-4 control-label required">
-                                <em class="flag-required">*</em>
-                                运营者持身份证照片:
-                            </label>
-                            <div class="col-md-7">
-                                <div class="container-upload-img">
-                                    <img id="upImg-card" v-bind:src="data_of_form.PersonIDPicture">
-                                    <a id="btn_uploadImg"
-                                       data-img-src="PersonIDPicture"
-                                       data-dom="#upImg-card"
-                                       href="javascript:void(0)"
-                                       class="upload-img btn btn-raised btn-default">
-                                        上传
-                                    </a>
-                                    <p class="tips-of-uploading">
-                                        照片形式请参考示例进行拍摄
-                                        <br>
-                                        身份证上信息清晰可见,大小不超过5M
-                                    </p>
-                                </div>
-                            </div>
+                    </div>
+                    <!--手机号码-->
+                    <div class="form-group">
+                        <label for="PersonPhoneNum" class="col-md-4 control-label">
+                            <em class="flag-required">*</em>
+                            手机号码:
+                        </label>
+                        <div class="col-md-7">
+                                <input class="form-control is-required" id="PersonPhoneNum" maxlength="11" required type="text" v-on:blur="validateInputLength($event, 8, 11)" v-on:focus="initInput($event)" v-model="data_of_form.PersonPhoneNum">
+                            <span class="help-block" v-bind:class="{'input-error': validates.PersonPhoneNum}">必填</span>
                         </div>
-                        <!--手机号码-->
-                        <div class="form-group">
-                            <label for="inputPersonPhoneNum" class="col-md-4 control-label">
-                                <em class="flag-required">*</em>
-                                手机号码:
-                            </label>
-                            <div class="col-md-7">
-                                <input type="text" class="form-control" id="inputPersonPhoneNum" required maxlength="11" v-model="data_of_form.PersonPhoneNum">
-                                <span class="help-block" v-bind:class="{'input-error': validates.}">必填</span>
-                            </div>
-                        </div>
+                    </div>
+
 
 
                     <div class="form-group">
                         <div class="checkbox col-md-12" style="text-align: center">
-                            <label for="check_remember_passwd">
-                                <input type="checkbox" id="check_remember_passwd">
+                            <label for="check_agree_terms">
+                                <input type="checkbox" id="check_agree_terms" v-model="data_of_form.check_agree_terms">
                                 <span style="margin-left: 7.5px">同意
                                     <a href="/page/others/user_agreement.html" target="_blank" style="color: #2AB5E2">
                                         《封面号自媒体平台用户协议》
@@ -337,7 +339,7 @@
                     </div>
                 </fieldset>
             </form>
-            <div class="my-btn" v-bind:class="{'available': canSubmit}" id="btn_submit_form" v-on:click.stop="submit($event)">
+            <div class="my-btn" id="btn_submit_form" v-bind:class="{'available': canSubmit}" v-on:click.stop="submit($event)">
                 提交
             </div>
         </div>
@@ -350,26 +352,49 @@
 <script src="https://wapcdn.thecover.cn/fengmianhao/1.0.0/scripts/jquery_bootstrap_material_bootstrapDialog_v0722.js"></script>
 <script src="https://wapcdn.thecover.cn/fengmianhao/1.0.0/scripts/libs_bluebird_vue_v0722.js"></script>
 <script src="./scripts/helpers.js"></script>
-<script src="./scripts/register_form.js"></script>
+
 <script type="text/javascript">
     var form = new Vue({
         el: 'body',
         data: function () {
             return {
+                // 初始值
                 data_of_form: {
-                    'PersonIDPicture': 'http://wapcdn.thecover.cn/fengmianhao/1.0.0/img/bg_PersonIDPicture.png',
-                    'BackgroundImageOfAccount': 'http://wapcdn.thecover.cn/fengmianhao/1.0.0/img/bg_PersonIDPicture.png',
-                    'AvatarPicture': 'http://wapcdn.thecover.cn/fengmianhao/1.0.0/img/bg_AvatarPicture.png',
-                    'PictureAuth': 'http://wapcdn.thecover.cn/fengmianhao/1.0.0/img/bg_PersonIDPicture.png',
-                    'PictureOrg': 'http://wapcdn.thecover.cn/fengmianhao/1.0.0/img/bg_PersonIDPicture.png',
-                    'AccountTargetReader': [],
-                    'AccountLabel': []
+                    'PersonName': '', // 真实姓名
+                    'PersonID': '', // 18位身份证号码
+                    'PersonPhoneNum': '', // 手机号码
+                    'AccountName': '', // 封面号名称
+                    'AccountIntro': '', // 封面号介绍
+                    'AccountProvince': '', //
+                    'AccountCity': '', //
+                    'PersonIDPicture': 'https://wapcdn.thecover.cn/fengmianhao/1.0.0/img/bg_PersonIDPicture.png',
+                    'BackgroundImageOfAccount': 'https://wapcdn.thecover.cn/fengmianhao/1.0.0/img/bg_PersonIDPicture.png',
+                    'AvatarPicture': 'https://wapcdn.thecover.cn/fengmianhao/1.0.0/img/bg_AvatarPicture.png',
+                    'PictureAuth': 'https://wapcdn.thecover.cn/fengmianhao/1.0.0/img/bg_PersonIDPicture.png',
+                    'PictureOrg': 'https://wapcdn.thecover.cn/fengmianhao/1.0.0/img/bg_PersonIDPicture.png',
+                    'AccountTargetReader': [], // 目标读者属性
+                    'AccountLabel': [], // 封面号关键词
+                    'AccountChannel': [], // 封面号领域
+                    'check_agree_terms': false // 同意 《封面号自媒体平台用户协议》
                 },
-                required_inputs_number: 1, // 表单的必填项数量
                 list_of_statelevels: ['国家级', '省部级', '市级', '区县级'],
                 list_of_channels: [],
                 list_of_provinces: [],
-                list_of_target_readers: helpers.LIST_OF_TARGET_READERS
+                list_of_target_readers: helpers.LIST_OF_TARGET_READERS,
+                validates: {
+                    PersonName: false,
+                    PersonID: false,
+                    PersonPhoneNum: false,
+
+
+                    AccountName: false,
+                    AccountIntro: false,
+                    AccountProvince: false,
+                    AccountCity: false,
+
+                    OrgName: false,
+                    StateTel: false
+                }
             }
         },
         computed: {
@@ -385,14 +410,9 @@
             citiesOfSelectedProvince: function () {
                 var self = this;
                 var arr = self.list_of_provinces;
-                console.log('citiesOfSelectedProvince() list_of_provinces: ', JSON.stringify(self.list_of_provinces));
-                console.log('data_of_form.AccountProvince: ', JSON.stringify(self.data_of_form.AccountProvince));
-                console.log('self.list_of_provinces.length: ', self.list_of_provinces.length);
                 var i;
                 for (i = 0; i < self.list_of_provinces.length; ++i) {
-                    console.log('arr[i] : ', JSON.stringify(arr[i]));
                     if (arr[i].id == self.data_of_form.AccountProvince) {
-                        console.log('MATCH: v.cities: ', JSON.stringify(arr[i].cities));
                         return arr[i].cities;
                     }
                 }
@@ -414,14 +434,20 @@
             addLabel: function (evt) {
                 var labels = this.data_of_form.AccountLabel;
                 evt.preventDefault();
-                if($('#inputAccountKeywords').val().trim().length === 0) {
+            if ($('#AccountKeywords').val().trim().length === 0) {
                     return false;
                 }
                 if(labels.length === 3) {
                     return false;
                 }
-                labels.push($('#inputAccountKeywords').val().trim());
-                $('#inputAccountKeywords').val('');
+            for (var i = 0; i < labels.length; ++i) {
+                console.log(labels[i]);
+                if (labels[i] === $('#AccountKeywords').val().trim()) {
+                    return false;
+                }
+            }
+            labels.push($('#AccountKeywords').val().trim());
+            $('#AccountKeywords').val('');
             },
             rmLabel: function(evt) {
                 var labels = this.data_of_form.AccountLabel;
@@ -429,57 +455,107 @@
                 var $em = $(evt.target);
                 labels.splice($em.data('label-id'), 1)
             },
-            validateForm: function () {
-                var self = this;
-                var obj = self.data_of_form;
-                console.log('data_of_form: ', obj);
-                console.log('Object.keys(self.data_of_form).length: ', Object.keys(self.data_of_form).length);
-                console.log('self.required_inputs_number: ', self.required_inputs_number);
-                if (Object.keys(self.data_of_form).length < self.required_inputs_number) {
-                    console.log('表单的必填项数量不全');
-                    return false;
+            resetCity: function(evt) {
+                // 当省市都选择时,改选省则重置市
+                if(evt.target.value && this.data_of_form.AccountCity) {
+                    console.log('if');
+                    this.data_of_form.AccountCity = undefined;
                 }
-
-                if (self.data_of_form.AccountTargetReader.length < 1) {
-                    console.log('目标读者属性数量有误');
-                    return false;
-                }
-
-                if (helpers.checkItemIsEmptyStr([
-                    // 运营主体信息
-                    obj.OrgName,
-                    obj.StateLevel,
-                    obj.StateTel,
-                    obj.PictureAuth,
-                    // 封面号主体信息
-                    obj.AccountName,
-                    obj.AccountIntro,
-                    obj.AvatarPicture,
-                    obj.BackgroundImageOfAccount,
-                    obj.AccountChannel,
-                    obj.AccountProvince,
-                    obj.AccountCity,
-                    // 运营者信息
-                    obj.PersonName,
-                    obj.PersonID,
-                    obj.PersonIDPicture,
-                    obj.PersonPhoneNum
-                ])) {
-                    console.log('有空字符串条目');
-                    return false;
-                }
-
-                if(obj.PersonName.trim().length === 0) {
-                    return false;
-                }
-                if (self.data_of_form.AccountIntro.length < 10 || self.data_of_form.AccountIntro.length > 30) {
-                    alert('封面号介绍字段字数不符合');
-                    return false;
+            },
+        // check input string length
+        validateInputLength: function(evt, min, max) {
+            var self = this;
+            if (self.hasInited(evt)) {
+                if ((min && $(evt.target).val().trim().length < min) || (max && $(evt.target).val().trim().length > max)) {
+                    self.validates[$(evt.target).prop("id")] = true;
+                    console.log('validateInputLength() ==> false ', 'id: ', $(evt.target).prop("id"), '输入校验不通过,对应的属性', $(evt.target).prop("id"), 'validates值: ', self.validates[$(evt.target).prop("id")]);
+                } else {
+                    self.validates[$(evt.target).prop("id")] = false;
                 }
                 return true;
-            },
-            log: function (label, str) {
-                console.log(label + '=> ', JSON.stringify(str));
+            } else {
+                console.log('输入框未初始化');
+                return false;
+            }
+        },
+        hasInited: function (evt) {
+            console.log('hasInited() ==> ', ($(evt.target).data('inited') === true));
+            return ($(evt.target).data('inited') === true);
+        },
+        initInput: function (evt) {
+            console.log('initInput()');
+            return $(evt.target).data('inited', true);
+        },
+            validateForm: function () {
+            console.log('validateForm()');
+                var self = this;
+                var obj = self.data_of_form;
+            // 同意 《封面号自媒体平台用户协议》
+            if (obj.check_agree_terms === false) {
+                console.log('L567');
+                return false;
+            }
+            // 目标读者属性
+            if (obj.AccountTargetReader.length < 1) {
+                console.log('L572');
+                return false;
+            }
+
+            if(obj.AccountLabel.length < 1) {
+                console.log('L471');
+                    return false;
+                }
+            // 所在地
+            if (!obj.AccountProvince || !obj.AccountCity) {
+                console.log('L578');
+                    return false;
+                }
+            // 文本校验
+            for (var i = 0; i < $('.is-required').length; ++i) {
+                if (!$('.is-required').eq(i).data('inited') === true) {
+                    console.log( $('.is-required').eq(i).prop('id'));
+                    return false;
+                }
+            }
+
+
+            for (var prop in self.validates) {
+                console.log(prop, ' : ', self.validates[prop], '(', typeof self.validates[prop], ')');
+                if(self.validates[prop] === true) {
+                    console.log('validates.', prop, 'is ', self.validates[prop]);
+                    return false;
+                }
+            }
+            // 文本校验: 学生证和学校
+            if (self.getCandidateType() == 1) {
+                if(self.validates.StuNo || self.validates.University) {
+                    console.log('L592');
+                    return false;
+                }
+            }
+            // files
+            if (obj.PersonIDPicture === 'https://wapcdn.thecover.cn/fengmianhao/1.0.0/img/bg_PersonIDPicture.png') {
+                console.log('L599');
+
+                    return false;
+                }
+            if (obj.BackgroundImageOfAccount === 'https://wapcdn.thecover.cn/fengmianhao/1.0.0/img/bg_PersonIDPicture.png') {
+                console.log('L604');
+
+                return false;
+            }
+            if (obj.AvatarPicture === 'https://wapcdn.thecover.cn/fengmianhao/1.0.0/img/bg_AvatarPicture.png') {
+                console.log('L609');
+
+                return false;
+            }
+            if (obj.PictureAuth === 'https://wapcdn.thecover.cn/fengmianhao/1.0.0/img/bg_PersonIDPicture.png') {
+                console.log('L548');
+                return false;
+            }
+
+
+                return true;
             },
             submit: function (evt) {
                 var self = this;
@@ -524,6 +600,9 @@
                         $btn.removeClass('processing');
                         return alert(JSON.stringify(msg));
                     });
+            } else {
+                alert('请完成所有必填项,再提交~');
+                $btn.removeClass('processing');
                 }
             }
         },
