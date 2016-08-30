@@ -375,3 +375,13 @@ body footer a {
 .tip.show {
     display: inline-block;
 }
+
+#stage_one .fixed-width-input {
+    vertical-align: baseline;
+    line-height: 30px;
+    font-size: 16px;
+}
+#stage_one .input-wrapper label {
+    margin-bottom: 0px;
+    line-height: 30px;
+}

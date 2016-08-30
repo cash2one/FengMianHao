@@ -46,7 +46,7 @@
                             机构名称:
                         </label>
                         <div class="col-md-7">
-                            <input type="text" class="form-control is-required" id="OrgName" required maxlength="30" v-on:blur="validateInputLength($event, 4, 30)" v-on:focus="initInput($event)" v-model="data_of_form.OrgName">
+                            <input type="text" class="form-control is-required" id="OrgName" required maxlength="30" v-on:blur="validateInputLength($event, 2, 30)" v-on:focus="initInput($event)" v-model="data_of_form.OrgName">
                             <span class="help-block" v-bind:class="{'input-error': validates.OrgName}">
                                 请与组织机构代码证名称一致
                             </span>
@@ -75,7 +75,7 @@
                         <div class="col-md-7">
                             <input type="text" class="form-control is-required" id="StateTel" required maxlength="20" v-on:blur="validateInputLength($event, 8, 11)" v-on:focus="initInput($event)" v-model="data_of_form.StateTel">
                             <span class="help-block" v-bind:class="{'input-error': validates.StateTel}">
-                                请按 '区号-固定电话号码(-分机号)' 填写
+                                号码格式：02886969467，区号和固定电话号码之间无空格或-符号
                             </span>
                         </div>
                     </div>
@@ -173,7 +173,10 @@
                                     上传
                                 </a>
                                 <p class="tips-of-uploading">
-                                    要求符合封面号风格
+                                    符合封面号风格
+                                    <br>
+                                    效果可参考
+                                    <a target="_blank" href="https://wapcdn.thecover.cn/fengmianhao/1.0.0/img/instructions_uploaded_bg.jpg">示例</a>
                                     <br>
                                     请勿使用二维码,最大5M
                                 </p>

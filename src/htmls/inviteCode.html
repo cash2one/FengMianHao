@@ -79,7 +79,7 @@
         }
 
         #logo {
-            width: 120px;
+            width: 110px;
             vertical-align: middle;
             left: 0
         }
@@ -89,29 +89,6 @@
             padding: 0 20px;
             opacity: .8;
             float: right;
-        }
-
-        nav .menu.slash {
-            padding: 0;
-            color: #fff;
-            line-height: 36px;
-            height: 36px;
-            display: inline-block;
-            border-right: 1px solid #fff;
-            -webkit-transform: rotate(15deg);
-            -moz-transform: rotate(15deg);
-            -ms-transform: rotate(15deg);
-            -o-transform: rotate(15deg);
-            transform: rotate(15deg);
-            -webkit-transform-origin: 50%;
-            -moz-transform-origin: 50%;
-            -ms-transform-origin: 50%;
-            -o-transform-origin: 50%;
-            transform-origin: 50%;
-        }
-
-        nav a {
-            height: 100%
         }
 
         nav .menu:last-of-type {
@@ -232,6 +209,10 @@
             text-align: center;
             margin-top: 70px;
         }
+        .menu a:hover {
+            color: rgb(42, 181, 226);
+            text-decoration: none;
+        }
     </style>
 </head>
 
@@ -240,9 +221,17 @@
     <header> <img src="https://wapcdn.thecover.cn/fengmianhao/1.0.0/img/logo_fengmianhao.png" id="logo">
         <nav>
             <ul>
-                <li class="menu"><a href="/page/others/faq.html#0">常见问题</a></li>
+                <li class="menu">
+                    <a target="_blank" href="/page/others/faq.html#0">
+                        <span>常见问题</span>
+                    </a>
+                </li>
                 <li class="menu slash"></li>
-                <li class="menu"><a href="/login">首页</a></li>
+                <li class="menu" style="padding-right: 0px;">
+                    <a href="/login">
+                        <span style="border-right: 2px solid white; padding-right: 20px;">首页</span>
+                    </a>
+                </li>
             </ul>
         </nav>
     </header>

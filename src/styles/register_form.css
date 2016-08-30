@@ -419,3 +419,7 @@ em.flag-required {
 .btn:not(.btn-raised).btn-primary, .input-group-btn .btn:not(.btn-raised).btn-primary {
     color: #2dc2e8;
 }
+
+#upImg-bg, #upImg-card, #upImg-org, #upImg-sqs {
+    min-height: 120px;
+}

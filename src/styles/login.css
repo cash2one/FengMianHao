@@ -51,7 +51,7 @@ header nav {
 }
 
 #logo {
-    width: 120px;
+    width: 110px;
     vertical-align: middle;
     left: 0
 }
@@ -61,28 +61,6 @@ nav .menu {
     padding: 0 20px;
     opacity: .8;
     float: right;
-
-}
-nav .menu.slash {
-    padding: 0;
-    color: #fff;
-    line-height: 36px;
-    height: 36px;
-    display: inline-block;
-    border-right: 1px solid #fff;
-    -webkit-transform: rotate(15deg);
-    -moz-transform: rotate(15deg);
-    -ms-transform: rotate(15deg);
-    -o-transform: rotate(15deg);
-    transform: rotate(15deg);
-    -webkit-transform-origin: 50%;
-    -moz-transform-origin: 50%;
-    -ms-transform-origin: 50%;
-    -o-transform-origin: 50%;
-    transform-origin: 50%;
-}
-nav a {
-    height: 100%
 }
 
 nav .menu:last-of-type {
