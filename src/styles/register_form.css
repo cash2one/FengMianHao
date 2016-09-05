@@ -409,17 +409,29 @@ em.flag-required {
 }
 
 .account-management .stages {
-    border-top: none;
+    border-top: none
 }
 
 .account-management {
-    background-color: white;
+    background-color: #fff
 }
 
-.btn:not(.btn-raised).btn-primary, .input-group-btn .btn:not(.btn-raised).btn-primary {
-    color: #2dc2e8;
+.btn:not(.btn-raised).btn-primary,
+.input-group-btn .btn:not(.btn-raised).btn-primary {
+    color: #2dc2e8
 }
 
-#upImg-bg, #upImg-card, #upImg-org, #upImg-sqs {
-    min-height: 120px;
+#upImg-bg,
+#upImg-card,
+#upImg-org,
+#upImg-sqs {
+    min-height: 120px
+}
+
+.account-management .form-group h4 {
+    margin: 0
+}
+
+.account-management .form-group textarea {
+    padding-top: 0
 }
