@@ -32,11 +32,17 @@ body #content {
     margin-bottom: 100px
 }
 
-body a {
+body a, body a:hover, body a:focus {
     color: #2AB5E2;
     text-decoration: none
 }
-
+#stage_one .checkbox input[type=checkbox]:checked + .checkbox-material .check {
+    color: #2AB5E2;
+    border-color: #2AB5E2;
+}
+#stage_one .checkbox input[type=checkbox]:checked + .checkbox-material .check:before, #stage_one label.checkbox-inline input[type=checkbox]:checked + .checkbox-material .check:before {
+    color: #2AB5E2;
+}
 body footer a {
     color: #fff
 }
@@ -388,8 +394,8 @@ body footer a {
 #stage_one .fixed-width-input {
     vertical-align: baseline;
     line-height: 30px;
-    font-size: 16px;
-    padding-bottom: 5px
+    font-size: 14px;
+    padding-bottom: 0px
 }
 
 #stage_one .input-wrapper label {
