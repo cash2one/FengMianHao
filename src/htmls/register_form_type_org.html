@@ -356,92 +356,89 @@
 <script src="https://wapcdn.thecover.cn/fengmianhao/1.0.0/scripts/jquery_bootstrap_material_bootstrapDialog_v0722.js"></script>
 <script src="https://wapcdn.thecover.cn/fengmianhao/1.0.0/scripts/libs_bluebird_vue_v0722.js"></script>
 <script src="./scripts/helpers.js"></script>
-
 <script type="text/javascript">
-    var form = new Vue({
-        el: 'body',
-        data: function () {
-            return {
-                // 初始值
-                data_of_form: {
-                    'PersonName': '', // 真实姓名
-                    'PersonID': '', // 18位身份证号码
-                    'PersonPhoneNum': '', // 手机号码
-                    'AccountName': '', // 封面号名称
-                    'AccountIntro': '', // 封面号介绍
-                    'AccountProvince': '', //
-                    'AccountCity': '', //
-                    'PersonIDPicture': 'https://wapcdn.thecover.cn/fengmianhao/1.0.0/img/bg_PersonIDPicture.png',
-                    'BackgroundImageOfAccount': 'https://wapcdn.thecover.cn/fengmianhao/1.0.0/img/bg_PersonIDPicture.png',
-                    'AvatarPicture': 'https://wapcdn.thecover.cn/fengmianhao/1.0.0/img/bg_AvatarPicture.png',
-                    'PictureAuth': 'https://wapcdn.thecover.cn/fengmianhao/1.0.0/img/bg_PersonIDPicture.png',
-                    'PictureOrg': 'https://wapcdn.thecover.cn/fengmianhao/1.0.0/img/bg_PersonIDPicture.png',
-                    'AccountTargetReader': [], // 目标读者属性
-                    'AccountLabel': [], // 封面号关键词
-                    'AccountChannel': [], // 封面号领域
-                    'check_agree_terms': false // 同意 《封面号自媒体平台用户协议》
-                },
-                list_of_statelevels: ['国家级', '省部级', '市级', '区县级'],
-                list_of_channels: [],
-                list_of_provinces: [],
-                list_of_target_readers: helpers.LIST_OF_TARGET_READERS,
-                validates: {
-                    PersonName: false,
-                    PersonID: false,
-                    PersonPhoneNum: false,
-
-                    AccountName: false,
-                    AccountIntro: false,
-                    AccountProvince: false,
-                    AccountCity: false,
-
-                    OrgName: false
+var form = new Vue({
+    el: 'body',
+    data: function() {
+        return {
+            // 初始值
+            data_of_form: {
+                'PersonName': '', // 真实姓名
+                'PersonID': '', // 18位身份证号码
+                'PersonPhoneNum': '', // 手机号码
+                'AccountName': '', // 封面号名称
+                'AccountIntro': '', // 封面号介绍
+                'AccountProvince': '', //
+                'AccountCity': '', //
+                'PersonIDPicture': 'https://wapcdn.thecover.cn/fengmianhao/1.0.0/img/bg_PersonIDPicture.png',
+                'BackgroundImageOfAccount': 'https://wapcdn.thecover.cn/fengmianhao/1.0.0/img/bg_PersonIDPicture.png',
+                'AvatarPicture': 'https://wapcdn.thecover.cn/fengmianhao/1.0.0/img/bg_AvatarPicture.png',
+                'PictureAuth': 'https://wapcdn.thecover.cn/fengmianhao/1.0.0/img/bg_PersonIDPicture.png',
+                'PictureOrg': 'https://wapcdn.thecover.cn/fengmianhao/1.0.0/img/bg_PersonIDPicture.png',
+                'AccountTargetReader': [], // 目标读者属性
+                'AccountLabel': [], // 封面号关键词
+                'AccountChannel': [], // 封面号领域
+                'check_agree_terms': false // 同意 《封面号自媒体平台用户协议》
+            },
+            list_of_statelevels: ['国家级', '省部级', '市级', '区县级'],
+            list_of_channels: [],
+            list_of_provinces: [],
+            list_of_target_readers: helpers.LIST_OF_TARGET_READERS,
+            validates: {
+                PersonName: false,
+                PersonID: false,
+                PersonPhoneNum: false,
+                AccountName: false,
+                AccountIntro: false,
+                AccountProvince: false,
+                AccountCity: false,
+                OrgName: false
+            }
+        }
+    },
+    computed: {
+        type: function() {
+            return helpers.LIST_OF_APPLICANT_TYPE[this.getCandidateType()];
+        },
+        ui_type: function() {
+            return this.getCandidateType();
+        },
+        canSubmit: function() {
+            return this.validateForm();
+        },
+        citiesOfSelectedProvince: function() {
+            var self = this;
+            var arr = self.list_of_provinces;
+            var i;
+            for (i = 0; i < self.list_of_provinces.length; ++i) {
+                if (arr[i].id == self.data_of_form.AccountProvince) {
+                    return arr[i].cities;
                 }
             }
+        }
+    },
+    methods: {
+        getCandidateType: function() {
+            return helpers.getValueFromUrl('type');
         },
-        computed: {
-            type: function() {
-                return helpers.LIST_OF_APPLICANT_TYPE[this.getCandidateType()];
-            },
-            ui_type: function() {
-                return this.getCandidateType();
-            },
-            canSubmit: function () {
-                return this.validateForm();
-            },
-            citiesOfSelectedProvince: function () {
-                var self = this;
-                var arr = self.list_of_provinces;
-                var i;
-                for (i = 0; i < self.list_of_provinces.length; ++i) {
-                    if (arr[i].id == self.data_of_form.AccountProvince) {
-                        return arr[i].cities;
-                    }
-                }
-            }
+        postDataOfForm: function(payload) {
+            return helpers.$post(helpers.apis().registerStageThree, payload);
         },
-        methods: {
-            getCandidateType: function () {
-                return helpers.getValueFromUrl('type');
-            },
-            postDataOfForm: function (payload) {
-                return helpers.$post(helpers.apis().registerStageThree, payload);
-            },
-            getChannelList: function () {
-                return helpers.$post(helpers.apis().getChannelList, {});
-            },
-            getProvinceList: function () {
-                return helpers.$post(helpers.apis().getProvinceList, {});
-            },
-            addLabel: function (evt) {
-                var labels = this.data_of_form.AccountLabel;
-                evt.preventDefault();
+        getChannelList: function() {
+            return helpers.$post(helpers.apis().getChannelList, {});
+        },
+        getProvinceList: function() {
+            return helpers.$post(helpers.apis().getProvinceList, {});
+        },
+        addLabel: function(evt) {
+            var labels = this.data_of_form.AccountLabel;
+            evt.preventDefault();
             if ($('#AccountKeywords').val().trim().length === 0) {
-                    return false;
-                }
-                if(labels.length === 3) {
-                    return false;
-                }
+                return false;
+            }
+            if (labels.length === 3) {
+                return false;
+            }
             for (var i = 0; i < labels.length; ++i) {
                 console.log(labels[i]);
                 if (labels[i] === $('#AccountKeywords').val().trim()) {
@@ -450,31 +447,30 @@
             }
             labels.push($('#AccountKeywords').val().trim());
             $('#AccountKeywords').val('');
-            },
-            rmLabel: function(evt) {
-                var labels = this.data_of_form.AccountLabel;
-                evt.preventDefault();
-                var $em = $(evt.target);
-                labels.splice($em.data('label-id'), 1)
-            },
-            limitCheckBoxLength: function(evt) {
-                console.log('limitCheckBoxLength()');
-                var curr_len = $('#AccountTargetReader').find('input[type="checkbox"]').filter(':checked').length;
-                console.log(curr_len);
-                console.log($(evt.target).prop('checked'));
-
-                if(curr_len > 5) {
-                    return $(evt.target).prop('checked', false);
-//                    return evt.preventDefault();
-                }
-            },
-            resetCity: function(evt) {
-                // 当省市都选择时,改选省则重置市
-                if(evt.target.value && this.data_of_form.AccountCity) {
-                    console.log('if');
-                    this.data_of_form.AccountCity = undefined;
-                }
-            },
+        },
+        rmLabel: function(evt) {
+            var labels = this.data_of_form.AccountLabel;
+            evt.preventDefault();
+            var $em = $(evt.target);
+            labels.splice($em.data('label-id'), 1)
+        },
+        limitCheckBoxLength: function(evt) {
+            console.log('limitCheckBoxLength()');
+            var curr_len = $('#AccountTargetReader').find('input[type="checkbox"]').filter(':checked').length;
+            console.log(curr_len);
+            console.log($(evt.target).prop('checked'));
+            if (curr_len > 5) {
+                return $(evt.target).prop('checked', false);
+                //                    return evt.preventDefault();
+            }
+        },
+        resetCity: function(evt) {
+            // 当省市都选择时,改选省则重置市
+            if (evt.target.value && this.data_of_form.AccountCity) {
+                console.log('if');
+                this.data_of_form.AccountCity = undefined;
+            }
+        },
         // check input string length
         validateInputLength: function(evt, min, max) {
             var self = this;
@@ -491,168 +487,164 @@
                 return false;
             }
         },
-        hasInited: function (evt) {
+        hasInited: function(evt) {
             console.log('hasInited() ==> ', ($(evt.target).data('inited') === true));
             return ($(evt.target).data('inited') === true);
         },
-        initInput: function (evt) {
+        initInput: function(evt) {
             console.log('initInput()');
             return $(evt.target).data('inited', true);
         },
-            validateForm: function () {
+        validateForm: function() {
             console.log('validateForm()');
-                var self = this;
-                var obj = self.data_of_form;
-            // 同意 《封面号自媒体平台用户协议》
-            if (obj.check_agree_terms === false) {
-                    console.log('表单验证不通过项目--同意《封面号自媒体平台用户协议》');
-                    $('#check_agree_terms').addClass('not-fulfilled');
-                return false;
-                } else {
-                    $('#check_agree_terms').removeClass('not-fulfilled');
-            }
-            // 目标读者属性
-            if (obj.AccountTargetReader.length < 1) {
-                    console.log('表单验证不通过项目--目标读者属性');
-                    $('#AccountTargetReader').addClass('not-fulfilled');
-                return false;
-                } else {
-                    $('#AccountTargetReader').removeClass('not-fulfilled');
-            }
-
-            if(obj.AccountLabel.length < 1) {
-                    console.log('表单验证不通过项目--封面号领域');
-                    $('#AccountChannel').addClass('not-fulfilled');
-                    return false;
-                } else {
-                    $('#AccountChannel').removeClass('not-fulfilled');
-                }
-            // 所在地
-            if (!obj.AccountProvince || !obj.AccountCity) {
-                    console.log('表单验证不通过项目--所在地');
-                    $('#inputAccountCity').addClass('not-fulfilled');
-                    return false;
-                } else {
-                    $('#inputAccountCity').removeClass('not-fulfilled');
-                }
+            var self = this;
+            var obj = self.data_of_form;
             // 文本校验
             for (var i = 0; i < $('.is-required').length; ++i) {
                 if (!$('.is-required').eq(i).data('inited') === true) {
-                    console.log( $('.is-required').eq(i).prop('id'));
-                        $('.is-required').eq(i).addClass('not-fulfilled');
+                    console.log($('.is-required').eq(i).prop('id'));
+                    $('.is-required').eq(i).addClass('not-fulfilled');
                     return false;
-                    } else {
-                        $('.is-required').eq(i).removeClass('not-fulfilled');
+                } else {
+                    $('.is-required').eq(i).removeClass('not-fulfilled');
                 }
             }
             // 输入的校验
             for (var prop in self.validates) {
                 console.log(prop, ' : ', self.validates[prop], '(', typeof self.validates[prop], ')');
-                if(self.validates[prop] === true) {
-                        console.log('表单验证不通过项目--', prop, 'is ', self.validates[prop]);
+                if (self.validates[prop] === true) {
+                    console.log('表单验证不通过项目--', prop, 'is ', self.validates[prop]);
                     return false;
                 }
             }
             // files
             if (obj.PersonIDPicture === 'https://wapcdn.thecover.cn/fengmianhao/1.0.0/img/bg_PersonIDPicture.png') {
-                    console.log('表单验证不通过项目--运营者持身份证照片');
-                    $('#upImg-card').addClass('not-fulfilled');
-                    return false;
-                } else {
-                    $('#upImg-card').removeClass('not-fulfilled');
-                }
-            if (obj.BackgroundImageOfAccount === 'https://wapcdn.thecover.cn/fengmianhao/1.0.0/img/bg_PersonIDPicture.png') {
-                    console.log('表单验证不通过项目--封面号背景图');
-                    $('#upImg-bg').addClass('not-fulfilled');
+                console.log('表单验证不通过项目--运营者持身份证照片');
+                $('#upImg-card').addClass('not-fulfilled');
                 return false;
-                } else {
-                    $('#upImg-bg').removeClass('not-fulfilled');
+            } else {
+                $('#upImg-card').removeClass('not-fulfilled');
+            }
+            if (obj.BackgroundImageOfAccount === 'https://wapcdn.thecover.cn/fengmianhao/1.0.0/img/bg_PersonIDPicture.png') {
+                console.log('表单验证不通过项目--封面号背景图');
+                $('#upImg-bg').addClass('not-fulfilled');
+                return false;
+            } else {
+                $('#upImg-bg').removeClass('not-fulfilled');
             }
             if (obj.AvatarPicture === 'https://wapcdn.thecover.cn/fengmianhao/1.0.0/img/bg_AvatarPicture.png') {
-                    console.log('表单验证不通过项目--封面号头像');
-                    $('#upImg-icon').addClass('not-fulfilled');
+                console.log('表单验证不通过项目--封面号头像');
+                $('#upImg-icon').addClass('not-fulfilled');
                 return false;
-                } else {
-                    $('#upImg-icon').removeClass('not-fulfilled');
+            } else {
+                $('#upImg-icon').removeClass('not-fulfilled');
             }
             if (obj.PictureAuth === 'https://wapcdn.thecover.cn/fengmianhao/1.0.0/img/bg_PersonIDPicture.png') {
-                    console.log('表单验证不通过项目--封面号公众平台授权书');
-                    $('#upImg-sqs').addClass('not-fulfilled');
+                console.log('表单验证不通过项目--封面号公众平台授权书');
+                $('#upImg-sqs').addClass('not-fulfilled');
                 return false;
-                } else {
-                    $('#upImg-sqs').removeClass('not-fulfilled');
+            } else {
+                $('#upImg-sqs').removeClass('not-fulfilled');
             }
-
-                //
-                return true;
-            },
-            submit: function (evt) {
-                var self = this;
-                var obj = self.data_of_form;
-                var $btn = $(evt.target);
-                if ($btn.hasClass('error') || $btn.hasClass('processing')) {
-                    return false;
-                }
-                $btn.addClass('processing');
-                var to_be_posted = {
-                    // 运营主体信息
-                    proKind: self.getCandidateType(), // 1：学生 2：个人 3：媒体 4：国家机关 5：企业 6：其他
-                    orgName: obj.OrgName, // 组织名称
-                    pictureOrg: obj.PictureOrg, // file:组织机构代码证
-                    pictureAuth: obj.PictureAuth, // file:封面号公众平台授权书
-                    otherDoc: obj.OtherDoc, // 其余材料
-                    // 运营者信息
-                    username: obj.PersonName, // 运营者姓名
-                    identityNo: obj.PersonID, // 运营者证件号码
-                    picture: obj.PersonIDPicture, // file:运营者证件照片
-                    mobile: obj.PersonPhoneNum, // 运营者手机号码
-                    // 封面号主体信息
-                    proAccount: obj.AccountName, // 封面号名称
-                    proBrief: obj.AccountIntro, // 封面号介绍
-                    proAvatar: obj.AvatarPicture, // file:封面号头像
-                    proBackground: obj.BackgroundImageOfAccount, // file:封面号背景图
-                    labelPgc: obj.AccountLabel, // [封面号关键词标签]
-                    channelPgc: obj.AccountChannel, // 建议频道领域
-                    province: obj.AccountProvince, // 省
-                    city: obj.AccountCity, // 城市
-                    pgc: obj.AccountTargetReader // [目标读者属性]
-                };
-                if (self.validateForm()) {
-                    self.postDataOfForm({
-                        'data': JSON.stringify(to_be_posted)
-                    }).then(function (result) {
-                        console.log('sendCredits() => ', result);
-                        $btn.removeClass('processing');
-                        return location.replace(helpers.destination_pages.page_review_result + '?result=0');
-                    }, function(code, msg) {
-                        $btn.removeClass('processing');
-                        return alert(JSON.stringify(msg));
-                    });
+            // 目标读者属性
+            if (obj.AccountTargetReader.length < 1) {
+                console.log('表单验证不通过项目--目标读者属性');
+                $('#AccountTargetReader').addClass('not-fulfilled');
+                return false;
+            } else {
+                $('#AccountTargetReader').removeClass('not-fulfilled');
+            }
+            if (obj.AccountLabel.length < 1) {
+                console.log('表单验证不通过项目--关键词');
+                $('#AccountChannel').addClass('not-fulfilled');
+                return false;
+            } else {
+                $('#AccountChannel').removeClass('not-fulfilled');
+            }
+            // 所在地
+            if (!obj.AccountProvince || !obj.AccountCity) {
+                console.log('表单验证不通过项目--所在地');
+                $('#inputAccountCity').addClass('not-fulfilled');
+                return false;
+            } else {
+                $('#inputAccountCity').removeClass('not-fulfilled');
+            }
+            // 同意 《封面号自媒体平台用户协议》
+            if (obj.check_agree_terms === false) {
+                console.log('表单验证不通过项目--同意《封面号自媒体平台用户协议》');
+                $('#check_agree_terms').addClass('not-fulfilled');
+                return false;
+            } else {
+                $('#check_agree_terms').removeClass('not-fulfilled');
+            }
+            //
+            return true;
+        },
+        submit: function(evt) {
+            var self = this;
+            var obj = self.data_of_form;
+            var $btn = $(evt.target);
+            if ($btn.hasClass('error') || $btn.hasClass('processing')) {
+                return false;
+            }
+            $btn.addClass('processing');
+            var to_be_posted = {
+                // 运营主体信息
+                proKind: self.getCandidateType(), // 1：学生 2：个人 3：媒体 4：国家机关 5：企业 6：其他
+                orgName: obj.OrgName, // 组织名称
+                pictureOrg: obj.PictureOrg, // file:组织机构代码证
+                pictureAuth: obj.PictureAuth, // file:封面号公众平台授权书
+                otherDoc: obj.OtherDoc, // 其余材料
+                // 运营者信息
+                username: obj.PersonName, // 运营者姓名
+                identityNo: obj.PersonID, // 运营者证件号码
+                picture: obj.PersonIDPicture, // file:运营者证件照片
+                mobile: obj.PersonPhoneNum, // 运营者手机号码
+                // 封面号主体信息
+                proAccount: obj.AccountName, // 封面号名称
+                proBrief: obj.AccountIntro, // 封面号介绍
+                proAvatar: obj.AvatarPicture, // file:封面号头像
+                proBackground: obj.BackgroundImageOfAccount, // file:封面号背景图
+                labelPgc: obj.AccountLabel, // [封面号关键词标签]
+                channelPgc: obj.AccountChannel, // 建议频道领域
+                province: obj.AccountProvince, // 省
+                city: obj.AccountCity, // 城市
+                pgc: obj.AccountTargetReader // [目标读者属性]
+            };
+            if (self.validateForm()) {
+                self.postDataOfForm({
+                    'data': JSON.stringify(to_be_posted)
+                }).then(function(result) {
+                    console.log('sendCredits() => ', result);
+                    $btn.removeClass('processing');
+                    return location.replace(helpers.destination_pages.page_review_result + '?result=0');
+                }, function(code, msg) {
+                    $btn.removeClass('processing');
+                    return alert(JSON.stringify(msg));
+                });
             } else {
                 alert('请完成所有必填项,再提交~');
-                    console.log(JSON.stringify(form.validates));
-                    helpers.scrollToElement($('.not-fulfilled').eq(0));
+                console.log(JSON.stringify(form.validates));
+                helpers.scrollToElement($('.not-fulfilled').eq(0));
                 $btn.removeClass('processing');
-                }
             }
-        },
-        created: function () {
-            var self = this;
-            var renderPage = function () {
-                console.log('renderPage()');
-                self.getChannelList()
-                        .then(function (res) {
-                            self.list_of_channels = res.data;
-                        });
-                self.getProvinceList()
-                        .then(function (res) {
-                            self.list_of_provinces = res;
-                            console.log('getProvinceList() => ', res)
-                        });
-            };
-            renderPage();
         }
-    });
+    },
+    created: function() {
+        var self = this;
+        var renderPage = function() {
+            console.log('renderPage()');
+            self.getChannelList().then(function(res) {
+                self.list_of_channels = res.data;
+            });
+            self.getProvinceList().then(function(res) {
+                self.list_of_provinces = res;
+                console.log('getProvinceList() => ', res)
+            });
+        };
+        renderPage();
+    }
+});
 </script>
 </body>
 
