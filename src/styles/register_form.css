@@ -240,8 +240,7 @@
 }
 
 #btn_cancel,
-#btn_register.error,
-#btn_submit_form {
+#btn_register.error {
     background-color: #D5D5D5
 }
 

@@ -100,7 +100,7 @@ window.helpers = (function ($, LS) {
       '学生',
       '个人',
       '媒体',
-      '国家机关',
+      '政府机构',
       '企业',
       '其他组织'
     ],
@@ -226,6 +226,11 @@ window.helpers = (function ($, LS) {
       Vue.filter('formatUIType', function (value) {
         return ['', '学生', '个人', '媒体', '政府', '企业', '组织'][value];
       });
+    },
+    'scrollToElement': function ($elem, callback) {
+      return $('html, body').animate({
+        'scrollTop': $elem.offset().top
+      }, 300);
     }
   };
 })(jQuery, window.localStorage);

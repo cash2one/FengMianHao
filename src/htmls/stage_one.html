@@ -35,13 +35,13 @@
             <div class="form" v-on:change.stop="validateForm($event)">
                 <div class="input-wrapper" id="email">
                     <label for="input_email">邮箱号:</label>
-                    <input name="email" type="text" id="input_email" class="fixed-width-input" placeholder="请填写本人常用邮箱,该邮箱将作为登录帐号" v-model="data_of_form.email" v-on:focus="data_of_form.email_inited = true">
-                    <span class="tip">请填写正确格式的邮箱</span>
+                    <input name="email" type="text" id="input_email" class="fixed-width-input" placeholder="请使用常用邮箱作为登录账号" v-model="data_of_form.email" v-on:focus="data_of_form.email_inited = true">
+                    <span class="tip">请使用常用邮箱作为登录账号</span>
                 </div>
                 <div class="input-wrapper" id="passwd">
                     <label for="input_passwd">设置密码:</label>
-                    <input name="passwd" type="password" id="input_passwd" class="fixed-width-input" placeholder="字母、数字或者英文符号,最短8位" v-model="data_of_form.passwd" v-on:focus="data_of_form.passwd_inited = true">
-                    <span class="tip">字母、数字或者英文符号,最短8位</span>
+                    <input name="passwd" type="password" id="input_passwd" class="fixed-width-input" placeholder="最短8位，包含数字/字母/符号中的至少2种" v-model="data_of_form.passwd" v-on:focus="data_of_form.passwd_inited = true">
+                    <span class="tip">最短8位，包含数字/字母/符号中的至少2种</span>
                 </div>
                 <div class="input-wrapper" id="passwd_repeat">
                     <label for="input_passwd_repeat">确认密码:</label>

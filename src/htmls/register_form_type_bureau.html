@@ -7,6 +7,7 @@
     <meta content="IE=Edge" http-equiv="X-UA-Compatible">
     <meta content="webkit" name="renderer">
     <meta content="telephone=no,address=no,email=no" name="format-detection">
+    <meta name="keyword" content="封面号,封面新闻,新闻app,封面,公众平台">
     <title>封面号|注册</title>
     <link href="https://wapcdn.thecover.cn/wap/1.0.0/img/favicon.png" rel="alternate icon" type="image/png">
     <link href="https://wapcdn.thecover.cn/wap/1.0.0/img/favicon.png" rel="apple-touch-icon-precomposed">
@@ -46,7 +47,15 @@
                             机构名称:
                         </label>
                         <div class="col-md-7">
-                            <input type="text" class="form-control is-required" id="OrgName" required maxlength="30" v-on:blur="validateInputLength($event, 2, 30)" v-on:focus="initInput($event)" v-model="data_of_form.OrgName">
+                            <input type="text"
+                                   class="form-control is-required"
+                                   id="OrgName"
+                                   required
+                                   maxlength="30"
+                                   v-on:blur="validateInputLength($event, 2, 30)"
+                                   v-on:focus="initInput($event)"
+                                   v-model="data_of_form.OrgName"
+                                   placeholder="请与组织机构代码证名称一致">
                             <span class="help-block" v-bind:class="{'input-error': validates.OrgName}">
                                 请与组织机构代码证名称一致
                             </span>
@@ -73,7 +82,15 @@
                             机构电话:
                         </label>
                         <div class="col-md-7">
-                            <input type="text" class="form-control is-required" id="StateTel" required maxlength="20" v-on:blur="validateInputLength($event, 8, 11)" v-on:focus="initInput($event)" v-model="data_of_form.StateTel">
+                            <input type="text"
+                                   class="form-control is-required"
+                                   id="StateTel"
+                                   required
+                                   maxlength="20"
+                                   v-on:blur="validateInputLength($event, 7, 20)"
+                                   v-on:focus="initInput($event)"
+                                   v-model="data_of_form.StateTel"
+                                   placeholder="格式：02886969467">
                             <span class="help-block" v-bind:class="{'input-error': validates.StateTel}">
                                 号码格式：02886969467，区号和固定电话号码之间无空格或-符号
                             </span>
@@ -190,7 +207,7 @@
                             <div class="col-md-7">
                                 <div class="label-of-account" data-label-id="{{index}}" v-for="(index, label) in data_of_form.AccountLabel">
                                     {{label}}
-                                    <em class="close-btn-of-label" data-label-id="{{index}}" v-on:click.stop="rmLabel($event)">
+                                    <em class="close-btn-of-label" data-label-id="{{index}}" v-on:click="rmLabel($event)">
                                     </em>
                                 </div>
                             </div>
@@ -202,8 +219,8 @@
                         <div class="input-group col-md-7">
                             <input class="form-control" id="AccountKeywords" maxlength="5" placeholder="关键词在搜索结果中展示,不超过3个" type="text">
                             <span class="input-group-btn">
-                                <button class="btn btn-primary" type="button" v-on:click.stop="addLabel($event)" v-show="data_of_form.AccountLabel.length !== 3">
-                                        添加
+                                <button class="btn btn-info btn-raised" type="button" v-on:click="addLabel($event)" v-show="data_of_form.AccountLabel.length !== 3">
+                                        + 添加
                                 </button>
                             </span>
                         </div>
@@ -228,7 +245,7 @@
                             所在地:
                         </label>
                         <div class="col-md-3">
-                            <select class="form-control" v-model="data_of_form.AccountProvince" v-on:change.stop="resetCity($event)">
+                            <select class="form-control" v-model="data_of_form.AccountProvince" v-on:change="resetCity($event)">
                                 <option v-bind:value="province.id" v-for="province in list_of_provinces">
                                     {{province.name}}
                                 </option>
@@ -243,11 +260,13 @@
                         </div>
                     </div>
                     <!--目标读者属性:-->
-                    <div class="form-group" id="AccountTargetReader">
+                    <div class="form-group" id="AccountTargetReader" v-on:change="limitCheckBoxLength($event)">
                         <label for="AccountTargetReader" class="col-md-4 control-label">
                             <em class="flag-required">*</em>目标读者属性:
                             <br>
-                            <!--<em class="flag-required" style="font-size: 10px">(至少选择一个)</em>-->
+                            <em class="flag-required" style="color: rgb(88, 88, 88);font-size: 10px">
+                                (选择最佳的读者人群,系统将作为参考)
+                            </em>
                         </label>
                         <div class="col-md-7">
                             <div class="checkbox col-md-6" v-for="reader in list_of_target_readers">
@@ -355,11 +374,10 @@
 <script src="https://wapcdn.thecover.cn/fengmianhao/1.0.0/scripts/jquery_bootstrap_material_bootstrapDialog_v0722.js"></script>
 <script src="https://wapcdn.thecover.cn/fengmianhao/1.0.0/scripts/libs_bluebird_vue_v0722.js"></script>
 <script src="./scripts/helpers.js"></script>
-
 <script type="text/javascript">
     var form = new Vue({
         el: 'body',
-        data: function () {
+        data: function() {
             return {
                 // 初始值
                 data_of_form: {
@@ -388,13 +406,10 @@
                     PersonName: false,
                     PersonID: false,
                     PersonPhoneNum: false,
-
-
                     AccountName: false,
                     AccountIntro: false,
                     AccountProvince: false,
                     AccountCity: false,
-
                     OrgName: false,
                     StateTel: false
                 }
@@ -407,10 +422,10 @@
             ui_type: function() {
                 return this.getCandidateType();
             },
-            canSubmit: function () {
+            canSubmit: function() {
                 return this.validateForm();
             },
-            citiesOfSelectedProvince: function () {
+            citiesOfSelectedProvince: function() {
                 var self = this;
                 var arr = self.list_of_provinces;
                 var i;
@@ -422,35 +437,35 @@
             }
         },
         methods: {
-            getCandidateType: function () {
+            getCandidateType: function() {
                 return helpers.getValueFromUrl('type');
             },
-            postDataOfForm: function (payload) {
+            postDataOfForm: function(payload) {
                 return helpers.$post(helpers.apis().registerStageThree, payload);
             },
-            getChannelList: function () {
+            getChannelList: function() {
                 return helpers.$post(helpers.apis().getChannelList, {});
             },
-            getProvinceList: function () {
+            getProvinceList: function() {
                 return helpers.$post(helpers.apis().getProvinceList, {});
             },
-            addLabel: function (evt) {
+            addLabel: function(evt) {
                 var labels = this.data_of_form.AccountLabel;
                 evt.preventDefault();
-            if ($('#AccountKeywords').val().trim().length === 0) {
+                if ($('#AccountKeywords').val().trim().length === 0) {
                     return false;
                 }
-                if(labels.length === 3) {
+                if (labels.length === 3) {
                     return false;
                 }
-            for (var i = 0; i < labels.length; ++i) {
-                console.log(labels[i]);
-                if (labels[i] === $('#AccountKeywords').val().trim()) {
-                    return false;
+                for (var i = 0; i < labels.length; ++i) {
+                    console.log(labels[i]);
+                    if (labels[i] === $('#AccountKeywords').val().trim()) {
+                        return false;
+                    }
                 }
-            }
-            labels.push($('#AccountKeywords').val().trim());
-            $('#AccountKeywords').val('');
+                labels.push($('#AccountKeywords').val().trim());
+                $('#AccountKeywords').val('');
             },
             rmLabel: function(evt) {
                 var labels = this.data_of_form.AccountLabel;
@@ -458,109 +473,137 @@
                 var $em = $(evt.target);
                 labels.splice($em.data('label-id'), 1)
             },
+            limitCheckBoxLength: function(evt) {
+                console.log('limitCheckBoxLength()');
+                var curr_len = $('#AccountTargetReader').find('input[type="checkbox"]').filter(':checked').length;
+                console.log(curr_len);
+                console.log($(evt.target).prop('checked'));
+                if (curr_len > 5) {
+                    return $(evt.target).prop('checked', false);
+                    //                    return evt.preventDefault();
+                }
+            },
             resetCity: function(evt) {
                 // 当省市都选择时,改选省则重置市
-                if(evt.target.value && this.data_of_form.AccountCity) {
+                if (evt.target.value && this.data_of_form.AccountCity) {
                     console.log('if');
                     this.data_of_form.AccountCity = undefined;
                 }
             },
-        // check input string length
-        validateInputLength: function(evt, min, max) {
-            var self = this;
-            if (self.hasInited(evt)) {
-                if ((min && $(evt.target).val().trim().length < min) || (max && $(evt.target).val().trim().length > max)) {
-                    self.validates[$(evt.target).prop("id")] = true;
-                    console.log('validateInputLength() ==> false ', 'id: ', $(evt.target).prop("id"), '输入校验不通过,对应的属性', $(evt.target).prop("id"), 'validates值: ', self.validates[$(evt.target).prop("id")]);
+            // check input string length
+            validateInputLength: function(evt, min, max) {
+                var self = this;
+                if (self.hasInited(evt)) {
+                    if ((min && $(evt.target).val().trim().length < min) || (max && $(evt.target).val().trim().length > max)) {
+                        self.validates[$(evt.target).prop("id")] = true;
+                        console.log('validateInputLength() ==> false ', 'id: ', $(evt.target).prop("id"), '输入校验不通过,对应的属性', $(evt.target).prop("id"), 'validates值: ', self.validates[$(evt.target).prop("id")]);
+                    } else {
+                        self.validates[$(evt.target).prop("id")] = false;
+                    }
+                    return true;
                 } else {
-                    self.validates[$(evt.target).prop("id")] = false;
+                    console.log('输入框未初始化');
+                    return false;
                 }
-                return true;
-            } else {
-                console.log('输入框未初始化');
-                return false;
-            }
-        },
-        hasInited: function (evt) {
-            console.log('hasInited() ==> ', ($(evt.target).data('inited') === true));
-            return ($(evt.target).data('inited') === true);
-        },
-        initInput: function (evt) {
-            console.log('initInput()');
-            return $(evt.target).data('inited', true);
-        },
-            validateForm: function () {
-            console.log('validateForm()');
+            },
+            hasInited: function(evt) {
+                console.log('hasInited() ==> ', ($(evt.target).data('inited') === true));
+                return ($(evt.target).data('inited') === true);
+            },
+            initInput: function(evt) {
+                console.log('initInput()');
+                return $(evt.target).data('inited', true);
+            },
+            validateForm: function() {
+                console.log('validateForm()');
                 var self = this;
                 var obj = self.data_of_form;
-            // 同意 《封面号自媒体平台用户协议》
-            if (obj.check_agree_terms === false) {
-                console.log('L567');
-                return false;
-            }
-            // 目标读者属性
-            if (obj.AccountTargetReader.length < 1) {
-                console.log('L572');
-                return false;
-            }
-
-            if(obj.AccountLabel.length < 1) {
-                console.log('L471');
+                // 同意 《封面号自媒体平台用户协议》
+                if (obj.check_agree_terms === false) {
+                    console.log('表单验证不通过项目--同意《封面号自媒体平台用户协议》');
+                    $('#check_agree_terms').addClass('not-fulfilled');
                     return false;
+                } else {
+                    $('#check_agree_terms').removeClass('not-fulfilled');
                 }
-            // 所在地
-            if (!obj.AccountProvince || !obj.AccountCity) {
-                console.log('L578');
+                // 目标读者属性
+                if (obj.AccountTargetReader.length < 1) {
+                    console.log('表单验证不通过项目--目标读者属性');
+                    $('#AccountTargetReader').addClass('not-fulfilled');
                     return false;
+                } else {
+                    $('#AccountTargetReader').removeClass('not-fulfilled');
                 }
-            // 文本校验
-            for (var i = 0; i < $('.is-required').length; ++i) {
-                if (!$('.is-required').eq(i).data('inited') === true) {
-                    console.log( $('.is-required').eq(i).prop('id'));
+                if (obj.AccountLabel.length < 1) {
+                    console.log('表单验证不通过项目--封面号领域');
+                    $('#AccountChannel').addClass('not-fulfilled');
                     return false;
+                } else {
+                    $('#AccountChannel').removeClass('not-fulfilled');
                 }
-            }
-
-
-            for (var prop in self.validates) {
-                console.log(prop, ' : ', self.validates[prop], '(', typeof self.validates[prop], ')');
-                if(self.validates[prop] === true) {
-                    console.log('validates.', prop, 'is ', self.validates[prop]);
+                // 所在地
+                if (!obj.AccountProvince || !obj.AccountCity) {
+                    console.log('表单验证不通过项目--所在地');
+                    $('#inputAccountCity').addClass('not-fulfilled');
                     return false;
+                } else {
+                    $('#inputAccountCity').removeClass('not-fulfilled');
                 }
-            }
-            // 文本校验: 学生证和学校
-            if (self.getCandidateType() == 1) {
-                if(self.validates.StuNo || self.validates.University) {
-                    console.log('L592');
+                // 文本校验
+                for (var i = 0; i < $('.is-required').length; ++i) {
+                    if (!$('.is-required').eq(i).data('inited') === true) {
+                        console.log($('.is-required').eq(i).prop('id'));
+                        $('.is-required').eq(i).addClass('not-fulfilled');
+                        return false;
+                    } else {
+                        $('.is-required').eq(i).removeClass('not-fulfilled');
+                    }
+                }
+                // 输入的校验
+                for (var prop in self.validates) {
+                    console.log(prop, ' : ', self.validates[prop], '(', typeof self.validates[prop], ')');
+                    if (self.validates[prop] === true) {
+                        console.log('表单验证不通过项目--', prop, 'is ', self.validates[prop]);
+                        return false;
+                    }
+                }
+                // files
+                if (obj.PersonIDPicture === 'https://wapcdn.thecover.cn/fengmianhao/1.0.0/img/bg_PersonIDPicture.png') {
+                    console.log('表单验证不通过项目--运营者持身份证照片');
+                    $('#upImg-card').addClass('not-fulfilled');
                     return false;
+                } else {
+                    $('#upImg-card').removeClass('not-fulfilled');
                 }
-            }
-            // files
-            if (obj.PersonIDPicture === 'https://wapcdn.thecover.cn/fengmianhao/1.0.0/img/bg_PersonIDPicture.png') {
-                console.log('L599');
 
+                if (obj.BackgroundImageOfAccount === 'https://wapcdn.thecover.cn/fengmianhao/1.0.0/img/bg_PersonIDPicture.png') {
+                    console.log('表单验证不通过项目--封面号背景图');
+                    $('#upImg-bg').addClass('not-fulfilled');
                     return false;
+                } else {
+                    $('#upImg-bg').removeClass('not-fulfilled');
                 }
-            if (obj.BackgroundImageOfAccount === 'https://wapcdn.thecover.cn/fengmianhao/1.0.0/img/bg_PersonIDPicture.png') {
-                console.log('L604');
 
-                return false;
-            }
-            if (obj.AvatarPicture === 'https://wapcdn.thecover.cn/fengmianhao/1.0.0/img/bg_AvatarPicture.png') {
-                console.log('L609');
+                if (obj.AvatarPicture === 'https://wapcdn.thecover.cn/fengmianhao/1.0.0/img/bg_AvatarPicture.png') {
+                    console.log('表单验证不通过项目--封面号头像');
+                    $('#upImg-icon').addClass('not-fulfilled');
+                    return false;
+                } else {
+                    $('#upImg-icon').removeClass('not-fulfilled');
+                }
 
-                return false;
-            }
-            if (obj.PictureAuth === 'https://wapcdn.thecover.cn/fengmianhao/1.0.0/img/bg_PersonIDPicture.png') {
-                console.log('L548');
-                return false;
-            }
+                if (obj.PictureAuth === 'https://wapcdn.thecover.cn/fengmianhao/1.0.0/img/bg_PersonIDPicture.png') {
+                    console.log('表单验证不通过项目--封面号公众平台授权书');
+                    $('#upImg-sqs').addClass('not-fulfilled');
+                    return false;
+                } else {
+                    $('#upImg-sqs').removeClass('not-fulfilled');
+                }
 
-
+                //
                 return true;
             },
-            submit: function (evt) {
+            submit: function(evt) {
                 var self = this;
                 var obj = self.data_of_form;
                 var $btn = $(evt.target);
@@ -595,7 +638,7 @@
                 if (self.validateForm()) {
                     self.postDataOfForm({
                         'data': JSON.stringify(to_be_posted)
-                    }).then(function (result) {
+                    }).then(function(result) {
                         console.log('sendCredits() => ', result);
                         $btn.removeClass('processing');
                         return location.replace(helpers.destination_pages.page_review_result + '?result=0');
@@ -603,25 +646,25 @@
                         $btn.removeClass('processing');
                         return alert(JSON.stringify(msg));
                     });
-            } else {
-                alert('请完成所有必填项,再提交~');
-                $btn.removeClass('processing');
+                } else {
+                    alert('请完成所有必填项,再提交~');
+                    console.log(JSON.stringify(form.validates));
+                    helpers.scrollToElement($('.not-fulfilled').eq(0));
+                    $btn.removeClass('processing');
                 }
             }
         },
-        created: function () {
+        created: function() {
             var self = this;
-            var renderPage = function () {
+            var renderPage = function() {
                 console.log('renderPage()');
-                self.getChannelList()
-                        .then(function (res) {
-                            self.list_of_channels = res.data;
-                        });
-                self.getProvinceList()
-                        .then(function (res) {
-                            self.list_of_provinces = res;
-                            console.log('getProvinceList() => ', res)
-                        });
+                self.getChannelList().then(function(res) {
+                    self.list_of_channels = res.data;
+                });
+                self.getProvinceList().then(function(res) {
+                    self.list_of_provinces = res;
+                    console.log('getProvinceList() => ', res)
+                });
             };
             renderPage();
         }
