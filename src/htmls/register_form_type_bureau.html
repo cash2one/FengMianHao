@@ -66,10 +66,17 @@
                         <label for="StateLevel" class="col-md-4 control-label">
                             <em class="flag-required">*</em>
                             机构级别:
+                            <br>
+                            <em class="flag-required error-msg-of-non-text-input" style="font-size: 14px;">
+                                必填
+                            </em>
                         </label>
                         <div class="col-md-7">
-                            <select id="StateLevel" class="form-control" v-model="data_of_form.StateLevel">
-                                <option v-for="option in list_of_statelevels" v-bind:value="option">
+                            <select id="StateLevel"
+                                    class="form-control"
+                                    v-model="data_of_form.StateLevel">
+                                <option v-for="option in list_of_statelevels"
+                                        v-bind:value="option">
                                     {{option}}
                                 </option>
                             </select>
@@ -101,6 +108,10 @@
                         <label class="col-md-4 control-label required">
                             <em class="flag-required">*</em>
                             封面号公众平台授权书:
+                            <br>
+                            <em class="flag-required error-msg-of-non-text-input" style="font-size: 14px;">
+                                必填
+                            </em>
                         </label>
                         <div class="col-md-7">
                             <div class="container-upload-img">
@@ -166,6 +177,10 @@
                         <label class="col-md-4 control-label required">
                             <em class="flag-required">*</em>
                             封面号头像:
+                            <br>
+                            <em class="flag-required error-msg-of-non-text-input" style="font-size: 14px;">
+                                必填
+                            </em>
                         </label>
                         <div class="col-md-7">
                             <div class="container-upload-img">
@@ -182,6 +197,10 @@
                         <label class="col-md-4 control-label">
                             <em class="flag-required">*</em>
                             封面号背景图:
+                            <br>
+                            <em class="flag-required error-msg-of-non-text-input" style="font-size: 14px;">
+                                必填
+                            </em>
                         </label>
                         <div class="col-md-7">
                             <div class="container-upload-img">
@@ -215,6 +234,10 @@
                         <label class="control-label col-md-4" for="AccountKeywords">
                             <em class="flag-required">*</em>
                             封面号关键词:
+                            <br>
+                            <em class="flag-required error-msg-of-non-text-input" style="font-size: 14px;">
+                                必填
+                            </em>
                         </label>
                         <div class="input-group col-md-7">
                             <input class="form-control" id="AccountKeywords" maxlength="5" placeholder="关键词在搜索结果中展示,不超过3个" type="text">
@@ -229,6 +252,10 @@
                     <div class="form-group">
                         <label for="AccountChannel" class="col-md-4 control-label">
                             <em class="flag-required">*</em>封面号领域:
+                            <br>
+                            <em class="flag-required error-msg-of-non-text-input" style="font-size: 14px;">
+                                必填
+                            </em>
                         </label>
                         <div class="col-md-7">
                             <select class="form-control" id="AccountChannel" v-model="data_of_form.AccountChannel">
@@ -243,6 +270,10 @@
                         <label class="col-md-4 control-label">
                             <em class="flag-required">*</em>
                             所在地:
+                            <br>
+                            <em class="flag-required error-msg-of-non-text-input" style="font-size: 14px;">
+                                必填
+                            </em>
                         </label>
                         <div class="col-md-3">
                             <select class="form-control" v-model="data_of_form.AccountProvince" v-on:change="resetCity($event)">
@@ -260,18 +291,25 @@
                         </div>
                     </div>
                     <!--目标读者属性:-->
-                    <div class="form-group" id="AccountTargetReader" v-on:change="limitCheckBoxLength($event)">
+                    <div class="form-group" id="AccountTargetReader">
                         <label for="AccountTargetReader" class="col-md-4 control-label">
                             <em class="flag-required">*</em>目标读者属性:
                             <br>
                             <em class="flag-required" style="color: rgb(88, 88, 88);font-size: 10px">
-                                (选择最佳的读者人群,系统将作为参考)
+                                【最多选五个，系统将作为参考】
+                            </em>
+                            <br>
+                            <em class="flag-required error-msg-of-non-text-input" style="font-size: 14px;">
+                                必填
                             </em>
                         </label>
                         <div class="col-md-7">
                             <div class="checkbox col-md-6" v-for="reader in list_of_target_readers">
                                 <label>
-                                    <input type="checkbox" v-model="data_of_form.AccountTargetReader" value="{{reader.id}}">
+                                    <input type="checkbox"
+                                           v-model="data_of_form.AccountTargetReader"
+                                           value="{{reader.id}}"
+                                           v-on:click="limitCheckBoxLength($event)">
                                     <span class="checkbox-material">
                                     </span>
                                     {{reader.name}}
@@ -313,6 +351,10 @@
                         <label class="col-md-4 control-label required">
                             <em class="flag-required">*</em>
                             运营者持身份证照片:
+                            <br>
+                            <em class="flag-required error-msg-of-non-text-input" style="font-size: 14px;">
+                                必填
+                            </em>
                         </label>
                         <div class="col-md-7">
                             <div class="container-upload-img">
@@ -392,7 +434,7 @@ var form = new Vue({
                 'BackgroundImageOfAccount': 'https://wapcdn.thecover.cn/fengmianhao/1.0.0/img/bg_PersonIDPicture.png',
                 'AvatarPicture': 'https://wapcdn.thecover.cn/fengmianhao/1.0.0/img/bg_AvatarPicture.png',
                 'PictureAuth': 'https://wapcdn.thecover.cn/fengmianhao/1.0.0/img/bg_PersonIDPicture.png',
-                'PictureOrg': 'https://wapcdn.thecover.cn/fengmianhao/1.0.0/img/bg_PersonIDPicture.png',
+                    'PictureOrg': 'https://wapcdn.thecover.cn/fengmianhao/1.0.0/img/bg_PersonIDPicture.png', // 组织机构代码证
                 'AccountTargetReader': [], // 目标读者属性
                 'AccountLabel': [], // 封面号关键词
                 'AccountChannel': [], // 封面号领域
@@ -473,14 +515,11 @@ var form = new Vue({
             var $em = $(evt.target);
             labels.splice($em.data('label-id'), 1)
         },
-        limitCheckBoxLength: function(evt) {
-            console.log('limitCheckBoxLength()');
+        limitCheckBoxLength: function (evt) {
             var curr_len = $('#AccountTargetReader').find('input[type="checkbox"]').filter(':checked').length;
-            console.log(curr_len);
-            console.log($(evt.target).prop('checked'));
             if (curr_len > 5) {
-                return $(evt.target).prop('checked', false);
-                //                    return evt.preventDefault();
+                $(evt.target).prop('checked', false);
+                return evt.preventDefault();
             }
         },
         resetCity: function(evt) {
@@ -520,12 +559,12 @@ var form = new Vue({
             var obj = self.data_of_form;
             // 文本校验
             for (var i = 0; i < $('.is-required').length; ++i) {
-                if (!$('.is-required').eq(i).data('inited') === true) {
-                    console.log($('.is-required').eq(i).prop('id'));
-                    $('.is-required').eq(i).addClass('not-fulfilled');
+                    if (!$('.is-required').eq(i).data('inited') === true || self.validates[$('.is-required').eq(i).prop('id')] === true) {
+                        console.log('L550: ', $('.is-required').eq(i).prop('id'));
+                    $('.is-required').eq(i).addClass('not-fulfilled').siblings('.help-block').stop().addClass('should-show');
                     return false;
                 } else {
-                    $('.is-required').eq(i).removeClass('not-fulfilled');
+                    $('.is-required').eq(i).removeClass('not-fulfilled').siblings('.help-block').stop().removeClass('should-show');
                 }
             }
             // 输入的校验
@@ -540,64 +579,102 @@ var form = new Vue({
             // files
             if (obj.PictureAuth === 'https://wapcdn.thecover.cn/fengmianhao/1.0.0/img/bg_PersonIDPicture.png') {
                 console.log('表单验证不通过项目--封面号公众平台授权书');
-                $('#upImg-sqs').addClass('not-fulfilled');
+                $('#upImg-sqs').addClass('not-fulfilled').siblings('.help-block').stop().addClass('should-show');
+                $('#upImg-sqs').closest('.form-group').find('.error-msg-of-non-text-input').addClass('should-show');
                 return false;
             } else {
-                $('#upImg-sqs').removeClass('not-fulfilled');
+                $('#upImg-sqs').removeClass('not-fulfilled').siblings('.help-block').stop().removeClass('should-show');
+                $('#upImg-sqs').closest('.form-group').find('.error-msg-of-non-text-input').removeClass('should-show');
             }
+
             if (obj.AvatarPicture === 'https://wapcdn.thecover.cn/fengmianhao/1.0.0/img/bg_AvatarPicture.png') {
                 console.log('表单验证不通过项目--封面号头像');
-                $('#upImg-icon').addClass('not-fulfilled');
+                $('#upImg-icon').addClass('not-fulfilled').siblings('.help-block').stop().addClass('should-show');
+                $('#upImg-icon').closest('.form-group').find('.error-msg-of-non-text-input').addClass('should-show');
                 return false;
             } else {
-                $('#upImg-icon').removeClass('not-fulfilled');
+                $('#upImg-icon').removeClass('not-fulfilled').siblings('.help-block').stop().removeClass('should-show');
+                $('#upImg-icon').closest('.form-group').find('.error-msg-of-non-text-input').removeClass('should-show');
             }
+
             if (obj.BackgroundImageOfAccount === 'https://wapcdn.thecover.cn/fengmianhao/1.0.0/img/bg_PersonIDPicture.png') {
                 console.log('表单验证不通过项目--封面号背景图');
-                $('#upImg-bg').addClass('not-fulfilled');
+                $('#upImg-bg').addClass('not-fulfilled').siblings('.help-block').stop().addClass('should-show');
+                $('#upImg-bg').closest('.form-group').find('.error-msg-of-non-text-input').addClass('should-show');
                 return false;
             } else {
-                $('#upImg-bg').removeClass('not-fulfilled');
+                $('#upImg-bg').removeClass('not-fulfilled').siblings('.help-block').stop().removeClass('should-show');
+                $('#upImg-bg').closest('.form-group').find('.error-msg-of-non-text-input').removeClass('should-show');
             }
+
             if (obj.PersonIDPicture === 'https://wapcdn.thecover.cn/fengmianhao/1.0.0/img/bg_PersonIDPicture.png') {
                 console.log('表单验证不通过项目--运营者持身份证照片');
-                $('#upImg-card').addClass('not-fulfilled');
+                $('#upImg-card').addClass('not-fulfilled').siblings('.help-block').stop().addClass('should-show');
+                $('#upImg-card').closest('.form-group').find('.error-msg-of-non-text-input').addClass('should-show');
                 return false;
             } else {
-                $('#upImg-card').removeClass('not-fulfilled');
+                $('#upImg-card').removeClass('not-fulfilled').siblings('.help-block').stop().removeClass('should-show');
+                $('#upImg-card').closest('.form-group').find('.error-msg-of-non-text-input').removeClass('should-show');
+            }
+
+            // 机构级别
+            if (!obj.StateLevel) {
+                console.log('表单验证不通过项目--机构级别');
+                $('#StateLevel').addClass('not-fulfilled').siblings('.help-block').stop().addClass('should-show');
+                $('#StateLevel').closest('.form-group').find('.error-msg-of-non-text-input').addClass('should-show');
+                return false;
+            } else {
+                $('#StateLevel').removeClass('not-fulfilled').siblings('.help-block').stop().removeClass('should-show');
+                $('#StateLevel').closest('.form-group').find('.error-msg-of-non-text-input').removeClass('should-show');
             }
 
             // 所在地
             if (!obj.AccountProvince || !obj.AccountCity) {
                 console.log('表单验证不通过项目--所在地');
-                $('#inputAccountCity').addClass('not-fulfilled');
+                $('#inputAccountCity').addClass('not-fulfilled').siblings('.help-block').stop().addClass('should-show');
+                $('#inputAccountCity').closest('.form-group').find('.error-msg-of-non-text-input').addClass('should-show');
                 return false;
             } else {
-                $('#inputAccountCity').removeClass('not-fulfilled');
+                $('#inputAccountCity').removeClass('not-fulfilled').siblings('.help-block').stop().removeClass('should-show');
+                $('#inputAccountCity').closest('.form-group').find('.error-msg-of-non-text-input').removeClass('should-show');
             }
             // 目标读者属性
             if (obj.AccountTargetReader.length < 1) {
                 console.log('表单验证不通过项目--目标读者属性');
-                $('#AccountTargetReader').addClass('not-fulfilled');
+                $('#AccountTargetReader').addClass('not-fulfilled').siblings('.help-block').stop().addClass('should-show');
+                $('#AccountTargetReader').closest('.form-group').find('.error-msg-of-non-text-input').addClass('should-show');
                 return false;
             } else {
-                $('#AccountTargetReader').removeClass('not-fulfilled');
+                $('#AccountTargetReader').removeClass('not-fulfilled').siblings('.help-block').stop().removeClass('should-show');
+                $('#AccountTargetReader').closest('.form-group').find('.error-msg-of-non-text-input').removeClass('should-show');
             }
-            // 关键词
+                // 封面号关键词
             if (obj.AccountLabel.length < 1) {
                 console.log('表单验证不通过项目--关键词');
-                $('#AccountChannel').addClass('not-fulfilled');
+                $('#AccountKeywords').addClass('not-fulfilled').siblings('.help-block').stop().addClass('should-show');
+                $('#AccountKeywords').closest('.form-group').find('.error-msg-of-non-text-input').addClass('should-show');
                 return false;
             } else {
-                $('#AccountChannel').removeClass('not-fulfilled');
+                $('#AccountKeywords').removeClass('not-fulfilled').siblings('.help-block').stop().removeClass('should-show');
+                $('#AccountKeywords').closest('.form-group').find('.error-msg-of-non-text-input').removeClass('should-show');
             }
+                // 封面号领域
+                if (obj.AccountChannel.length < 1) {
+                    console.log('表单验证不通过项目--封面号领域');
+                    $('#AccountChannel').addClass('not-fulfilled').siblings('.help-block').stop().addClass('should-show');
+                    $('#AccountChannel').closest('.form-group').find('.error-msg-of-non-text-input').addClass('should-show');
+                    return false;
+                } else {
+                    $('#AccountChannel').removeClass('not-fulfilled').siblings('.help-block').stop().removeClass('should-show');
+                    $('#AccountChannel').closest('.form-group').find('.error-msg-of-non-text-input').removeClass('should-show');
+                }
             // 同意 《封面号自媒体平台用户协议》
             if (obj.check_agree_terms === false) {
                 console.log('表单验证不通过项目--同意《封面号自媒体平台用户协议》');
-                $('#check_agree_terms').addClass('not-fulfilled');
+                $('#check_agree_terms').addClass('not-fulfilled').siblings('.help-block').stop().addClass('should-show');
                 return false;
             } else {
-                $('#check_agree_terms').removeClass('not-fulfilled');
+                $('#check_agree_terms').removeClass('not-fulfilled').siblings('.help-block').stop().removeClass('should-show');
             }
             //
             return true;
@@ -610,6 +687,7 @@ var form = new Vue({
                 return false;
             }
             $btn.addClass('processing');
+            $('body').removeClass('checking');
             var to_be_posted = {
                 // 运营主体信息
                 proKind: self.getCandidateType(), // 1：学生 2：个人 3：媒体 4：国家机关 5：企业 6：其他
@@ -647,7 +725,8 @@ var form = new Vue({
                 });
             } else {
                 alert('请完成所有必填项,再提交~');
-                helpers.scrollToElement($('.not-fulfilled').eq(0));
+                $('body').addClass('checking');
+                if($('.not-fulfilled').length > 0) {helpers.scrollToElement($('.not-fulfilled').eq(0))}
                 $btn.removeClass('processing');
             }
         }

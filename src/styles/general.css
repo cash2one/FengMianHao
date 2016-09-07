@@ -92,7 +92,12 @@ input[type=password] {
     font-family: -apple-system, "Hiragino Sans GB", Roboto, "Droid Sans", "Microsoft YaHei", "Microsoft YaHei UI", "Microsoft JhengHei UI", STHeiti, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Helvetica Neue", sans-serif;
 }
 
-.help-block.input-error {
+.error-msg-of-non-text-input {
+    display: none;
+}
+.help-block.input-error,
+.checking .error-msg-of-non-text-input.should-show,
+.checking .help-block.should-show {
     color: #f44336;
     display: block!important
 }

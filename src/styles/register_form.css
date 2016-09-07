@@ -316,6 +316,7 @@ em.flag-required {
 .container-upload-img {
     position: relative;
     padding: 20px 0;
+    padding-top: 12px;
     border-radius: 6px;
     min-height: 20px;
     margin-bottom: 20px
@@ -433,4 +434,24 @@ em.flag-required {
 
 .account-management .form-group textarea {
     padding-top: 0
+}
+
+#stage_three .checkbox input[type=checkbox]:checked+.checkbox-material .check {
+    color: #2AB5E2;
+    border-color: #2AB5E2;
+}
+
+#stage_three .checkbox input[type=checkbox]:checked+.checkbox-material .check:before,
+#stage_three label.checkbox-inline input[type=checkbox]:checked+.checkbox-material .check:before {
+    color: #2AB5E2;
+}
+
+.error-msg-of-non-text-input {
+    display: none;
+}
+.help-block.input-error,
+.checking .error-msg-of-non-text-input.should-show,
+.checking .help-block.should-show {
+    color: #f44336;
+    display: block!important
 }
