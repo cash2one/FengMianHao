@@ -165,6 +165,7 @@ var form = new Vue({
   },
   methods: {
     validateForm: function () {
+      console.log('validateForm()');
       var self = this;
       var obj = self.data_of_form;
       if (!helpers.validateEmailAddr(obj.email)) {
@@ -176,9 +177,16 @@ var form = new Vue({
         $('#input_email').siblings('.tip').removeClass('show');
       }
       if (!helpers.validatePasswd(obj.passwd)) {
-        console.log('密码复杂度不够');
         if (obj.passwd_inited === true) {
-          $('#input_passwd').siblings('.tip').addClass('show');
+          //$('#input_passwd').siblings('.tip').addClass('show');
+          console.log($('#input_passwd').siblings('.tip'));
+          if(obj.passwd.length < 8) {
+            console.log('obj.passwd.length < 8');
+            $('#input_passwd').siblings('.tip').text('密码长度至少8位').addClass('show');
+          } else {
+            console.log('else');
+            $('#input_passwd').siblings('.tip').text('密码至少包含数字/字母/符号中的2种').addClass('show');
+          }
         }
         return false;
       } else {

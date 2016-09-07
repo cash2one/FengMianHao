@@ -40,7 +40,13 @@
                 </div>
                 <div class="input-wrapper" id="passwd">
                     <label for="input_passwd">设置密码:</label>
-                    <input name="passwd" type="password" id="input_passwd" class="fixed-width-input" placeholder="最短8位，包含数字/字母/符号中的至少2种" v-model="data_of_form.passwd" v-on:focus="data_of_form.passwd_inited = true">
+                    <input name="passwd"
+                           type="password"
+                           id="input_passwd"
+                           class="fixed-width-input"
+                           placeholder="最短8位，包含数字/字母/符号中的至少2种"
+                           v-model="data_of_form.passwd"
+                           v-on:focus="data_of_form.passwd_inited = true">
                     <span class="tip">最短8位，包含数字/字母/符号中的至少2种</span>
                 </div>
                 <div class="input-wrapper" id="passwd_repeat">
