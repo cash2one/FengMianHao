@@ -178,8 +178,6 @@ var form = new Vue({
       }
       if (!helpers.validatePasswd(obj.passwd)) {
         if (obj.passwd_inited === true) {
-          //$('#input_passwd').siblings('.tip').addClass('show');
-          console.log($('#input_passwd').siblings('.tip'));
           if(obj.passwd.length < 8) {
             console.log('obj.passwd.length < 8');
             $('#input_passwd').siblings('.tip').text('密码长度至少8位').addClass('show');
