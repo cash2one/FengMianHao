@@ -2,7 +2,8 @@ window.helpers = (function ($, LS) {
   var CONFIG = {
     //API_BASE_URL: 'http://170.240.110.30:8080' //盖卵
     //API_BASE_URL: 'http://170.240.110.120:8181' //韩卵
-    API_BASE_URL: 'http://170.240.110.243:81' //李卵
+    //API_BASE_URL: 'http://170.240.110.243:81' //李卵
+    API_BASE_URL: 'http://170.240.110.28:8080' //L卵
     //API_BASE_URL: 'http://170.240.110.21:8090'     //steven
   };
   $.material.init();
@@ -24,6 +25,8 @@ window.helpers = (function ($, LS) {
         'resetPassword': CONFIG.API_BASE_URL + '/login/resetPassword', // 重置密码
         'sendEmail': CONFIG.API_BASE_URL + '/login/sendEmail', // 发送验证邮件
         'getIndexPage': CONFIG.API_BASE_URL + '/index', // 获取首页数据
+        'getDailyStatistics': CONFIG.API_BASE_URL + '/statistic/getDailyStatistics', // 数据中心页面--每日新增订阅
+        'getUserNews': CONFIG.API_BASE_URL + '/statistic/getUserNews', // 数据中心页面--文章阅读量
         'getAccountInfo': CONFIG.API_BASE_URL + '/user/getUserInfo', // 获取账号资料
         'updateAccountInfo': CONFIG.API_BASE_URL + '/user/updateUserInfo' // 修改账号资料
       };
@@ -165,7 +168,7 @@ window.helpers = (function ($, LS) {
         data: data,
         dataType: 'json',
         success: function (result) {
-          console.log('$get() success => ', result);
+          console.log('$get() success => ', JSON.stringify(result));
           if (parseInt(result.status) === 0 || parseInt(result.status) === 200) {
             $d.resolve(result.data);
           } else {
