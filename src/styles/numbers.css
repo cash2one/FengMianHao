@@ -1,6 +1,12 @@
-.transparent {
-    opacity: 0;
+.data-block:last-of-type:hover,
+.wrapper-of-toggle-btns span:hover {
+    cursor: pointer
 }
+
+.transparent {
+    opacity: 0
+}
+
 #content,
 #table_of_broadcasting tr,
 .table-container {
@@ -63,10 +69,6 @@
     margin-right: 0
 }
 
-.data-block:last-of-type:hover {
-    cursor: pointer
-}
-
 .data-block h3 {
     font-size: 18px;
     line-height: 30px;
@@ -121,14 +123,12 @@
     line-height: 22px;
     height: 22px;
     font-size: 14px;
-    -webkit-border-radius:11px;
-    -moz-border-radius:11px;
-    border-radius:11px;
+    border-radius: 11px;
     position: absolute;
     right: 0;
     top: 16.5px;
     margin-right: 10px;
-    overflow: hidden;
+    overflow: hidden
 }
 
 .wrapper-of-toggle-btns span {
@@ -136,47 +136,45 @@
     text-align: center;
     width: 50%;
     float: left;
+    color: #a4a4a4;
+    background-color: #e5e5e9;
+    -webkit-transition: all .3s ease-in;
+    transition: all .3s ease-in
 }
 
-.wrapper-of-toggle-btns span {
-    color: rgb(164, 164, 164);
-    background-color: rgb(229, 229, 233);
-    -webkit-transition: all 0.3s ease-in;
-    -moz-transition: all 0.3s ease-in;
-    -ms-transition: all 0.3s ease-in;
-    -o-transition: all 0.3s ease-in;
-    transition: all 0.3s ease-in;
-}
-
-.wrapper-of-toggle-btns span:hover {
-    cursor: pointer;
-}
 .wrapper-of-toggle-btns span.active:hover {
-    cursor: not-allowed;
+    cursor: not-allowed
 }
 
 .wrapper-of-toggle-btns span.active {
-    color: white;
-    background-color: rgb(42, 182, 226);
+    color: #fff;
+    background-color: #2ab6e2
 }
 
 .container-dailyStatistics {
     height: 400px;
-    background: white;
+    background: #fff;
     overflow-y: scroll;
-    overflow-x: hidden;
+    overflow-x: hidden
 }
-#chart_container, .container-dailyStatistics .table-container {
+
+#chart_container,
+.container-dailyStatistics .table-container {
     height: 400px;
-    /*width: 100%;*/
-    width: 984px;
+    width: 984px
 }
-.table-container .table td, .table-container .table th  {
-    color: rgb(51, 51, 51);
-    font-weight: normal;
-    text-align: center;
+
+.table-container .table td,
+.table-container .table th {
+    color: #333;
+    font-weight: 400;
+    text-align: center
+}
+
+.table-container .table th {
+    background-color: #fff
 }
 
 #pagination_news {
-    text-align: center;
+    text-align: center
 }

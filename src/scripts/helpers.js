@@ -229,6 +229,15 @@ window.helpers = (function ($, LS) {
       Vue.filter('formatUIType', function (value) {
         return ['', '学生', '个人', '媒体', '政府', '企业', '组织'][value];
       });
+      Vue.filter('transformString', function (str) {
+        var arr = str.toString().split("+");
+        var returnStr = "";
+        $.each(arr, function (ind, val) {
+          returnStr = returnStr + " " + val;
+        });
+        returnStr = returnStr.substring(1);
+        return decodeURIComponent(returnStr);
+      });
     },
     'scrollToElement': function ($elem, callback) {
       return $('html, body').animate({
