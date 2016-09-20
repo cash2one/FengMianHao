@@ -209,12 +209,7 @@
                     <!--封面号背景图-->
                     <div class="form-group" id="BackgroundImageOfAccount">
                         <label class="col-md-4 control-label">
-                            <em class="flag-required">*</em>
                             封面号背景图:
-                            <br>
-                            <em class="flag-required error-msg-of-non-text-input" style="font-size: 14px;">
-                                必填
-                            </em>
                         </label>
                         <div class="col-md-7">
                             <div class="container-upload-img">
@@ -508,7 +503,7 @@ var form = new Vue({
             // 文本校验
             for (var i = 0; i < $('.is-required').length; ++i) {
                     if (!$('.is-required').eq(i).data('inited') === true || self.validates[$('.is-required').eq(i).prop('id')] === true) {
-                        console.log('L550: ', $('.is-required').eq(i).prop('id'));
+                        console.log('文本校验: ', $('.is-required').eq(i).prop('id'));
                     $('.is-required').eq(i).addClass('not-fulfilled').siblings('.help-block').stop().addClass('should-show');
                     return false;
                 } else {
@@ -564,15 +559,15 @@ var form = new Vue({
                 $('#upImg-icon').closest('.form-group').find('.error-msg-of-non-text-input').removeClass('should-show');
             }
 
-            if (obj.BackgroundImageOfAccount === 'https://wapcdn.thecover.cn/fengmianhao/1.0.0/img/bg_PersonIDPicture.png') {
-                console.log('表单验证不通过项目--封面号背景图');
-                $('#upImg-bg').addClass('not-fulfilled').siblings('.help-block').stop().addClass('should-show');
-                $('#upImg-bg').closest('.form-group').find('.error-msg-of-non-text-input').addClass('should-show');
-                return false;
-            } else {
-                $('#upImg-bg').removeClass('not-fulfilled').siblings('.help-block').stop().removeClass('should-show');
-                $('#upImg-bg').closest('.form-group').find('.error-msg-of-non-text-input').removeClass('should-show');
-            }
+//            if (obj.BackgroundImageOfAccount === 'https://wapcdn.thecover.cn/fengmianhao/1.0.0/img/bg_PersonIDPicture.png') {
+//                console.log('表单验证不通过项目--封面号背景图');
+//                $('#upImg-bg').addClass('not-fulfilled').siblings('.help-block').stop().addClass('should-show');
+//                $('#upImg-bg').closest('.form-group').find('.error-msg-of-non-text-input').addClass('should-show');
+//                return false;
+//            } else {
+//                $('#upImg-bg').removeClass('not-fulfilled').siblings('.help-block').stop().removeClass('should-show');
+//                $('#upImg-bg').closest('.form-group').find('.error-msg-of-non-text-input').removeClass('should-show');
+//            }
 
             // 封面号关键词
             if (obj.AccountLabel.length < 1) {
@@ -692,6 +687,7 @@ var form = new Vue({
                 self.list_of_provinces = res;
                 console.log('getProvinceList() => ', res)
             });
+            self.data_of_form.BackgroundImageOfAccount = helpers.setAccountBg(self.getCandidateType());
         };
         renderPage();
     }

@@ -107,6 +107,9 @@ window.helpers = (function ($, LS) {
       '企业',
       '其他组织'
     ],
+    'setAccountBg': function (num) {
+      return 'https://wapcdn.thecover.cn/fengmianhao/1.0.0/img/bg_fengmianhao/' + num + '.jpg';
+    },
     'TYPE_OF_APPLICANT': [
       {
         'type_name': 'type_student',
